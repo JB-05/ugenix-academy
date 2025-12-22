@@ -32,7 +32,7 @@ export default function RegisterPage() {
         <section className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <div className="mb-6">
-              <svg className="w-16 h-16 text-primary mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-16 h-16 text-brand mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -43,7 +43,7 @@ export default function RegisterPage() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-8 py-3 bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
+              className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               Return to Home
             </Link>
@@ -76,7 +76,7 @@ export default function RegisterPage() {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-brand transition-colors"
               placeholder="Enter your full name"
             />
           </div>
@@ -92,7 +92,7 @@ export default function RegisterPage() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-brand transition-colors"
               placeholder="Enter your email address"
             />
           </div>
@@ -108,7 +108,7 @@ export default function RegisterPage() {
               required
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-brand transition-colors"
               placeholder="Enter your phone number"
             />
           </div>
@@ -123,7 +123,7 @@ export default function RegisterPage() {
               required
               value={formData.learningMode}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-primary transition-colors"
+              className="w-full px-4 py-3 border border-neutral-medium bg-white text-slate-deep focus:outline-none focus:border-brand transition-colors"
             >
               <option value="online">Online</option>
               <option value="offline">Offline</option>
@@ -133,7 +133,7 @@ export default function RegisterPage() {
           <div className="pt-4">
             <button
               type="submit"
-              className="w-full px-8 py-4 bg-primary text-white font-medium hover:bg-primary-dark transition-colors"
+              className="w-full px-8 py-4 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               Submit Registration
             </button>
@@ -143,4 +143,7 @@ export default function RegisterPage() {
     </div>
   )
 }
+
+
+
 

@@ -3,12 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
-  }
-
   body {
-    @apply text-slate-deep bg-neutral-offwhite;
+    @apply text-slate-deep bg-neutral-offwhite font-sans;
     font-feature-settings: 'kern' 1, 'liga' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

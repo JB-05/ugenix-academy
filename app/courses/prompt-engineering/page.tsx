@@ -21,7 +21,7 @@ export default function PromptEngineeringCourse() {
           <ul className="space-y-4">
             <li className="flex items-start gap-4">
               <div className="flex-shrink-0 mt-1">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -31,7 +31,7 @@ export default function PromptEngineeringCourse() {
             </li>
             <li className="flex items-start gap-4">
               <div className="flex-shrink-0 mt-1">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -41,7 +41,7 @@ export default function PromptEngineeringCourse() {
             </li>
             <li className="flex items-start gap-4">
               <div className="flex-shrink-0 mt-1">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -51,7 +51,7 @@ export default function PromptEngineeringCourse() {
             </li>
             <li className="flex items-start gap-4">
               <div className="flex-shrink-0 mt-1">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -61,7 +61,7 @@ export default function PromptEngineeringCourse() {
             </li>
             <li className="flex items-start gap-4">
               <div className="flex-shrink-0 mt-1">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -71,7 +71,7 @@ export default function PromptEngineeringCourse() {
             </li>
             <li className="flex items-start gap-4">
               <div className="flex-shrink-0 mt-1">
-                <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
@@ -88,7 +88,7 @@ export default function PromptEngineeringCourse() {
           <div className="bg-neutral-light p-8">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">
-                <svg className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-6 h-6 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               </div>
@@ -130,7 +130,7 @@ export default function PromptEngineeringCourse() {
           <div className="text-center">
             <Link
               href="/register"
-              className="inline-flex items-center justify-center px-10 py-4 bg-primary text-white font-medium hover:bg-primary-dark transition-colors text-lg"
+              className="inline-flex items-center justify-center px-10 py-4 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg text-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               Register for This Course
             </Link>
@@ -140,4 +140,7 @@ export default function PromptEngineeringCourse() {
     </div>
   )
 }
+
+
+
 

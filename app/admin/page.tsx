@@ -36,7 +36,7 @@ export default function AdminPage() {
           </div>
           <button
             onClick={handleExport}
-            className="px-6 py-2 bg-brand text-white font-medium hover:bg-brand-dark transition-colors"
+            className="px-6 py-2 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
           >
             Export to XLSX
           </button>

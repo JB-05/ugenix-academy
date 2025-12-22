@@ -40,3 +40,6 @@ The design emphasizes:
 - Content-first, minimal aesthetic
 - Mobile-first responsive design
 
+
+
+

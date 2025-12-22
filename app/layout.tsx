@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -13,6 +14,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'UgeniX Academy | Professional Training',
   description: 'Professional online training academy for prompt engineering and technology skills',
+  icons: {
+    icon: '/illustrations/Ugenix Logo Short.svg',
+    shortcut: '/illustrations/Ugenix Logo Short.svg',
+    apple: '/illustrations/Ugenix Logo Short.svg',
+  },
 }
 
 export default function RootLayout({
@@ -30,8 +36,12 @@ export default function RootLayout({
           </main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   )
 }
+
+
+
 

@@ -1,19 +1,26 @@
+'use client'
+
 import Link from 'next/link'
-import HeroIllustration from '@/components/illustrations/HeroIllustration'
-import TeamIllustration from '@/components/illustrations/TeamIllustration'
-import GrowthIllustration from '@/components/illustrations/GrowthIllustration'
+import WhyChooseSection from '@/components/WhyChooseSection'
 
 export default function Home() {
+  const scrollToNext = () => {
+    const nextSection = document.querySelector('section.bg-white')
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="bg-neutral-offwhite">
       {/* Hero Section */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 md:py-40">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-screen flex flex-col justify-center pt-28 pb-12 sm:pt-32 md:pt-36 lg:pt-40 md:pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full flex-1">
           <div>
-            <h1 className="text-balance mb-10 text-slate-deep font-medium">
+            <h1 className="text-balance mb-6 md:mb-8 text-slate-deep font-medium">
               Learn skills that matter, from people who build them
             </h1>
-            <p className="text-lg md:text-xl text-neutral-muted mb-14 leading-relaxed max-w-2xl">
+            <p className="text-lg md:text-xl text-neutral-muted mb-8 md:mb-10 leading-relaxed max-w-2xl">
               UgeniX Academy offers practical training for students, professionals, and 
               anyone ready to work with modern technology. Our courses are designed by 
               industry practitioners who understand what skills actually translate to 
@@ -22,24 +29,43 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/courses/prompt-engineering"
-                className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark transition-colors"
+                className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               >
                 Explore Courses
               </Link>
               <Link
-                href="#why-choose"
-                className="inline-flex items-center justify-center px-8 py-3 text-brand font-medium hover:text-brand-dark transition-colors"
+                href="/about"
+                className="inline-flex items-center justify-center px-8 py-3 border border-brand text-brand font-medium hover:bg-brand/5 transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               >
                 Learn About the Academy
               </Link>
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
-            <div className="w-full max-w-md lg:max-w-lg">
-              <HeroIllustration />
-            </div>
+          <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
+            <img
+              src="/illustrations/heor.svg"
+              alt=""
+              aria-hidden="true"
+              className="w-full max-w-sm md:max-w-md"
+            />
           </div>
         </div>
+        {/* Scroll Down Button */}
+        <button
+          onClick={scrollToNext}
+          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded-full p-2"
+          aria-label="Scroll to next section"
+        >
+          <svg
+            className="w-6 h-6 animate-bounce"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </button>
       </section>
 
       {/* Who This Is For Section */}
@@ -80,67 +106,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose This Academy Section */}
-      <section id="why-choose" className="bg-neutral-offwhite py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-20 text-slate-deep font-medium">Why Choose This Academy</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-            <div className="hidden lg:block lg:col-span-1">
-              <TeamIllustration />
-            </div>
-            <div className="lg:col-span-4 max-w-4xl">
-              <div className="space-y-16">
-                <div className="flex gap-8">
-                  <div className="flex-shrink-0 w-1 bg-brand"></div>
-                  <div>
-                    <h3 className="text-2xl font-medium mb-5 text-slate-deep">Industry-Experienced Instructors</h3>
-                    <p className="text-lg text-neutral-muted leading-relaxed">
-                      Our instructors are active practitioners who work with these technologies daily. 
-                      They bring real-world context and current best practices, not just theoretical 
-                      knowledge from outdated materials.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-8">
-                  <div className="flex-shrink-0 w-1 bg-brand"></div>
-                  <div>
-                    <h3 className="text-2xl font-medium mb-5 text-slate-deep">Practical, Outcome-Oriented Learning</h3>
-                    <p className="text-lg text-neutral-muted leading-relaxed">
-                      Every course is designed around what you'll actually do with these skills. 
-                      We focus on application over theory, ensuring you can use what you learn 
-                      immediately in your work or projects.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-8">
-                  <div className="flex-shrink-0 w-1 bg-brand"></div>
-                  <div>
-                    <h3 className="text-2xl font-medium mb-5 text-slate-deep">Hybrid Approach</h3>
-                    <p className="text-lg text-neutral-muted leading-relaxed">
-                      Learn at your own pace online with structured content, then participate in 
-                      optional offline sessions for hands-on practice and direct feedback. This 
-                      flexibility accommodates different learning styles and schedules.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-8">
-                  <div className="flex-shrink-0 w-1 bg-brand"></div>
-                  <div>
-                    <h3 className="text-2xl font-medium mb-5 text-slate-deep">Built by a Real Technology Company</h3>
-                    <p className="text-lg text-neutral-muted leading-relaxed">
-                      This academy is an initiative by <a href="https://ugenix.in" target="_blank" rel="noopener noreferrer" className="text-brand hover:text-brand-dark">ugenix.in</a>, 
-                      a technology company that builds real products and solves real problems. 
-                      Our training reflects the same standards and practices we use in our own work.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WhyChooseSection />
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="bg-white py-28">
+      <section id="how-it-works" className="bg-white py-28 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="mb-20 text-slate-deep font-medium">How It Works</h2>
           <div className="max-w-5xl mx-auto">
@@ -185,39 +154,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Course Section */}
-      <section className="bg-neutral-offwhite py-28">
+      {/* Courses Section */}
+      <section id="courses" className="bg-neutral-offwhite py-28 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <h2 className="mb-8 text-slate-deep font-medium">Featured Course</h2>
-            <div className="border-l-2 border-brand pl-8 pt-2">
-              <h3 className="text-3xl font-medium mb-6 text-slate-deep">Prompt Engineering</h3>
-              <p className="text-lg text-neutral-muted mb-10 leading-relaxed">
-                Learn to communicate effectively with AI systems and craft prompts that 
-                produce reliable, useful results. This beginner-friendly course covers 
-                the fundamentals of prompt design, context management, and practical 
-                applications across different domains.
+          <h2 className="mb-12 text-slate-deep font-medium">Featured Courses</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Course Card */}
+            <div className="border border-neutral-border rounded-lg bg-white p-6 flex flex-col h-full">
+              <h3 className="text-2xl font-medium mb-3 text-slate-deep">Prompt Engineering</h3>
+              <p className="text-neutral-muted mb-6 leading-relaxed flex-grow">
+                Learn to communicate effectively with AI systems and craft prompts that produce reliable, useful results.
               </p>
-              <div className="space-y-3 mb-12">
-                <div className="flex items-start gap-3">
-                  <span className="text-neutral-muted mt-1.5">•</span>
-                  <p className="text-neutral-muted">Beginner-friendly, no prior experience required</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-neutral-muted mt-1.5">•</span>
-                  <p className="text-neutral-muted">Hybrid learning: online content with optional offline sessions</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span className="text-neutral-muted mt-1.5">•</span>
-                  <p className="text-neutral-muted">Initially free enrollment</p>
-                </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/register"
+                  className="inline-flex items-center justify-center px-6 py-2.5 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 text-sm"
+                >
+                  Register
+                </Link>
+                <Link
+                  href="/courses/prompt-engineering"
+                  className="inline-flex items-center justify-center px-6 py-2.5 border border-brand text-brand font-medium hover:bg-brand/5 transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 text-sm"
+                >
+                  View Course
+                </Link>
               </div>
-              <Link
-                href="/courses/prompt-engineering"
-                className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark transition-colors"
-              >
-                View Course Details
-              </Link>
             </div>
           </div>
         </div>
@@ -238,28 +199,28 @@ export default function Home() {
       <section className="bg-white py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-              <div className="flex-1 text-center">
-                <div className="mb-8 lg:hidden">
-                  <div className="flex justify-center">
-                    <div className="w-full max-w-xs">
-                      <GrowthIllustration />
-                    </div>
-                  </div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+              {/* Text Content - Left on Desktop, First on Mobile */}
+              <div className="text-center md:text-left order-1 md:order-1">
                 <h2 className="mb-6 text-slate-deep font-medium">Start building skills that actually matter</h2>
-                <p className="text-lg text-neutral-muted mb-12 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-lg text-neutral-muted mb-8 md:mb-12 leading-relaxed">
                   Join a learning experience designed for clarity and practical application.
                 </p>
                 <Link
-                  href="/register"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark transition-colors"
+                  href="#courses"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
                 >
                   Start Your Learning Journey
                 </Link>
               </div>
-              <div className="hidden lg:block flex-shrink-0 max-w-xs">
-                <GrowthIllustration />
+              {/* Illustration - Right on Desktop, Below on Mobile */}
+              <div className="flex justify-center md:justify-end order-2 md:order-2">
+                <img
+                  src="/illustrations/cta.svg"
+                  alt=""
+                  aria-hidden="true"
+                  className="w-full max-w-xs"
+                />
               </div>
             </div>
           </div>

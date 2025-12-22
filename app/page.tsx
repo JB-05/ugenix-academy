@@ -14,58 +14,60 @@ export default function Home() {
   return (
     <div className="bg-neutral-offwhite">
       {/* Hero Section */}
-      <section className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-screen flex flex-col justify-center pt-28 pb-12 sm:pt-32 md:pt-36 lg:pt-40 md:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full flex-1">
-          <div>
-            <h1 className="text-balance mb-6 md:mb-8 text-slate-deep font-medium">
-              Learn skills that matter, from people who build them
-            </h1>
-            <p className="text-lg md:text-xl text-neutral-muted mb-8 md:mb-10 leading-relaxed max-w-2xl">
-              UgeniX Academy offers practical training for students, professionals, and 
-              anyone ready to work with modern technology. Our courses are designed by 
-              industry practitioners who understand what skills actually translate to 
-              real work.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/courses/prompt-engineering"
-                className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Explore Courses
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-8 py-3 border border-brand text-brand font-medium hover:bg-brand/5 transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-              >
-                Learn About the Academy
-              </Link>
+        <section className="relative min-h-[100svh]">
+          <div className="mx-auto max-w-7xl flex flex-col justify-center pt-[calc(var(--navbar-height)+2rem)] lg:pt-[var(--navbar-height)] pb-12 md:pb-16 px-4 sm:px-6 lg:px-8 h-full lg:mt-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full flex-1">
+            <div>
+              <h1 className="text-balance mb-6 md:mb-8 text-slate-deep font-medium">
+                Learn skills that matter, from people who build them
+              </h1>
+              <p className="text-lg md:text-xl text-neutral-muted mb-8 md:mb-10 leading-relaxed max-w-2xl">
+                UgeniX Academy offers practical training for students, professionals, and 
+                anyone ready to work with modern technology. Our courses are designed by 
+                industry practitioners who understand what skills actually translate to 
+                real work.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="#courses"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  Explore Courses
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center px-8 py-3 border border-brand text-brand font-medium hover:bg-brand/5 transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                >
+                  Learn About the Academy
+                </Link>
+              </div>
+            </div>
+            <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
+              <img
+                src="/illustrations/heor.svg"
+                alt=""
+                aria-hidden="true"
+                className="w-full max-w-sm md:max-w-md"
+              />
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end mt-4 lg:mt-0">
-            <img
-              src="/illustrations/heor.svg"
-              alt=""
-              aria-hidden="true"
-              className="w-full max-w-sm md:max-w-md"
-            />
-          </div>
-        </div>
-        {/* Scroll Down Button */}
-        <button
-          onClick={scrollToNext}
-          className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded-full p-2"
-          aria-label="Scroll to next section"
-        >
-          <svg
-            className="w-6 h-6 animate-bounce"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+          {/* Scroll Down Button */}
+          <button
+            onClick={scrollToNext}
+            className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded-full p-2"
+            aria-label="Scroll to next section"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </button>
+            <svg
+              className="w-6 h-6 animate-bounce"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </button>
+        </div>
       </section>
 
       {/* Who This Is For Section */}

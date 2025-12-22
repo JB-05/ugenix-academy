@@ -4,17 +4,26 @@ export default function AboutPage() {
       {/* Intro Section */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <h1 className="mb-8 text-slate-deep font-medium">About the Academy</h1>
-        <div>
-          <p className="text-lg text-neutral-muted leading-relaxed mb-6">
-            UgeniX Academy was created to address a gap we've observed in modern technology education: 
-            the disconnect between what's taught and what's actually needed in real work environments.
-          </p>
-          <p className="text-lg text-neutral-muted leading-relaxed">
-            Too often, training programs focus on tools and frameworks without teaching the thinking 
-            and problem-solving approaches that make those tools useful. We believe learning should 
-            be practical, relevant, and immediately applicable—not theoretical exercises that feel 
-            disconnected from real challenges.
-          </p>
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-12">
+          <div className="flex-1">
+            <p className="text-lg text-neutral-muted leading-relaxed mb-6">
+              UgeniX Academy was created to address a gap we've observed in modern technology education: 
+              the disconnect between what's taught and what's actually needed in real work environments.
+            </p>
+            <p className="text-lg text-neutral-muted leading-relaxed">
+              Too often, training programs focus on tools and frameworks without teaching the thinking 
+              and problem-solving approaches that make those tools useful. We believe learning should 
+              be practical, relevant, and immediately applicable—not theoretical exercises that feel 
+              disconnected from real challenges.
+            </p>
+          </div>
+          <div className="flex justify-center md:justify-end flex-none">
+            <img
+              src="/illustrations/about1.svg"
+              aria-hidden="true"
+              className="w-full max-w-xs md:max-w-sm h-auto"
+            />
+          </div>
         </div>
       </section>
 
@@ -108,36 +117,54 @@ export default function AboutPage() {
       <section className="bg-white py-20 md:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <h2 className="mb-12 text-slate-deep font-medium">How We Approach Learning</h2>
-          <div className="space-y-8 text-neutral-muted leading-relaxed">
-            <p>
-              Our approach to learning is built on the principle that skills are most valuable 
-              when they're immediately applicable. We don't teach concepts in isolation; we teach 
-              them in the context of real problems and real solutions.
-            </p>
-            <p>
-              Every course starts with understanding the "why" before diving into the "how." 
-              Why does this approach exist? What problem does it solve? When would you use it, 
-              and when would you choose something else? This foundation of understanding makes 
-              everything else more meaningful and easier to remember.
-            </p>
-            <p>
-              We emphasize practical application over theoretical knowledge. You'll work on 
-              projects and scenarios that mirror what you'd encounter in actual work environments. 
-              This isn't about completing exercises for the sake of completion—it's about building 
-              confidence and competence through practice that feels relevant.
-            </p>
-            <p>
-              Our hybrid learning model combines the flexibility of online self-paced content with 
-              the value of optional in-person sessions. The online content gives you structure and 
-              allows you to learn at your own pace. The offline sessions provide opportunities for 
-              hands-on practice, direct feedback, and learning from others who are on the same journey.
-            </p>
-            <p>
-              We also believe in thoughtful pacing. Learning complex skills takes time, and rushing 
-              through material doesn't serve anyone. Our courses are designed to give you space to 
-              absorb concepts, practice them, and ask questions. Quality of understanding matters 
-              more than speed of completion.
-            </p>
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-12">
+            <div className="order-0 md:order-1 flex-1 max-w-prose space-y-6 text-neutral-muted leading-relaxed">
+              <p>
+                We design learning around real work, so what you study connects directly to the problems you’ll
+                solve in practice.
+              </p>
+              <div className="space-y-5">
+                <div>
+                  <h3 className="text-base font-medium text-slate-deep">
+                    Applied, not abstract
+                  </h3>
+                  <p>
+                    Concepts are taught in the context of concrete problems and real scenarios, not as isolated theory.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-base font-medium text-slate-deep">
+                    Start with why
+                  </h3>
+                  <p>
+                    Every topic begins with the purpose behind it—what it solves, when it’s useful, and how it fits into the bigger picture.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-base font-medium text-slate-deep">
+                    Practice that feels real
+                  </h3>
+                  <p>
+                    You work on projects that mirror real environments, building confidence through relevant, hands-on practice.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-base font-medium text-slate-deep">
+                    Thoughtful pacing
+                  </h3>
+                  <p>
+                    Courses are designed to give room for reflection, questions, and repetition, so understanding has time to take root.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 md:order-0 flex justify-center md:justify-start flex-none">
+              <img
+                src="/illustrations/howweapproach.svg"
+                aria-hidden="true"
+                className="w-full max-w-sm h-auto"
+              />
+            </div>
           </div>
         </div>
       </section>

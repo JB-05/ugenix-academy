@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply text-slate-deep bg-neutral-offwhite font-sans;
+    @apply text-slate-deep bg-neutral-offwhite;
     font-feature-settings: 'kern' 1, 'liga' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

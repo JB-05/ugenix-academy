@@ -36,7 +36,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-3 text-xl font-medium text-slate-deep hover:text-brand transition-colors duration-200 ease-in-out">
               <img
                 src="/illustrations/Ugenix Logo Short.svg"
-                alt="UgeniX"
+                alt="Ugenix"
                 className="h-16 w-16"
                 aria-hidden="true"
               />

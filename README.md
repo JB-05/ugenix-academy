@@ -1,4 +1,4 @@
-# UgeniX Academy
+# Ugenix Academy
 
 Professional training academy website built with Next.js, TypeScript, and Tailwind CSS.
 

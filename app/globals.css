@@ -44,9 +44,84 @@
   
   .hero-grid-pattern {
     background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.052) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.052) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.09) 1px, transparent 1px);
     background-size: 40px 40px;
+  }
+}
+
+@layer components {
+  .btn-primary-glass {
+    @apply relative inline-flex items-center justify-center px-7 py-3 rounded-lg bg-white/10 backdrop-blur-md text-slate-deep font-medium border-2 border-transparent transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-primary-glass::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #6758e0, #5548c0, #7a6be8, #6758e0);
+    background-size: 200% 200%;
+    opacity: 0.65;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+  .btn-primary-glass:hover,
+  .btn-primary-glass:focus-visible {
+    @apply bg-white/20;
+  }
+  .btn-primary-glass:hover::before,
+  .btn-primary-glass:focus-visible::before {
+    animation: btn-border-roll 1.8s linear infinite;
+  }
+  .btn-primary-glass:active::before {
+    animation: btn-border-roll 1.6s linear infinite;
+  }
+
+  .btn-secondary-baseline {
+    @apply relative inline-flex items-center justify-center font-medium text-brand transition duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent cursor-pointer;
+  }
+  .btn-secondary-baseline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background-color: currentColor;
+    opacity: 0.75;
+    transition: transform 180ms ease-out, height 180ms ease-out, opacity 180ms ease-out;
+    transform: translateX(0);
+  }
+  .btn-secondary-baseline:hover {
+    @apply text-brand-dark;
+  }
+  .btn-secondary-baseline:hover::after {
+    transform: translateX(6px);
+    height: 2px;
+    opacity: 0.9;
+  }
+  .btn-secondary-baseline:focus-visible {
+    @apply text-brand-dark;
+  }
+  .btn-secondary-baseline:focus-visible::after {
+    transform: translateX(6px);
+    height: 2px;
+    opacity: 0.9;
+  }
+}
+
+@keyframes btn-border-roll {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
   }
 }
 

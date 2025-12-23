@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
         {/* 1️⃣ Top Card — Brand Context */}
         <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-white/50 shadow-lg shadow-black/5 p-6 lg:p-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
-            <h3 className="text-xl lg:text-2xl font-medium text-slate-deep">UgeniX Academy</h3>
+            <h3 className="text-xl lg:text-2xl font-medium text-slate-deep">Ugenix Academy</h3>
             <p className="text-neutral-muted text-sm lg:text-base md:text-right">
               Professional training for the modern workforce.
             </p>
@@ -39,11 +40,14 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex justify-center">
-            <Link 
-              href="/contact" 
-              className="inline-flex items-center justify-center px-6 py-2.5 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 text-sm"
-            >
-              Contact Us
+            <Link href="/contact">
+              <HoverBorderGradient
+                as="button"
+                containerClassName="rounded-full"
+                className="bg-white text-slate-900 px-6 py-2.5 font-medium text-sm"
+              >
+                Contact Us
+              </HoverBorderGradient>
             </Link>
           </div>
         </div>
@@ -147,13 +151,13 @@ export default function Footer() {
               >
                 <img
                   src="/illustrations/Ugenix Logo Long.svg"
-                  alt="UgeniX"
+                  alt="Ugenix"
                   className="h-8 w-auto"
                 />
               </a>
             </div>
             <div className="text-center md:text-right text-sm text-neutral-muted">
-              <p>&copy; {new Date().getFullYear()} UgeniX Academy. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Ugenix Academy. All rights reserved.</p>
             </div>
           </div>
         </div>

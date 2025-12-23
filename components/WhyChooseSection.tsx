@@ -43,79 +43,81 @@ export default function WhyChooseSection() {
   }
 
   return (
-    <section id="why-choose" className="bg-neutral-offwhite py-28 scroll-mt-24">
+    <section id="why-choose" className="py-20 md:py-24 scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="mb-20 text-slate-deep font-medium">Why Choose This Academy</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
-          {/* Illustration - Left Column */}
-          <div className="flex items-center justify-center">
-            <img
-              src="/illustrations/wh-choose.svg"
-              alt=""
-              aria-hidden="true"
-              className="w-full max-w-sm md:max-w-md"
-            />
-          </div>
+        <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+          <h2 className="mb-14 md:mb-16 text-slate-deep font-medium">Why Choose This Academy</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+            {/* Illustration - Left Column */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/illustrations/wh-choose.svg"
+                alt=""
+                aria-hidden="true"
+                className="w-full max-w-sm md:max-w-md"
+              />
+            </div>
 
-          {/* Accordion - Right Column */}
-          <div>
-            <div className="space-y-8">
-              {accordionItems.map((item) => {
-                const isOpen = openItem === item.id
-                return (
-                  <div key={item.id}>
-                    <div className="flex gap-8">
-                      <div className="flex-shrink-0 w-1 bg-brand"></div>
-                      <div className="flex-1">
-                        <button
-                          type="button"
-                          onClick={() => toggleItem(item.id)}
-                          className="w-full flex items-center justify-between gap-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                          aria-expanded={isOpen}
-                          aria-controls={`accordion-content-${item.id}`}
-                        >
-                          <h3 className="text-2xl font-medium text-slate-deep">{item.title}</h3>
-                          <div className="flex-shrink-0">
-                            {isOpen ? (
-                              <svg
-                                className="w-4 h-4 text-neutral-muted transition-transform duration-250 ease-in-out"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                aria-hidden="true"
-                              >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
-                              </svg>
-                            ) : (
-                              <svg
-                                className="w-4 h-4 text-neutral-muted transition-transform duration-250 ease-in-out"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                aria-hidden="true"
-                              >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                              </svg>
-                            )}
-                          </div>
-                        </button>
-                        <div
-                          id={`accordion-content-${item.id}`}
-                          className={`overflow-hidden transition-all duration-250 ease-in-out ${
-                            isOpen ? 'max-h-[500px] opacity-100 mt-5' : 'max-h-0 opacity-0'
-                          }`}
-                        >
-                          <div className="text-lg text-neutral-muted leading-relaxed">
-                            {item.description}
+            {/* Accordion - Right Column */}
+            <div>
+              <div className="space-y-8">
+                {accordionItems.map((item) => {
+                  const isOpen = openItem === item.id
+                  return (
+                    <div key={item.id}>
+                      <div className="flex gap-8">
+                        <div className="flex-shrink-0 w-1 bg-brand"></div>
+                        <div className="flex-1">
+                          <button
+                            type="button"
+                            onClick={() => toggleItem(item.id)}
+                            className="w-full flex items-center justify-between gap-4 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                            aria-expanded={isOpen}
+                            aria-controls={`accordion-content-${item.id}`}
+                          >
+                            <h3 className="text-2xl font-medium text-slate-deep">{item.title}</h3>
+                            <div className="flex-shrink-0">
+                              {isOpen ? (
+                                <svg
+                                  className="w-4 h-4 text-neutral-muted transition-transform duration-250 ease-in-out"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                  aria-hidden="true"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M20 12H4" />
+                                </svg>
+                              ) : (
+                                <svg
+                                  className="w-4 h-4 text-neutral-muted transition-transform duration-250 ease-in-out"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  strokeWidth={2}
+                                  aria-hidden="true"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                                </svg>
+                              )}
+                            </div>
+                          </button>
+                          <div
+                            id={`accordion-content-${item.id}`}
+                            className={`overflow-hidden transition-all duration-250 ease-in-out ${
+                              isOpen ? 'max-h-[500px] opacity-100 mt-5' : 'max-h-0 opacity-0'
+                            }`}
+                          >
+                            <div className="text-lg text-neutral-muted leading-relaxed">
+                              {item.description}
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>

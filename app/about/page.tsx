@@ -7,7 +7,7 @@ export default function AboutPage() {
         <div className="flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-12">
           <div className="flex-1">
             <p className="text-lg text-neutral-muted leading-relaxed mb-6">
-              UgeniX Academy was created to address a gap we've observed in modern technology education: 
+            Ugenix Academy was created to address a gap we've observed in modern technology education: 
               the disconnect between what's taught and what's actually needed in real work environments.
             </p>
             <p className="text-lg text-neutral-muted leading-relaxed">
@@ -207,7 +207,7 @@ export default function AboutPage() {
             <h2 className="mb-8 text-slate-deep font-medium">Relationship with Ugenix Technologies LLP</h2>
             <div className="space-y-6 text-neutral-muted leading-relaxed text-sm">
               <p>
-                UgeniX Academy is an initiative by Ugenix Technologies LLP, a technology company 
+                Ugenix Academy is an initiative by Ugenix Technologies LLP, a technology company 
                 that builds real products and solves real problems. This connection isn't just 
                 organizational—it's foundational to how we approach training.
               </p>

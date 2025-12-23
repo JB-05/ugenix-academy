@@ -12,7 +12,7 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'UgeniX Academy | Professional Training',
+  title: 'Ugenix Academy | Professional Training',
   description: 'Professional online training academy for prompt engineering and technology skills',
   icons: {
     icon: '/illustrations/Ugenix Logo Short.svg',
@@ -29,6 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={openSans.variable}>
       <body>
+        {/* Global fixed background layer */}
+        <div className="fixed inset-0 -z-10 bg-[#F5F3F0]">
+          <div className="absolute inset-0 hero-grid-pattern opacity-60" />
+        </div>
+
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">

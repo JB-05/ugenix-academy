@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 import WhyChooseSection from '@/components/WhyChooseSection'
 
 export default function Home() {
@@ -12,12 +13,12 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-neutral-offwhite">
+    <div className="relative">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-12 sm:pt-32 md:pt-34 lg:pt-34 md:pb-16 bg-[#F5F3F0] hero-grid-pattern">
+      <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-12 sm:pt-32 md:pt-34 lg:pt-34 md:pb-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
           {/* Glassmorphic Main Container */}
-          <div className="relative rounded-2xl bg-white/65 backdrop-blur-xl border border-white/70 shadow-xl shadow-black/10 p-6 sm:p-8 md:p-10 lg:p-12">
+          <div className="relative rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-xl shadow-black/10 p-6 sm:p-8 md:p-10 lg:p-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
               <div>
                 <h1 className="text-balance mb-6 md:mb-8 text-slate-deep font-medium">
@@ -29,19 +30,20 @@ export default function Home() {
                   theory and practical application.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href="/courses/prompt-engineering"
-                    className="relative inline-flex items-center justify-center px-8 py-3 border border-brand text-white font-medium overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 group"
-                  >
-                    <span className="relative z-10 transition-colors duration-300 ease-in-out group-hover:text-brand">Explore Courses</span>
-                    <span className="absolute inset-0 bg-brand origin-right scale-x-100 group-hover:scale-x-0 transition-transform duration-300 ease-in-out"></span>
+                  <Link href="/courses/prompt-engineering">
+                    <HoverBorderGradient
+                      as="button"
+                      containerClassName="rounded-full"
+                      className="bg-white text-slate-900 px-6 py-3 font-medium"
+                    >
+                      Explore Courses
+                    </HoverBorderGradient>
                   </Link>
                   <Link
                     href="/about"
-                    className="relative inline-flex items-center justify-center px-8 py-3 border border-brand text-brand font-medium overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 group"
+                    className="btn-secondary-baseline"
                   >
-                    <span className="relative z-10 transition-colors duration-300 ease-in-out group-hover:text-white">Learn About the Academy</span>
-                    <span className="absolute inset-0 bg-brand transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
+                    Learn About the Academy
                   </Link>
                 </div>
               </div>
@@ -75,37 +77,42 @@ export default function Home() {
       </section>
 
       {/* Who This Is For Section */}
-      <section className="bg-white py-28">
+      <section className="py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-center mb-24 text-slate-deep font-medium">Who This Is For</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 max-w-6xl mx-auto">
-            <div>
-              <h3 className="text-xl font-medium mb-4 text-slate-deep">Students</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Complement your studies with practical skills that bridge the gap between 
-                academic learning and industry needs.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium mb-4 text-slate-deep">Working Professionals</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Stay relevant in a changing field by learning new approaches and tools 
-                that enhance your current work.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium mb-4 text-slate-deep">Beginners</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Start from the ground up with clear guidance and structured learning paths 
-                designed for those new to the field.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium mb-4 text-slate-deep">Tech Enthusiasts</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Deepen your understanding and explore advanced concepts with courses 
-                built for dedicated learners.
-              </p>
+        
+            
+          <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+            <h2 className="text-center mb-16 md:mb-20 text-slate-deep font-medium">Who This Is For</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-14 max-w-6xl mx-auto">
+              <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-emerald-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(52,211,153,0.18)]">
+                <h3 className="text-2xl font-semibold text-slate-deep">Just starting out?</h3>
+                <p className="text-xs uppercase tracking-[0.08em] text-neutral-muted">Beginners</p>
+                <p className="text-neutral-muted leading-relaxed">
+                  Begin with clear guidance and structured learning paths designed for those new to the field.
+                </p>
+              </div>
+              <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-violet-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(103,88,224,0.18)]">
+                <h3 className="text-2xl font-semibold text-slate-deep">Still studying?</h3>
+                <p className="text-xs uppercase tracking-[0.08em] text-neutral-muted">Students</p>
+                <p className="text-neutral-muted leading-relaxed">
+                  Complement your studies with practical skills that bridge the gap between academic learning and real-world industry needs.
+                </p>
+              </div>
+              <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-sky-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(56,189,248,0.18)]">
+                <h3 className="text-2xl font-semibold text-slate-deep">Already working?</h3>
+                <p className="text-xs uppercase tracking-[0.08em] text-neutral-muted">Working Professionals</p>
+                <p className="text-neutral-muted leading-relaxed">
+                  Stay relevant in a changing field by learning modern approaches and tools that strengthen your current role.
+                </p>
+              </div>
+      
+              <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-amber-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(251,191,36,0.18)]">
+                <h3 className="text-2xl font-semibold text-slate-deep">Always curious?</h3>
+                <p className="text-xs uppercase tracking-[0.08em] text-neutral-muted">Tech Enthusiasts</p>
+                <p className="text-neutral-muted leading-relaxed">
+                  Deepen your understanding and explore advanced concepts through courses built for dedicated learners.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -115,45 +122,45 @@ export default function Home() {
       <WhyChooseSection />
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="bg-white py-28 scroll-mt-24">
+      <section id="how-it-works" className="py-20 md:py-24 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-20 text-slate-deep font-medium">How It Works</h2>
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-              <div className="relative">
-                <div className="absolute -left-8 top-0 text-neutral-muted text-sm font-medium hidden lg:block">01</div>
-                <h3 className="text-xl font-medium mb-4 text-slate-deep">Explore the Course</h3>
-                <p className="text-neutral-muted leading-relaxed">
-                  Review course details, learning outcomes, and structure to ensure it 
-                  aligns with your goals.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-8 top-0 text-neutral-muted text-sm font-medium hidden lg:block">02</div>
-                <div className="absolute -left-4 top-0 w-px h-full bg-neutral-border hidden lg:block"></div>
-                <h3 className="text-xl font-medium mb-4 text-slate-deep">Learn Online</h3>
-                <p className="text-neutral-muted leading-relaxed">
-                  Access structured content, videos, and resources through our online 
-                  platform at your own pace.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-8 top-0 text-neutral-muted text-sm font-medium hidden lg:block">03</div>
-                <div className="absolute -left-4 top-0 w-px h-full bg-neutral-border hidden lg:block"></div>
-                <h3 className="text-xl font-medium mb-4 text-slate-deep">Participate Offline</h3>
-                <p className="text-neutral-muted leading-relaxed">
-                  Join optional in-person sessions for hands-on practice, group work, 
-                  and direct instructor guidance.
-                </p>
-              </div>
-              <div className="relative">
-                <div className="absolute -left-8 top-0 text-neutral-muted text-sm font-medium hidden lg:block">04</div>
-                <div className="absolute -left-4 top-0 w-px h-full bg-neutral-border hidden lg:block"></div>
-                <h3 className="text-xl font-medium mb-4 text-slate-deep">Apply Skills</h3>
-                <p className="text-neutral-muted leading-relaxed">
-                  Complete real-world projects and scenarios that demonstrate your 
-                  mastery and build your portfolio.
-                </p>
+          <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+            <h2 className="mb-14 md:mb-16 text-slate-deep font-medium text-center">How It Works</h2>
+            <div className="relative">
+              <div className="absolute left-0 right-0 top-4 h-px bg-gradient-to-r from-black/5 via-black/7 to-black/10 opacity-[0.06]" aria-hidden="true" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-14">
+                <div className="space-y-3 md:pl-0">
+                  <p className="text-sm font-medium text-neutral-muted">01</p>
+                  <h3 className="text-xl font-normal text-slate-deep">Explore the Course</h3>
+                  <p className="text-neutral-muted/80 leading-relaxed">
+                    Review course details, learning outcomes, and structure to ensure it 
+                    aligns with your goals.
+                  </p>
+                </div>
+                <div className="space-y-3 md:pl-1">
+                  <p className="text-sm font-medium text-neutral-muted">02</p>
+                  <h3 className="text-xl font-medium text-slate-deep">Learn Online</h3>
+                  <p className="text-neutral-muted/90 leading-relaxed">
+                    Access structured content, videos, and resources through our online 
+                    platform at your own pace.
+                  </p>
+                </div>
+                <div className="space-y-3 md:pl-2">
+                  <p className="text-sm font-medium text-neutral-muted">03</p>
+                  <h3 className="text-xl font-medium text-slate-deep">Participate Offline</h3>
+                  <p className="text-neutral-muted leading-snug">
+                    Join optional in-person sessions for hands-on practice, group work, 
+                    and direct instructor guidance.
+                  </p>
+                </div>
+                <div className="space-y-3 md:pl-3">
+                  <p className="text-sm font-semibold text-neutral-muted">04</p>
+                  <h3 className="text-xl font-semibold text-slate-deep">Apply Skills</h3>
+                  <p className="text-neutral-muted leading-relaxed">
+                    Complete real-world projects and scenarios that demonstrate your 
+                    mastery and build your portfolio.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -161,29 +168,34 @@ export default function Home() {
       </section>
 
       {/* Courses Section */}
-      <section id="courses" className="bg-neutral-offwhite py-28 scroll-mt-24">
+      <section id="courses" className="py-20 md:py-24 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="mb-12 text-slate-deep font-medium">Featured Courses</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Course Card */}
-            <div className="border border-neutral-border rounded-lg bg-white p-6 flex flex-col h-full">
-              <h3 className="text-2xl font-medium mb-3 text-slate-deep">Prompt Engineering</h3>
-              <p className="text-neutral-muted mb-6 leading-relaxed flex-grow">
-                Learn to communicate effectively with AI systems and craft prompts that produce reliable, useful results.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/register"
-                  className="inline-flex items-center justify-center px-6 py-2.5 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 text-sm"
-                >
-                  Register
-                </Link>
-                <Link
-                  href="/courses/prompt-engineering"
-                  className="inline-flex items-center justify-center px-6 py-2.5 border border-brand text-brand font-medium hover:bg-brand/5 transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 text-sm"
-                >
-                  View Course
-                </Link>
+          <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+            <h2 className="mb-12 text-slate-deep font-medium">Featured Courses</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Course Card */}
+              <div className="border border-neutral-border rounded-lg bg-white p-6 flex flex-col h-full">
+                <h3 className="text-2xl font-medium mb-3 text-slate-deep">Prompt Engineering</h3>
+                <p className="text-neutral-muted mb-6 leading-relaxed flex-grow">
+                  Learn to communicate effectively with AI systems and craft prompts that produce reliable, useful results.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/register">
+                    <HoverBorderGradient
+                      as="button"
+                      containerClassName="rounded-full"
+                      className="bg-white text-slate-900 px-6 py-3 font-medium"
+                    >
+                      Register
+                    </HoverBorderGradient>
+                  </Link>
+                  <Link
+                    href="/courses/prompt-engineering"
+                    className="btn-secondary-baseline text-sm"
+                  >
+                    View Course
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -193,40 +205,47 @@ export default function Home() {
       {/* Testimonials Section - Hidden for Now */}
       {/* TODO: Activate testimonials section when social proof is available */}
       {false && (
-        <section className="bg-white py-28">
+        <section className="py-20 md:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center mb-20 text-slate-deep font-medium">What Learners Say</h2>
-            {/* Testimonials content will go here */}
+            <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+              <h2 className="text-center mb-20 text-slate-deep font-medium">What Learners Say</h2>
+              {/* Testimonials content will go here */}
+            </div>
           </div>
         </section>
       )}
 
       {/* Call To Action Section */}
-      <section className="bg-white py-28">
+      <section className="py-20 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-              {/* Text Content - Left on Desktop, First on Mobile */}
-              <div className="text-center md:text-left order-1 md:order-1">
-                <h2 className="mb-6 text-slate-deep font-medium">Start building skills that actually matter</h2>
-                <p className="text-lg text-neutral-muted mb-8 md:mb-12 leading-relaxed">
-                  Join a learning experience designed for clarity and practical application.
-                </p>
-                <Link
-                  href="#courses"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
-                >
-                  Start Your Learning Journey
-                </Link>
-              </div>
-              {/* Illustration - Right on Desktop, Below on Mobile */}
-              <div className="flex justify-center md:justify-end order-2 md:order-2">
-                <img
-                  src="/illustrations/cta.svg"
-                  alt=""
-                  aria-hidden="true"
-                  className="w-full max-w-xs"
-                />
+          <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+            <div className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                {/* Text Content - Left on Desktop, First on Mobile */}
+                <div className="text-center md:text-left order-1 md:order-1">
+                  <h2 className="mb-6 text-slate-deep font-medium">Start building skills that actually matter</h2>
+                  <p className="text-lg text-neutral-muted mb-8 md:mb-12 leading-relaxed">
+                    Join a learning experience designed for clarity and practical application.
+                  </p>
+                  <Link href="#courses">
+                    <HoverBorderGradient
+                      as="button"
+                      containerClassName="rounded-full"
+                      className="bg-white text-slate-900 px-6 py-3 font-medium"
+                    >
+                      Start Your Learning Journey
+                    </HoverBorderGradient>
+                  </Link>
+                </div>
+                {/* Illustration - Right on Desktop, Below on Mobile */}
+                <div className="flex justify-center md:justify-end order-2 md:order-2">
+                  <img
+                    src="/illustrations/cta.svg"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-full max-w-xs"
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -349,33 +349,6 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-
-        {/* 3. Secondary Info Section */}
-        <section className="mx-auto max-w-4xl">
-          <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
-            <h2 className="mb-8 text-xl font-medium text-slate-deep">Other Ways to Reach Us</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              <div>
-                <p className="text-sm font-medium text-slate-deep mb-2">Email</p>
-                <a href="mailto:academy@ugenix.in" className="text-base text-neutral-muted hover:text-brand transition-colors">
-                  academy@ugenix.in
-                </a>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-slate-deep mb-2">Phone</p>
-                <a href="tel:+919778568601" className="text-base text-neutral-muted hover:text-brand transition-colors">
-                  +91 97785 68601
-                </a>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-slate-deep mb-2">Location</p>
-                <p className="text-base text-neutral-muted">
-                  Pathanamthitta, Kerala, India
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </div>
   )

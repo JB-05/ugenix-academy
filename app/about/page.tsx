@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect, useState, KeyboardEvent } from 'react'
+import Link from 'next/link'
 
 export default function AboutPage() {
   const scrollRef = useRef<HTMLDivElement | null>(null)
@@ -148,28 +149,28 @@ export default function AboutPage() {
         onKeyDown={handleKeyDown}
         tabIndex={0}
       >
-        <div className="flex flex-col lg:flex-row h-full items-center px-6 sm:px-10 lg:px-16 gap-10 sm:gap-12 lg:gap-16 lg:snap-x lg:snap-mandatory lg:[scroll-padding-inline:4rem]">
+        <div className="flex flex-col lg:flex-row h-full items-center px-6 sm:px-10 lg:px-16 gap-12 sm:gap-14 lg:gap-16 lg:snap-x lg:snap-mandatory lg:[scroll-padding-inline:4rem]">
           {/* Intro Section */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start mt-32 lg:mt-0">
+          <section id="about-intro" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start mt-32 lg:mt-0" aria-labelledby="about-intro-heading">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
-            <h1 className="mb-6 text-slate-deep font-medium text-left">About the Academy</h1>
+            <h1 id="about-intro-heading" className="mb-6 text-slate-deep font-medium text-left">About the Academy</h1>
             <div className="flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-12">
               <div className="flex-1">
                 <p className="text-lg text-neutral-muted leading-relaxed mb-6">
-                  Ugenix Academy exists to close the gap between what is taught in technology education and what is actually needed in real work.
+                  Ugenix Academy closes the gap between technology education and real work needs.
                 </p>
                 <p className="text-lg text-neutral-muted leading-relaxed">
-                  Instead of focusing only on tools and frameworks, we emphasize the thinking and problem‑solving approaches that make those tools useful in practice.
+                  We emphasize thinking and problem‑solving approaches that make tools useful in practice, not just the tools themselves.
                 </p>
-                <p className="mt-6 text-sm text-neutral-muted">
-                  Scroll →
+                <p className="mt-6 text-sm text-neutral-muted opacity-60">
+                  <span className="inline-block animate-slide-hint">Scroll →</span>
                 </p>
               </div>
               <div className="flex justify-center md:justify-end flex-none">
                 <img
                   src="/illustrations/about1.svg"
                   aria-hidden="true"
-                  className="w-full max-w-xs md:max-w-sm h-auto"
+                  className="w-full max-w-[85%] sm:max-w-xs md:max-w-sm h-auto"
                 />
               </div>
             </div>
@@ -177,10 +178,10 @@ export default function AboutPage() {
           </section>
 
           {/* Vision */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-vision" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start" aria-labelledby="about-vision-heading">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-6 text-slate-deep font-medium text-left">Vision</h2>
+              <h2 id="about-vision-heading" className="mb-6 text-slate-deep font-medium text-left">Vision</h2>
               <div className="border-l-2 border-brand pl-8 py-2">
                 <p className="text-xl md:text-2xl text-slate-deep leading-relaxed font-medium italic">
                   To create a learning environment where practical skills meet thoughtful understanding, 
@@ -192,10 +193,10 @@ export default function AboutPage() {
           </section>
 
           {/* Mission */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-mission" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start" aria-labelledby="about-mission-heading">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-8 text-slate-deep font-medium text-center">Mission</h2>
+              <h2 id="about-mission-heading" className="mb-8 text-slate-deep font-medium text-center">Mission</h2>
               <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-medium text-slate-deep mb-3">Teach What Matters</h3>
@@ -221,7 +222,7 @@ export default function AboutPage() {
           </section>
 
           {/* Motto / Philosophy */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-philosophy" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
               <div className="border-t border-neutral-border pt-8 lg:pt-6">
@@ -230,7 +231,7 @@ export default function AboutPage() {
                 </p>
                 <div className="space-y-6 text-neutral-muted leading-relaxed">
                   <p>
-                  We believe that the best teachers are those who are actively working with the technologies they teach. They understand the nuances, the trade-offs, and the real-world constraints that shape how things actually get built. This perspective is what makes learning here different from generic online courses or academic programs disconnected from industry practice.
+                  The best teachers actively work with the technologies they teach. They understand nuances, trade-offs, and real-world constraints. This perspective makes learning here different from generic online courses or academic programs disconnected from industry practice.
                   </p>
                 </div>
               </div>
@@ -239,10 +240,10 @@ export default function AboutPage() {
           </section>
 
           {/* How We Approach Learning */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-approach" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start" aria-labelledby="about-approach-heading">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-8 text-slate-deep font-medium text-center">How We Approach Learning</h2>
+              <h2 id="about-approach-heading" className="mb-8 text-slate-deep font-medium text-center">How We Approach Learning</h2>
               <div className="flex flex-col md:flex-row items-start md:items-center gap-10 md:gap-12">
                 <div className="order-0 md:order-1 flex-1 max-w-prose space-y-5 text-neutral-muted leading-relaxed">
                   <p>
@@ -279,7 +280,7 @@ export default function AboutPage() {
                   <img
                     src="/illustrations/howweapproach.svg"
                     aria-hidden="true"
-                    className="w-full max-w-sm h-auto"
+                    className="w-full max-w-[85%] sm:max-w-sm h-auto"
                   />
                 </div>
               </div>
@@ -288,26 +289,20 @@ export default function AboutPage() {
           </section>
 
           {/* Who This Academy Is For */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-audience" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start" aria-labelledby="about-audience-heading">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
-              <h2 className="mb-8 text-slate-deep font-medium text-center">Who This Academy Is For</h2>
+              <h2 id="about-audience-heading" className="mb-8 text-slate-deep font-medium text-center">Who This Academy Is For</h2>
               <div className="space-y-6 text-neutral-muted leading-relaxed">
                 
                 <p>
-                  You might be a student looking to bridge the gap between academic learning and 
-                  industry needs. You might be a working professional wanting to stay current with 
-                  new approaches and tools. You might be someone starting from scratch, ready to 
-                  learn systematically and thoughtfully. Or you might be a tech enthusiast who wants 
-                  to deepen your understanding and explore advanced concepts.
+                  You might be a student bridging academic learning and industry needs, a working professional staying current with new approaches, someone starting from scratch, or a tech enthusiast deepening your understanding.
                 </p>
                 <p>
-                  This academy is for people who are curious about how things work and want to build 
-                  real things. It's for those who value understanding over memorization, and who prefer 
-                  learning from practitioners over learning from theory alone.
+                  This academy is for people curious about how things work and who want to build real things. It's for those who value understanding over memorization and prefer learning from practitioners over theory alone.
                 </p>
                 <p>
-                  What matters most isn't your current role but your mindset—if you're growth‑focused, builder‑oriented, and willing to put in the effort to understand deeply, this academy is for you.
+                  What matters most isn't your current role but your mindset—if you're growth‑focused, builder‑oriented, and willing to understand deeply, this academy is for you. Explore our <Link href="/#courses" className="text-brand hover:text-brand-dark transition-colors">courses</Link> or <Link href="/contact" className="text-brand hover:text-brand-dark transition-colors">contact us</Link> to learn more.
                 </p>
 
               </div>
@@ -316,11 +311,11 @@ export default function AboutPage() {
           </section>
 
           {/* Relationship with Ugenix Technologies LLP */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-relationship" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start" aria-labelledby="about-relationship-heading">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
               <div className="border-t border-neutral-border pt-8 lg:pt-6">
-                <h2 className="mb-6 text-slate-deep font-medium text-center">Relationship with Ugenix Technologies LLP</h2>
+                <h2 id="about-relationship-heading" className="mb-6 text-slate-deep font-medium text-center">Relationship with Ugenix Technologies LLP</h2>
                 <div className="space-y-5 text-neutral-muted leading-relaxed text-sm">
                   <p>
                     Ugenix Academy is an initiative by Ugenix Technologies LLP, a technology company 
@@ -356,7 +351,7 @@ export default function AboutPage() {
           </section>
 
           {/* Closing Note */}
-          <section className="flex-shrink-0 w-[85vw] max-w-5xl snap-start">
+          <section id="about-closing" className="flex-shrink-0 w-[85vw] max-w-5xl snap-start relative">
           <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 px-4 sm:px-6 lg:px-8 py-16 lg:py-12 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
             <div className="mx-auto max-w-4xl">
               <div className="border-t border-neutral-border pt-8 lg:pt-6">
@@ -364,6 +359,9 @@ export default function AboutPage() {
                   "Our commitment is to meaningful learning that builds real understanding, develops practical skills, and helps you do work that matters. We provide structure, guidance, and expertise so you can apply what you've learned to real problems and see your skills translate into impact."
                 </p>
               </div>
+            </div>
+            <div className="absolute bottom-6 right-6 text-xs text-neutral-muted opacity-40 hidden lg:block">
+              End of story
             </div>
           </div>
           </section>

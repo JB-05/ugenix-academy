@@ -25,18 +25,18 @@ export default function Footer() {
             <div>
               <span className="font-medium text-slate-deep">Email:</span>{' '}
               <a href="mailto:academy@ugenix.com" className="hover:text-slate-deep transition-colors duration-200">
-                academy@ugenix.com
+                academy@ugenix.in
               </a>
             </div>
             <div>
               <span className="font-medium text-slate-deep">Phone:</span>{' '}
               <a href="tel:+919876543210" className="hover:text-slate-deep transition-colors duration-200">
-                +91 98765 43210
+                +91 97785 68601
               </a>
             </div>
             <div>
               <span className="font-medium text-slate-deep">Location:</span>{' '}
-              <span>Bengaluru, India</span>
+              <span>Pathanamthitta, Kerala, India</span>
             </div>
           </div>
           <div className="flex justify-center">

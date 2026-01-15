@@ -24,14 +24,17 @@ const config: Config = {
         // Soft Violet (for highlights, dividers)
         violet: {
           soft: '#B2A0EC',
+          light: '#E0DDF8', 
         },
-        // Warm Secondary Accent - Coral-Pink (minimal use)
+        // Warm Secondary Accent - Coral-Pink
         coral: {
           DEFAULT: '#E05C82',
+          light: '#FDA4AF',
+          soft: '#FFEFF2',
         },
         // Neutrals
         neutral: {
-          offwhite: '#F7F8FA',
+          offwhite: '#F5F3F0', // Warmer off-white
           border: '#E6E8EE',
           muted: '#5B6072',
         },
@@ -43,6 +46,22 @@ const config: Config = {
         '18': '4.5rem',
         '22': '5.5rem',
         '26': '6.5rem',
+      },
+      animation: {
+        'aurora': 'aurora 20s linear infinite',
+        'blob': 'blob 10s infinite',
+      },
+      keyframes: {
+        aurora: {
+          '0%': { backgroundPosition: '50% 50%, 50% 50%' },
+          '100%': { backgroundPosition: '350% 50%, 350% 50%' },
+        },
+        blob: {
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        },
       },
     },
   },

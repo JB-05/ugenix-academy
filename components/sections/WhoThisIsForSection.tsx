@@ -1,36 +1,110 @@
+'use client'
+
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { cn } from '@/lib/utils'
+
+const items = [
+  {
+    id: 'starting-out',
+    title: 'Just starting out?',
+    description: 'Begin with clear guidance and structured learning paths designed for those new to the field.'
+  },
+  {
+    id: 'still-studying',
+    title: 'Still studying?',
+    description: 'Complement your studies with practical skills that bridge the gap between academic learning and real-world industry needs.'
+  },
+  {
+    id: 'already-working',
+    title: 'Already working?',
+    description: 'Stay relevant in a changing field by learning modern approaches and tools that strengthen your current role.'
+  },
+  {
+    id: 'always-curious',
+    title: 'Always curious?',
+    description: 'Deepen your understanding and explore advanced concepts through courses built for dedicated learners.'
+  }
+]
+
 export default function WhoThisIsForSection() {
+  const [openItem, setOpenItem] = useState<string>('starting-out')
+
   return (
     <section className="py-20 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      
-          
         <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
-          <h2 className="text-center mb-16 md:mb-20 text-slate-deep font-medium">Who This Is For</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-14 max-w-6xl mx-auto">
-            <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-emerald-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(52,211,153,0.18)]">
-              <h3 className="text-2xl font-semibold text-slate-deep">Just starting out?</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Begin with clear guidance and structured learning paths designed for those new to the field.
-              </p>
+          <h2 className="mb-14 md:mb-16 text-slate-deep font-medium text-3xl md:text-4xl">Who This Is For</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+            {/* Illustration - Left Column */}
+            <div className="flex items-center justify-center order-2 md:order-1">
+              <img
+                src="/illustrations/wh-choose.svg"
+                alt=""
+                aria-hidden="true"
+                className="w-full max-w-sm md:max-w-md"
+              />
             </div>
-            <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-violet-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(103,88,224,0.18)]">
-              <h3 className="text-2xl font-semibold text-slate-deep">Still studying?</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Complement your studies with practical skills that bridge the gap between academic learning and real-world industry needs.
-              </p>
-            </div>
-            <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-sky-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(56,189,248,0.18)]">
-              <h3 className="text-2xl font-semibold text-slate-deep">Already working?</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Stay relevant in a changing field by learning modern approaches and tools that strengthen your current role.
-              </p>
-            </div>
-    
-            <div className="space-y-3 rounded-2xl border border-gray-300/40 bg-white/[0.04] p-6 transition duration-200 md:hover:border-amber-400/60 motion-safe:md:hover:-translate-y-0.5 md:hover:shadow-[0_0_25px_0_rgba(251,191,36,0.18)]">
-              <h3 className="text-2xl font-semibold text-slate-deep">Always curious?</h3>
-              <p className="text-neutral-muted leading-relaxed">
-                Deepen your understanding and explore advanced concepts through courses built for dedicated learners.
-              </p>
+
+            {/* Accordion - Right Column */}
+            <div className="order-1 md:order-2">
+              <div className="space-y-8">
+                {items.map((item) => {
+                  const isOpen = openItem === item.id
+                  return (
+                    <div key={item.id} className="group">
+                      <div className="flex gap-6 md:gap-8">
+                        {/* Indicator Line */}
+                        <div className={cn(
+                          "flex-shrink-0 w-1 rounded-full transition-colors duration-300",
+                          isOpen ? "bg-brand" : "bg-neutral-border group-hover:bg-brand/30"
+                        )}></div>
+
+                        <div className="flex-1 pb-2">
+                          <button
+                            type="button"
+                            onClick={() => setOpenItem(isOpen ? '' : item.id)}
+                            className="w-full flex items-center justify-between gap-4 text-left focus:outline-none"
+                            aria-expanded={isOpen}
+                          >
+                            <h3 className={cn(
+                              "text-2xl font-medium transition-colors duration-300",
+                              isOpen ? "text-slate-deep" : "text-neutral-muted group-hover:text-slate-deep"
+                            )}>
+                              {item.title}
+                            </h3>
+                            {/* Icon */}
+                            <span className="flex-shrink-0 text-brand">
+                              {isOpen ? (
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 12H6" /></svg>
+                              ) : (
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                              )}
+                            </span>
+                          </button>
+
+                          <AnimatePresence>
+                            {isOpen && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
+                                className="overflow-hidden"
+                              >
+                                <p className="text-lg text-neutral-muted leading-relaxed mt-4">
+                                  {item.description}
+                                </p>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           </div>
         </div>

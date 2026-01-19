@@ -31,8 +31,8 @@ export default function WhoThisIsForSection() {
   const [openItem, setOpenItem] = useState<string>('starting-out')
 
   return (
-    <section className="py-20 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-24 overflow-hidden">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
           <h2 className="mb-14 md:mb-16 text-slate-deep font-medium text-3xl md:text-4xl">Who This Is For</h2>
 

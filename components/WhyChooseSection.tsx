@@ -74,7 +74,7 @@ const BentoCard = ({ title, description, icon, className, delay = 0 }: BentoCard
       )}>
         <div className="flex flex-col gap-4 h-full">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 shrink-0 rounded-2xl bg-neutral-offwhite flex items-center justify-center text-brand group-hover:scale-110 transition-transform duration-300">
+            <div className="w-12 h-12 shrink-0 flex items-center justify-center text-brand group-hover:scale-110 transition-transform duration-300">
               {icon}
             </div>
             <h3 className="text-xl font-bold text-slate-deep">{title}</h3>
@@ -93,13 +93,10 @@ const BentoCard = ({ title, description, icon, className, delay = 0 }: BentoCard
 
 export default function WhyChooseSection() {
   return (
-    <section id="why-choose" className="py-24 md:py-32 scroll-mt-24 relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-[500px] bg-gradient-to-r from-violet-light/10 via-transparent to-coral-soft/20 -z-10" />
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="why-choose" className="py-16 md:py-20 scroll-mt-24 relative overflow-hidden bg-neutral-offwhite">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-deep mb-6">Why Choose This Academy</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-deep mb-6" style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}>Why Choose This Academy</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
@@ -109,7 +106,10 @@ export default function WhyChooseSection() {
             title="Industry-Experienced Instructors"
             description="Our instructors are active practitioners who work with these technologies daily. They bring real-world context and current best practices, not just theoretical knowledge from outdated materials."
             icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                <path d="M19.43 12.97c.04-.32.07-.64.07-.97s-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.4-1.06-.73-1.69-.98l-.37-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1s.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66zM10 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2z"/>
+              </svg>
             }
             delay={0.1}
           />
@@ -120,18 +120,22 @@ export default function WhyChooseSection() {
             title="Practical, Outcome-Oriented Learning"
             description="Every course is designed around what you'll actually do with these skills. We focus on application over theory, ensuring you can use what you learn immediately in your work or projects."
             icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
             }
             delay={0.2}
           />
 
-          {/* Item 3: Hybrid Approach (Standard) */}
+          {/* Item 3: Structured Learning Path (Standard) */}
           <BentoCard
             className="md:col-span-1"
-            title="Hybrid Approach"
-            description="Learn at your own pace online with structured content, then participate in optional offline sessions for hands-on practice and direct feedback. This flexibility accommodates different learning styles and schedules."
+            title="Structured Learning Path"
+            description="Each course follows a clear progression from fundamentals to advanced concepts. You'll build understanding step-by-step with guided instruction and practical exercises that reinforce what you learn."
             icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
             }
             delay={0.3}
           />
@@ -146,7 +150,9 @@ export default function WhyChooseSection() {
               </>
             }
             icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/>
+              </svg>
             }
             delay={0.4}
           />

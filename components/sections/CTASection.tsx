@@ -3,9 +3,21 @@ import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 export default function CTASection() {
   return (
-    <section className="py-20 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+    <section className="py-20 md:py-24 bg-white relative overflow-hidden">
+      {/* Geometric Shapes - Left Side */}
+      {/* Top-left quarter circle */}
+      <div className="absolute left-0 top-0 w-48 h-48 bg-brand/25 rounded-br-full hidden lg:block" />
+      {/* Middle-left quarter circle */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-40 h-40 bg-coral-light/30 rounded-tr-full hidden lg:block" />
+     
+      {/* Geometric Shapes - Right Side */}
+     {/* Middle-right quarter circle */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-40 h-40 bg-brand/30 rounded-tl-full hidden lg:block" />
+      {/* Bottom-right quarter circle */}
+      <div className="absolute right-0 bottom-0 w-48 h-48 bg-violet-soft/20 rounded-tl-full hidden xl:block" />
+      
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="p-8 md:p-10 lg:p-12">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
               {/* Text Content - Left on Desktop, First on Mobile */}

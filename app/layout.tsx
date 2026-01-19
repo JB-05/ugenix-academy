@@ -1,13 +1,19 @@
 import type { Metadata } from 'next'
-import { Open_Sans } from 'next/font/google'
+import { Open_Sans, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
-const openSans = Open_Sans({ 
+const openSans = Open_Sans({
   subsets: ['latin'],
   variable: '--font-open-sans',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -27,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={openSans.variable}>
-      <body>
+    <html lang="en" className={`${openSans.variable} ${inter.variable}`}>
+      <body className="overflow-x-hidden">
         {/* Global fixed background layer */}
         <div className="fixed inset-0 -z-10 bg-[#F5F3F0]">
           <div className="absolute inset-0 hero-grid-pattern opacity-60" />

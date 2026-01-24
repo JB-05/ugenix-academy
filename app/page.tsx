@@ -13,7 +13,7 @@ export default function Home() {
   const [showSplash, setShowSplash] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 3000)
+    const timer = setTimeout(() => setShowSplash(false), 5000) // Splash screen stays for 3 seconds
     return () => clearTimeout(timer)
   }, [])
 
@@ -27,7 +27,7 @@ export default function Home() {
             initial={{ y: 0 }}
             animate={{ y: '-100%' }}
             exit={{ y: '-100%' }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-gradient-to-br from-neutral-offwhite via-white to-neutral-offwhite flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-4">

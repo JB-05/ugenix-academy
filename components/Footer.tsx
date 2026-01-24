@@ -30,8 +30,8 @@ export default function Footer() {
             </div>
             <div>
               <span className="font-medium text-slate-deep">Phone:</span>{' '}
-              <a href="tel:+919876543210" className="hover:text-slate-deep transition-colors duration-200">
-                +91 97785 68601
+              <a href="tel:+918848736987" className="hover:text-slate-deep transition-colors duration-200">
+                +91 88487 36987
               </a>
             </div>
             <div>

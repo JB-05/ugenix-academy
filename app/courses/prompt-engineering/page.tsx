@@ -97,10 +97,10 @@ export default function PromptEngineeringCourse() {
                 <h3 className="text-xl font-semibold mb-3 text-slate-deep">Structured Learning</h3>
                 <p className="text-neutral-muted leading-relaxed">
                   This course offers a structured approach to learning with guided instruction 
-                  and practical application. Access course materials and video content through 
-                  our online platform, then participate in scheduled sessions for hands-on practice, 
-                  group discussions, and direct instructor feedback. This approach ensures 
-                  both flexibility and practical application.
+                  and practical application. Participate in live sessions at specified times 
+                  for hands-on practice, group discussions, and direct instructor feedback. 
+                  This approach ensures focused learning and practical application through 
+                  real-time interaction with instructors and peers.
                 </p>
               </div>
             </div>

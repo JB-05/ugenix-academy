@@ -5,7 +5,7 @@ export default function FeaturedCoursesSection() {
   return (
     <section id="courses" className="py-20 md:py-24 scroll-mt-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-2xl md:rounded-[3rem] bg-white/70 backdrop-blur-xl border border-white/70 shadow-2xl shadow-brand/5 p-4 sm:p-6 md:p-8 lg:p-12 overflow-hidden">
+        <div className="relative rounded-2xl md:rounded-[3rem] bg-white/70 backdrop-blur-xl border border-white/70 shadow-2xl shadow-brand/5 p-4 sm:p-6 md:p-8 lg:p-10 overflow-hidden">
           {/* Decorative Background */}
           <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-brand-light/10 rounded-full blur-3xl -z-10" />
 
@@ -17,7 +17,7 @@ export default function FeaturedCoursesSection() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-12">
 
                 {/* Content Side (Left) */}
-                <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-center">
+                <div className="p-3 sm:p-4 md:p-5 lg:p-6 flex flex-col justify-center">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 mb-4 sm:mb-6 md:mb-8 rounded-xl md:rounded-2xl bg-brand/10 flex items-center justify-center text-brand">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
                   </div>

@@ -1,12 +1,32 @@
+'use client'
+
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 export default function PromptEngineeringCourse() {
+  const router = useRouter()
+
   return (
     <div className="bg-white">
       {/* Course Overview */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-32 md:pt-36 pb-16 md:pb-24">
         <div className="mb-12">
+          <button
+            onClick={() => router.back()}
+            className="mb-6 flex items-center gap-2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 text-sm font-medium"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+          </button>
           <h1 className="mb-6 text-slate-deep">Prompt Engineering</h1>
           <p className="text-xl text-neutral-muted leading-relaxed mb-8">
             Master the art and science of communicating effectively with AI systems. 
@@ -84,7 +104,7 @@ export default function PromptEngineeringCourse() {
         </section>
 
         {/* Learning Mode */}
-        <section className="mb-16">
+        <section className="mb-12">
           <h2 className="text-3xl font-semibold mb-6 text-slate-deep">Learning Mode</h2>
           <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-white/50 shadow-lg shadow-black/5 p-6 sm:p-8">
             <div className="flex items-start gap-4">
@@ -103,6 +123,34 @@ export default function PromptEngineeringCourse() {
                   real-time interaction with instructors and peers.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Upcoming Session Details */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-semibold mb-6 text-slate-deep">Upcoming Session</h2>
+          <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-dashed border-brand/40 shadow-lg shadow-black/5 p-6 sm:p-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-muted mb-1">Date</p>
+                <p className="text-base sm:text-lg font-medium text-slate-deep">1 February 2026</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-muted mb-1">Time</p>
+                <p className="text-base sm:text-lg font-medium text-slate-deep">8:00 PM IST</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-neutral-muted mb-1">Mode</p>
+                <p className="text-base sm:text-lg font-medium text-slate-deep">Online · Google Meet</p>
+              </div>
+            </div>
+
+            <div className="mt-6 border-t border-neutral-border pt-4">
+              <p className="text-sm text-neutral-muted leading-relaxed">
+                A nominal registration fee of <span className="font-semibold text-slate-deep">₹50</span> is charged to confirm your seat and avoid wastage of slots. 
+                Seats are limited, so please register only if you are able to attend the live session.
+              </p>
             </div>
           </div>
         </section>
@@ -134,14 +182,14 @@ export default function PromptEngineeringCourse() {
                   {/* Name and Job Description (Single Line) */}
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4 min-w-0">
                     <div className="min-w-0">
-                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-deep truncate">Instructor Name</h3>
-                      <p className="text-xs sm:text-sm md:text-base text-neutral-muted font-medium">Senior AI Practitioner & Educator</p>
+                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-slate-deep truncate">S Sreeram</h3>
+                      <p className="text-xs sm:text-sm md:text-base text-neutral-muted font-medium">AI Practitioner & Educator</p>
                     </div>
                     
                     {/* Social Link - Moved to first row */}
                     <div className="flex-shrink-0">
                       <a
-                        href="https://linkedin.com"
+                        href="https://linkedin.com/in/sreeram-s"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 bg-white border border-neutral-border rounded-lg text-brand hover:bg-brand hover:text-white transition-all duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 shadow-sm hover:shadow-md"

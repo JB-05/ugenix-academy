@@ -2,10 +2,11 @@
 
 import { useState, useCallback, useMemo, useEffect, useRef, memo } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 // Static data - moved outside component to prevent recreation on every render
 const PAYMENT_INFO = {
-  phoneNumber: '+91 97785 68601',
+  phoneNumber: '+91 88487 36987',
   upiId: 'academy@ugenix.in',
   paymentScreenshot: '/placeholder-payment.png',
 } as const
@@ -71,6 +72,7 @@ const SuccessScreen = memo(() => (
 SuccessScreen.displayName = 'SuccessScreen'
 
 export default function RegisterPage() {
+  const router = useRouter()
 
   const [formData, setFormData] = useState({
     name: '',
@@ -392,6 +394,21 @@ export default function RegisterPage() {
       
       <section className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 relative z-10">
         <div className="mb-12">
+          <button
+            onClick={() => router.back()}
+            className="mb-6 flex items-center gap-2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 text-sm font-medium"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+          </button>
           <h1 className="mb-4 text-slate-deep">Course Registration</h1>
           <p className="text-lg text-neutral-muted leading-relaxed">
             Complete the form below to register for your chosen course. 

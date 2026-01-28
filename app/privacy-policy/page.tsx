@@ -175,10 +175,18 @@ export default function PrivacyPolicyPage() {
                 personal information, you may contact:
               </p>
               <div className="ml-4 space-y-1">
-                <p><strong className="text-slate-deep">Ugenix Academy</strong></p>
+                <p>
+                  <strong className="text-slate-deep">Ugenix Academy</strong>
+                </p>
                 <p>Kerala, India</p>
                 <p>
-                  Email: <a href="mailto:academy@ugenix.in" className="text-brand hover:text-brand-dark transition-colors">academy@ugenix.in</a>
+                  Email:{' '}
+                  <a
+                    href="mailto:academy.ugenix@gmail.com"
+                    className="text-brand hover:text-brand-dark transition-colors"
+                  >
+                    academy.ugenix@gmail.com
+                  </a>
                 </p>
               </div>
             </section>

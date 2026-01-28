@@ -60,7 +60,8 @@ export default function Header() {
                 />
                 <span>Ugenix Academy</span>
               </Link>
-              <div className="hidden md:flex items-center justify-center flex-1">
+              {/* Show full nav only on large screens and above */}
+              <div className="hidden lg:flex items-center justify-center flex-1">
                 <div className="flex items-center space-x-8">
                   <Link href="/" className="relative text-neutral-muted hover:text-brand transition-colors duration-250 ease-in-out group pb-0.5">
                     <span>Home</span>
@@ -76,8 +77,9 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
-              <div className="hidden md:block w-[200px]"></div>
-              <div className="md:hidden">
+              <div className="hidden lg:block w-[200px]"></div>
+              {/* Show hamburger on small and medium screens */}
+              <div className="lg:hidden">
                 <button 
                   onClick={toggleMenu}
                   className={`p-2 -mr-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 rounded z-[60] relative ${
@@ -103,7 +105,7 @@ export default function Header() {
           </div>
         </nav>
       </header>
-      {/* Full-Screen Mobile Menu Overlay */}
+      {/* Full-Screen Mobile/Tablet Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -111,7 +113,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed inset-0 bg-[#6758e0] z-[45]"
+            className="lg:hidden fixed inset-0 bg-[#6758e0] z-[45]"
           >
             <div className="h-full flex flex-col">
               {/* Navigation Links - Centered */}

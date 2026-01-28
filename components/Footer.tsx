@@ -24,8 +24,8 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4 md:gap-6 mb-6 text-sm text-neutral-muted">
             <div>
               <span className="font-medium text-slate-deep">Email:</span>{' '}
-              <a href="mailto:academy@ugenix.com" className="hover:text-slate-deep transition-colors duration-200">
-                academy@ugenix.in
+              <a href="mailto:academy.ugenix@gmail.com" className="hover:text-slate-deep transition-colors duration-200">
+                academy.ugenix@gmail.com
               </a>
             </div>
             <div>

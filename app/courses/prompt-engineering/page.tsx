@@ -207,9 +207,10 @@ export default function PromptEngineeringCourse() {
                 <div className="border-t border-neutral-border pt-6 sm:pt-8">
                   <div className="space-y-4 sm:space-y-6">
                     <p className="text-sm sm:text-base md:text-lg text-neutral-muted leading-relaxed">
-                      With extensive experience in AI development and natural language processing, 
-                      bringing real-world insights from working with cutting-edge AI systems. 
-                      Passionate about making complex AI concepts accessible and practical for learners.
+                      Sreeram is a B.Tech graduate, developer, and designer who blends clean code, intuitive UX,
+                      and real-world product thinking to make AI genuinely useful. He turns vague ideas into
+                      precise, structured prompts and focuses on practical, real-world workflows, so you learn
+                      how to craft prompts that work in actual products—not just demos.
                     </p>
                     
                     {/* Key Highlights */}
@@ -218,19 +219,25 @@ export default function PromptEngineeringCourse() {
                         <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-xs sm:text-sm text-neutral-muted">10+ years in AI/ML development</span>
+                        <span className="text-xs sm:text-sm text-neutral-muted">
+                          B.Tech graduate building real-world AI-powered applications
+                        </span>
                       </div>
                       <div className="flex items-start gap-2 sm:gap-3">
                         <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-xs sm:text-sm text-neutral-muted">Published researcher and educator</span>
+                        <span className="text-xs sm:text-sm text-neutral-muted">
+                          Specializes in clean UX, frontend systems, and prompt design
+                        </span>
                       </div>
                       <div className="flex items-start gap-2 sm:gap-3">
                         <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-xs sm:text-sm text-neutral-muted">Active contributor to open-source AI projects</span>
+                        <span className="text-xs sm:text-sm text-neutral-muted">
+                          Leads student communities and mentoring initiatives in AI & web
+                        </span>
                       </div>
                     </div>
                   </div>

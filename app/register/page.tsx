@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 // Static data - moved outside component to prevent recreation on every render
 const PAYMENT_INFO = {
   phoneNumber: '+91 88487 36987',
-  upiId: 'academy@ugenix.in',
+  upiId: 'emmanuelvinod2121@oksbi',
   paymentScreenshot: '/placeholder-payment.png',
 } as const
 
@@ -588,15 +588,21 @@ export default function RegisterPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-slate-deep mb-2">
-                    Payment Screenshot
+                    Payment QR
                   </label>
                   <div className="mt-1 border-2 border-neutral-border rounded-lg overflow-hidden bg-neutral-offwhite">
-                    <div className="flex justify-center items-center px-6 py-12 min-h-[200px]">
+                    <div className="flex justify-center items-center px-6 py-6 sm:py-8 min-h-[200px]">
                       <div className="text-center">
-                        <svg className="mx-auto h-16 w-16 text-neutral-muted mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p className="text-sm text-neutral-muted">Payment screenshot placeholder</p>
+                        <img
+                          src="/paymentqr/academy%20payment%20qr%2028-01-26.jpeg"
+                          alt="UgeniX Academy payment QR code"
+                          className="mx-auto w-full max-w-xs h-auto object-contain rounded-lg bg-white"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <p className="mt-3 text-sm text-neutral-muted">
+                          Scan this QR to make the payment, then upload the payment screenshot below.
+                        </p>
                       </div>
                     </div>
                   </div>

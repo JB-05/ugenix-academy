@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
@@ -166,14 +167,13 @@ export default function PromptEngineeringCourse() {
                   {/* Instructor Image */}
                   <div className="flex justify-start">
                     <div className="relative w-full aspect-square">
-                      {/* Image Placeholder */}
-                      <div className="w-full h-full rounded-xl sm:rounded-2xl bg-gradient-to-br from-brand/10 via-coral-light/10 to-violet-soft/10 border-2 border-dashed border-neutral-border flex items-center justify-center overflow-hidden">
-                        <div className="text-center p-2 sm:p-3">
-                          <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mx-auto text-neutral-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                          </svg>
-                        </div>
-                      </div>
+                      <Image
+                        src="/instructors/promptEngg_Instructor_Sreeram.jpeg"
+                        alt="S Sreeram - AI Practitioner & Educator"
+                        fill
+                        className="object-cover rounded-xl sm:rounded-2xl border-2 border-neutral-border"
+                        sizes="(max-width: 640px) 120px, (max-width: 768px) 150px, 180px"
+                      />
                       {/* Optional: Decorative accent */}
                       <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-brand/20 rounded-full blur-xl" />
                     </div>

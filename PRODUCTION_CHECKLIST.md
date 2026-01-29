@@ -44,15 +44,24 @@
 Before deploying, ensure these are set in your production environment:
 
 ```bash
-# Cloudinary (Required)
+# Site URL (Required for SEO: canonical, Open Graph, sitemap, robots)
+# Use your live domain with no trailing slash, e.g. https://ugenixacademy.com
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+
+# Cloudinary (Required for registration payment screenshot uploads)
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 
-# Google Sheets (Required)
+# Google Sheets (Required for registration form submission)
 GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
 GOOGLE_SCRIPT_SECRET_TOKEN=your_secret_token_here
 ```
+
+**If env vars are missing in production:**
+- **NEXT_PUBLIC_SITE_URL:** Site falls back to `https://ugenixacademy.com` for metadata/sitemap. Set it to your real domain for correct canonical URLs and sharing.
+- **CLOUDINARY_***:** Upload API returns 503 with a user-friendly message; app does not crash.
+- **GOOGLE_SCRIPT_***:** Submit API returns 503 with "Registration is temporarily unavailable"; no internal config details are exposed.
 
 ### Google Apps Script Setup
 1. ✅ Create and deploy Google Apps Script (see `GOOGLE_APPS_SCRIPT.md`)
@@ -110,12 +119,33 @@ GOOGLE_SCRIPT_SECRET_TOKEN=your_secret_token_here
    - Check Cloudinary uploads
    - Monitor error logs
 
+## 🔍 Production Issues Audit (Pre-Launch)
+
+### Fixed
+- **Upload route:** Cloudinary config is now validated inside the request handler. If `CLOUDINARY_*` env vars are missing, the API returns 503 with a safe message instead of crashing at module load.
+- **Submit route:** Missing Google Script config returns 503 with a generic message; internal "not configured" details are no longer exposed to clients.
+
+### Verified
+- **Build:** `npm run build` completes successfully (Next.js 14).
+- **No hardcoded localhost:** All URLs use `NEXT_PUBLIC_SITE_URL` or a fallback; API routes use env only.
+- **Client-only code:** `window`/`document` usage is guarded (e.g. `typeof window !== 'undefined'`) or in client components only; no SSR issues found.
+- **Images:** Only local `/public` paths are used with `next/image`; no need for `images.remotePatterns` unless you add external image URLs later.
+- **robots.txt:** `/api/` and `/admin` are disallowed; AI crawlers are allowed where desired.
+
+### Watch in Production
+1. **Set NEXT_PUBLIC_SITE_URL** in your hosting dashboard so canonical, Open Graph, and sitemap use your real domain.
+2. **Google Apps Script:** If the script URL or CORS changes, submissions may fail; test once after deploy.
+3. **Cloudinary:** Ensure the upload folder `ugenix-academy/payment-screenshots` exists and CORS/security allow uploads from your domain if applicable.
+4. **Admin route:** `/admin` is not protected by auth; restrict access (e.g. via hosting or middleware) if it contains sensitive data.
+
+---
+
 ## ✅ Production Ready Status
 
 **Status: READY FOR PRODUCTION** ✅
 
 All critical features are implemented, tested, and optimized. The application is ready for deployment after:
-1. Setting up environment variables
+1. Setting **NEXT_PUBLIC_SITE_URL** and other environment variables
 2. Configuring Google Apps Script
 3. Setting up Cloudinary account
-4. Running a final build test
+4. Running a final build test (`npm run build`)

@@ -1,26 +1,18 @@
 import { v2 as cloudinary } from 'cloudinary'
 import { NextRequest, NextResponse } from 'next/server'
 
-// Validate Cloudinary configuration
-const validateCloudinaryConfig = () => {
+// Validate and return Cloudinary config only when needed (avoids crash at module load if env missing)
+function getCloudinaryConfig() {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME
   const apiKey = process.env.CLOUDINARY_API_KEY
   const apiSecret = process.env.CLOUDINARY_API_SECRET
 
   if (!cloudName || !apiKey || !apiSecret) {
-    throw new Error('Cloudinary configuration is missing. Please check your environment variables.')
+    return null
   }
 
   return { cloudName, apiKey, apiSecret }
 }
-
-// Configure Cloudinary
-const config = validateCloudinaryConfig()
-cloudinary.config({
-  cloud_name: config.cloudName,
-  api_key: config.apiKey,
-  api_secret: config.apiSecret,
-})
 
 // File size limit: 10MB
 const MAX_FILE_SIZE = 10 * 1024 * 1024
@@ -29,6 +21,20 @@ const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'ima
 
 export async function POST(request: NextRequest) {
   try {
+    const config = getCloudinaryConfig()
+    if (!config) {
+      return NextResponse.json(
+        { error: 'File upload is not configured. Please try again later.' },
+        { status: 503 }
+      )
+    }
+
+    cloudinary.config({
+      cloud_name: config.cloudName,
+      api_key: config.apiKey,
+      api_secret: config.apiSecret,
+    })
+
     const formData = await request.formData()
     const file = formData.get('file') as File
 
@@ -102,7 +108,7 @@ export async function POST(request: NextRequest) {
     })
   } catch (error: any) {
     console.error('Cloudinary upload error:', error)
-    
+
     // Provide more specific error messages
     let errorMessage = 'Failed to upload image'
     if (error.message) {

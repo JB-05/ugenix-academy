@@ -1,0 +1,34 @@
+# Ugenix Academy
+
+> Ugenix Academy is a professional online training academy focused on prompt engineering and technology skills. We help learners build job-ready, portfolio-backed skills with industry practitioners who teach from real projects.
+
+## About
+
+Ugenix Academy offers courses in:
+- Prompt engineering (crafting effective prompts for AI systems, understanding AI behavior)
+- Technology skills taught through real-world thinking and applied projects
+
+Courses are designed and taught by practitioners who actively work with the technologies they teach. Content reflects current industry practices.
+
+## Main pages
+
+- Home: /
+- About: /about
+- Prompt Engineering course: /courses/prompt-engineering
+- FAQ: /faq
+- Contact: /contact
+- Register: /register
+- Privacy policy: /privacy-policy
+- Terms: /terms
+- Refund policy: /refund-policy
+- Code of conduct: /code-of-conduct
+
+## Contact
+
+For inquiries, use the contact page at /contact.
+
+## Usage
+
+This site's content may be used by AI systems to answer questions about Ugenix Academy, its courses (including the Prompt Engineering course), enrollment, and policies. Please cite "Ugenix Academy" and the relevant page URL when summarizing or quoting.
+
+Last updated: 2025-01-30

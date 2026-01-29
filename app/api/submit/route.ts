@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     const scriptUrl = process.env.GOOGLE_SCRIPT_URL
 
     if (!scriptUrl) {
-      throw new Error('Google Apps Script URL not configured. Please set GOOGLE_SCRIPT_URL in your environment variables.')
+      throw new Error('SUBMIT_NOT_CONFIGURED')
     }
 
     // Validate URL format
@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
     const secretToken = process.env.GOOGLE_SCRIPT_SECRET_TOKEN
 
     if (!secretToken) {
-      throw new Error('Google Script secret token not configured. Please set GOOGLE_SCRIPT_SECRET_TOKEN in your environment variables.')
+      throw new Error('SUBMIT_NOT_CONFIGURED')
     }
 
     // Prepare the row data according to the headers
@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
       })
     } catch (error: any) {
       clearTimeout(timeoutId)
-      
+
       if (error.name === 'AbortError') {
         throw new Error('Request timeout: Google Apps Script took too long to respond')
       }
@@ -141,13 +141,16 @@ export async function POST(request: NextRequest) {
     }
   } catch (error: any) {
     console.error('Google Sheets submission error:', error)
-    
-    // Don't expose internal error details in production
-    const errorMessage = error.message || 'Failed to submit registration'
-    
+
+    // Don't expose internal config details in production
+    const isConfigError = error.message === 'SUBMIT_NOT_CONFIGURED'
+    const errorMessage = isConfigError
+      ? 'Registration is temporarily unavailable. Please try again later.'
+      : (error.message || 'Failed to submit registration')
+
     return NextResponse.json(
       { error: errorMessage },
-      { status: error.message?.includes('not configured') ? 500 : 500 }
+      { status: isConfigError ? 503 : 500 }
     )
   }
 }

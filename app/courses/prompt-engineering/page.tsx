@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
+import { REGISTRATION_ENDED } from '@/lib/constants'
 
 export default function PromptEngineeringCourse() {
   const router = useRouter()
@@ -249,15 +250,25 @@ export default function PromptEngineeringCourse() {
 
         {/* Registration CTA */}
         <section className="mt-16 mb-8 text-center">
-          <Link href="/register" className="inline-block">
-            <button className="relative px-8 md:px-12 py-4 md:py-5 bg-[#FF4500] text-white font-black text-base md:text-lg uppercase tracking-wider rounded-xl md:rounded-2xl transform transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_8px_0_0_rgba(255,69,0,0.4),0_12px_20px_rgba(255,69,0,0.5)] hover:shadow-[0_6px_0_0_rgba(255,69,0,0.4),0_16px_24px_rgba(255,69,0,0.6)] active:shadow-[0_2px_0_0_rgba(255,69,0,0.4),0_4px_8px_rgba(255,69,0,0.4)] border-4 border-white/20 hover:border-white/30">
-              <span className="relative z-10 drop-shadow-lg">Register for This Course</span>
-              {/* Comic-style shine effect */}
-              <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent pointer-events-none" />
-              {/* 3D bottom edge */}
-              <div className="absolute bottom-0 left-0 right-0 h-2 bg-[#CC3700] rounded-b-xl md:rounded-b-2xl opacity-80" />
+          {REGISTRATION_ENDED ? (
+            <button
+              disabled
+              className="relative px-8 md:px-12 py-4 md:py-5 bg-neutral-300 text-neutral-500 font-black text-base md:text-lg uppercase tracking-wider rounded-xl md:rounded-2xl border-4 border-white/20 cursor-not-allowed opacity-80"
+              title="Registration has ended"
+            >
+              <span className="relative z-10 drop-shadow-lg">Registration ended</span>
             </button>
-          </Link>
+          ) : (
+            <Link href="/register" className="inline-block">
+              <button className="relative px-8 md:px-12 py-4 md:py-5 bg-[#FF4500] text-white font-black text-base md:text-lg uppercase tracking-wider rounded-xl md:rounded-2xl transform transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_8px_0_0_rgba(255,69,0,0.4),0_12px_20px_rgba(255,69,0,0.5)] hover:shadow-[0_6px_0_0_rgba(255,69,0,0.4),0_16px_24px_rgba(255,69,0,0.6)] active:shadow-[0_2px_0_0_rgba(255,69,0,0.4),0_4px_8px_rgba(255,69,0,0.4)] border-4 border-white/20 hover:border-white/30">
+                <span className="relative z-10 drop-shadow-lg">Register for This Course</span>
+                {/* Comic-style shine effect */}
+                <div className="absolute inset-0 rounded-xl md:rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-transparent pointer-events-none" />
+                {/* 3D bottom edge */}
+                <div className="absolute bottom-0 left-0 right-0 h-2 bg-[#CC3700] rounded-b-xl md:rounded-b-2xl opacity-80" />
+              </button>
+            </Link>
+          )}
         </section>
       </section>
     </div>

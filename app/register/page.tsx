@@ -3,6 +3,7 @@
 import { useState, useCallback, useMemo, useEffect, useRef, memo } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { REGISTRATION_ENDED } from '@/lib/constants'
 
 // Static data - moved outside component to prevent recreation on every render
 const PAYMENT_INFO = {
@@ -73,6 +74,21 @@ SuccessScreen.displayName = 'SuccessScreen'
 
 export default function RegisterPage() {
   const router = useRouter()
+
+  // When registration has ended, redirect to home
+  useEffect(() => {
+    if (REGISTRATION_ENDED) {
+      router.replace('/')
+    }
+  }, [router])
+
+  if (REGISTRATION_ENDED) {
+    return (
+      <div className="min-h-screen bg-neutral-offwhite flex items-center justify-center pt-24">
+        <p className="text-neutral-muted">Redirecting...</p>
+      </div>
+    )
+  }
 
   const [formData, setFormData] = useState({
     name: '',

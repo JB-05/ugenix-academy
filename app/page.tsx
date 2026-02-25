@@ -7,13 +7,14 @@ import HeroSection from '@/components/sections/HeroSection'
 import WhoThisIsForSection from '@/components/sections/WhoThisIsForSection'
 import WhyChooseSection from '@/components/WhyChooseSection'
 import FeaturedCoursesSection from '@/components/sections/FeaturedCoursesSection'
+import FeaturedProgramsSection from '@/components/sections/FeaturedProgramsSection'
 import CTASection from '@/components/sections/CTASection'
 
 export default function Home() {
   const [showSplash, setShowSplash] = useState(true)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 5000) // Splash screen stays for 3 seconds
+    const timer = setTimeout(() => setShowSplash(false), 3000) // Splash screen stays for 3 seconds
     return () => clearTimeout(timer)
   }, [])
 
@@ -27,20 +28,19 @@ export default function Home() {
             initial={{ y: 0 }}
             animate={{ y: '-100%' }}
             exit={{ y: '-100%' }}
-            transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-gradient-to-br from-neutral-offwhite via-white to-neutral-offwhite flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-4">
               <div className="rounded-3xl px-8 py-6">
                 <div className="flex flex-col items-center gap-3">
                   <Image
-                    src="/illustrations/Ugenix Logo Short.svg"
+                    src="/illustrations/academy_logo_lightmode.svg"
                     alt="Ugenix Academy"
-                    width={72}
-                    height={72}
+                    width={300}
+                    height={80}
                     priority
                   />
-                  <p className="text-xs tracking-[0.25em] uppercase text-slate-500">Ugenix Academy</p>
                 </div>
               </div>
             </div>
@@ -54,6 +54,7 @@ export default function Home() {
         <WhoThisIsForSection />
         <WhyChooseSection />
         <FeaturedCoursesSection />
+        <FeaturedProgramsSection />
         <CTASection />
       </div>
     </div>

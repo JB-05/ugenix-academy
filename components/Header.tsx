@@ -41,7 +41,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
+      <header className="fixed top-0 left-0 right-0 z-30 pt-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
         <nav className="mx-auto max-w-7xl">
           <div
             className={`rounded-2xl md:rounded-full border transition-all duration-250 ease-in-out pointer-events-auto ${
@@ -53,12 +53,11 @@ export default function Header() {
             <div className="flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
               <Link href="/" className="flex items-center gap-3 text-xl font-medium text-slate-deep hover:text-brand transition-colors duration-200 ease-in-out">
                 <img
-                  src="/illustrations/Ugenix Logo Short.svg"
-                  alt="Ugenix"
-                  className="h-16 w-16"
+                  src="/illustrations/academy_logo_lightmode.svg"
+                  alt="Ugenix Academy"
+                  className="h-12 w-auto"
                   aria-hidden="true"
                 />
-                <span>Ugenix Academy</span>
               </Link>
               {/* Show full nav only on large screens and above */}
               <div className="hidden lg:flex items-center justify-center flex-1">

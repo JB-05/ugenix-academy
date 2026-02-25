@@ -17,7 +17,7 @@ const inter = Inter({
   display: 'swap',
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ugenixacademy.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://academy.ugenix.in'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -2,8 +2,11 @@
 
 import { useState, useCallback, useEffect, useMemo, memo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { VISTA_REGISTRATION_ENDED } from '@/lib/constants'
+import IedcCekLogo from './src/iedc.cek-black (1).png'
+import CollegeLogo from './src/college logo.png'
 
 const REQUEST_TIMEOUT = 30000 // 30 seconds
 const WHATSAPP_GROUP_LINK = 'https://chat.whatsapp.com/BdxJMFRILaXGnJ8fJgjbc4?mode=gi_t'
@@ -512,6 +515,34 @@ export default function VistaPage() {
             </svg>
             Back
           </button>
+
+          {/* Partner logos */}
+          <div className="mb-8 rounded-2xl bg-white/80 border border-neutral-border shadow-sm px-4 sm:px-6 py-4 sm:py-5">
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+              <div className="h-14 sm:h-16 flex items-center">
+                <Image
+                  src={IedcCekLogo}
+                  alt="IEDC CEK logo"
+                  className="h-14 sm:h-16 w-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <div className="h-14 sm:h-16 flex items-center">
+                <p className="text-sm sm:text-base font-semibold tracking-[0.35em] uppercase text-slate-deep">
+                  V.I.S.T.A.
+                </p>
+              </div>
+              <div className="h-14 sm:h-16 flex items-center">
+                <Image
+                  src={CollegeLogo}
+                  alt="College logo"
+                  className="h-14 sm:h-16 w-auto object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-brand mb-3">
             V.I.S.T.A. 2026
           </p>

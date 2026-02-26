@@ -115,6 +115,19 @@ export default function Header() {
             className="lg:hidden fixed inset-0 bg-[#6758e0] z-[45]"
           >
             <div className="h-full flex flex-col">
+              {/* Close button */}
+              <div className="flex items-center justify-end px-4 pt-4">
+                <button
+                  onClick={closeMenu}
+                  className="p-2 rounded-full text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                  aria-label="Close menu"
+                >
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
               {/* Navigation Links - Centered */}
               <div className="flex-1 flex flex-col items-center justify-center space-y-0">
                 <Link 

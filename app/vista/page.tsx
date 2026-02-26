@@ -522,7 +522,7 @@ export default function VistaPage() {
             <span className="font-semibold">V.I.S.T.A.</span> (Visionary Initiative for Student-Led Transformation And
             Action) is an idea pitching competition hosted by <span className="font-semibold">E.D Club</span>, conducted
             in collaboration with <span className="font-semibold">Ugenix Academy</span> &amp;{' '}
-            <span className="font-semibold">IEDC CEK</span>.
+            <span className="font-semibold">IEDC CEKallooppara</span>.
           </p>
           <p className="text-base text-neutral-muted leading-relaxed italic">
             &quot;Ideas aren&apos;t born, they are built.&quot;
@@ -880,7 +880,32 @@ export default function VistaPage() {
               </div>
             </div>
           )}
-
+          <div className="rounded-lg border border-dashed border-brand/40 bg-white/70 px-4 py-3 text-sm text-neutral-muted">
+              <p>
+                Please join the{' '}
+                <span className="font-medium text-slate-deep">V.I.S.T.A. WhatsApp group</span> to receive updates and
+                event announcements.
+              </p>
+              <div className="mt-2">
+                <Link
+                  href={WHATSAPP_GROUP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-brand hover:text-brand-dark font-medium"
+                >
+                  Join WhatsApp Group
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            </div>  
           <div className="pt-4 space-y-4">
             <button
               type="submit"
@@ -909,33 +934,6 @@ export default function VistaPage() {
                 'Submit Idea'
               )}
             </button>
-
-            <div className="rounded-lg border border-dashed border-brand/40 bg-white/70 px-4 py-3 text-sm text-neutral-muted">
-              <p>
-                After submitting the form, please join the{' '}
-                <span className="font-medium text-slate-deep">V.I.S.T.A. WhatsApp group</span> to receive updates and
-                event announcements.
-              </p>
-              <div className="mt-2">
-                <Link
-                  href={WHATSAPP_GROUP_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-brand hover:text-brand-dark font-medium"
-                >
-                  Join WhatsApp Group
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
           </div>
         </form>
       </section>

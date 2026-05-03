@@ -4,6 +4,8 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import MaintenanceScreen from '@/components/layout/MaintenanceScreen'
+import { MAINTENANCE_MODE } from '@/lib/constants'
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -65,9 +67,9 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true },
   },
   icons: {
-    icon: '/illustrations/Ugenix Logo Short.svg',
-    shortcut: '/illustrations/Ugenix Logo Short.svg',
-    apple: '/illustrations/Ugenix Logo Short.svg',
+    icon: '/illustrations/UAlogo_short_DM.svg',
+    shortcut: '/illustrations/UAlogo_short_DM.svg',
+    apple: '/illustrations/UAlogo_short_DM.svg',
   },
   alternates: { canonical: siteUrl },
 }
@@ -114,13 +116,17 @@ export default function RootLayout({
           <div className="absolute inset-0 hero-grid-pattern opacity-60" />
         </div>
 
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        {MAINTENANCE_MODE ? (
+          <MaintenanceScreen />
+        ) : (
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        )}
         <Analytics />
       </body>
     </html>

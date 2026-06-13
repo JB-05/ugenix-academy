@@ -4,10 +4,9 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
 import HeroSection from '@/components/sections/HeroSection'
-import WhoThisIsForSection from '@/components/sections/WhoThisIsForSection'
+import FeaturesSection from '@/components/sections/FeaturesSection'
 import WhyChooseSection from '@/components/WhyChooseSection'
-import FeaturedCoursesSection from '@/components/sections/FeaturedCoursesSection'
-import FeaturedProgramsSection from '@/components/sections/FeaturedProgramsSection'
+import ProgramsSection from '@/components/sections/ProgramsSection'
 import CTASection from '@/components/sections/CTASection'
 
 export default function Home() {
@@ -29,18 +28,22 @@ export default function Home() {
             animate={{ y: '-100%' }}
             exit={{ y: '-100%' }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-gradient-to-br from-neutral-offwhite via-white to-neutral-offwhite flex items-center justify-center"
+            className="fixed inset-0 z-40 bg-bg-950 flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-4">
               <div className="rounded-3xl px-8 py-6">
                 <div className="flex flex-col items-center gap-3">
                   <Image
-                    src="/illustrations/academy_logo_lightmode.svg"
+                    src="/illustrations/UAlogo_short_DM.svg"
                     alt="Ugenix Academy"
-                    width={300}
-                    height={80}
+                    width={120}
+                    height={86}
                     priority
                   />
+                  <span className="font-heading text-xl font-semibold">
+                    <span className="text-text-primary">Ugenix </span>
+                    <span className="text-orange-500">Academy</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -51,10 +54,9 @@ export default function Home() {
       {/* Main page content (always rendered beneath the shutter) */}
       <div className="relative">
         <HeroSection />
-        <WhoThisIsForSection />
+        <FeaturesSection />
         <WhyChooseSection />
-        <FeaturedCoursesSection />
-        <FeaturedProgramsSection />
+        <ProgramsSection />
         <CTASection />
       </div>
     </div>

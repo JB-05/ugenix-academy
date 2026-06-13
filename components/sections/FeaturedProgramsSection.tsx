@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function FeaturedProgramsSection() {
   return (
-    <section className="py-16 md:py-20 scroll-mt-24 overflow-hidden">
+    <section id="programs" className="py-16 md:py-20 scroll-mt-24 overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-2xl md:rounded-[3rem] bg-white/70 backdrop-blur-xl border border-white/70 shadow-2xl shadow-brand/5 p-4 sm:p-6 md:p-8 lg:p-10 overflow-hidden">
           {/* Decorative Background */}

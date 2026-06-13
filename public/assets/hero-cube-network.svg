@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Isometric wireframe cube -->
+  <g filter="url(#glow)" stroke="#E4572E" stroke-width="1.5" stroke-linejoin="round" opacity="0.85">
+    <!-- Top face -->
+    <path d="M200 80 L320 140 L200 200 L80 140 Z" fill="none"/>
+    <!-- Left face -->
+    <path d="M80 140 L200 200 L200 320 L80 260 Z" fill="none"/>
+    <!-- Right face -->
+    <path d="M200 200 L320 140 L320 260 L200 320 Z" fill="none"/>
+    <!-- Inner grid lines - top -->
+    <line x1="140" y1="110" x2="260" y2="170" opacity="0.5"/>
+    <line x1="260" y1="110" x2="140" y2="170" opacity="0.5"/>
+    <!-- Inner grid lines - left -->
+    <line x1="140" y1="170" x2="140" y2="290" opacity="0.5"/>
+    <line x1="200" y1="200" x2="200" y2="320" opacity="0.4"/>
+    <!-- Inner grid lines - right -->
+    <line x1="260" y1="170" x2="260" y2="290" opacity="0.5"/>
+    <line x1="200" y1="200" x2="320" y2="140" opacity="0.4"/>
+    <!-- Corner nodes -->
+    <circle cx="200" cy="80" r="3" fill="#E4572E"/>
+    <circle cx="320" cy="140" r="3" fill="#E4572E"/>
+    <circle cx="80" cy="140" r="3" fill="#E4572E"/>
+    <circle cx="200" cy="200" r="3" fill="#C6A75E"/>
+    <circle cx="200" cy="320" r="3" fill="#E4572E"/>
+    <circle cx="80" cy="260" r="3" fill="#E4572E"/>
+    <circle cx="320" cy="260" r="3" fill="#E4572E"/>
+  </g>
+  <!-- Ambient glow -->
+  <ellipse cx="200" cy="200" rx="120" ry="100" fill="url(#radialGlow)" opacity="0.3"/>
+  <defs>
+    <radialGradient id="radialGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E4572E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#E4572E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>

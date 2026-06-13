@@ -1,130 +1,112 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
+import HeroStatCards from './HeroStatCards'
+import HeroTrustLogos, { ArrowIcon } from './HeroTrustLogos'
 
 export default function HeroSection() {
-  const scrollToNext = () => {
-    const nextSection = document.getElementById('why-choose')
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <section className="relative min-h-screen flex flex-col justify-center pt-28 pb-12 sm:pt-32 md:pt-34 lg:pt-34 md:pb-16 overflow-hidden">
-      {/* Dotted Background inspired by uploaded reference */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-neutral-offwhite via-white to-neutral-offwhite">
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Top-left dotted area (hidden on small screens to avoid overlap) */}
-          <div className="hidden sm:block absolute -top-16 -left-16 h-72 w-72 rounded-3xl bg-[radial-gradient(circle,rgba(100,116,139,0.75)_1.2px,transparent_0)] bg-[length:16px_16px] opacity-80" />
+    <section className="relative min-h-screen overflow-hidden bg-bg-950">
+      {/* Background layers */}
+      <div className="pointer-events-none absolute inset-0 hero-dark-grid opacity-60" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-950 via-bg-900/50 to-bg-950" />
+      <div className="pointer-events-none absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/5 blur-[120px]" />
 
-          {/* Bottom-right dotted area */}
-          <div className="absolute -bottom-16 -right-16 h-80 w-80 rounded-3xl bg-[radial-gradient(circle,rgba(100,116,139,0.75)_1.2px,transparent_0)] bg-[length:16px_16px] opacity-80" />
-
-          {/* Mid-right soft dotted blob */}
-          <div className="absolute top-10 right-1/4 h-40 w-40 rounded-[3rem] bg-[radial-gradient(circle,rgba(148,163,184,0.55)_1px,transparent_0)] bg-[length:15px_15px] opacity-70" />
-
-          {/* Bottom-center faint arc of dots */}
-          <div className="absolute -bottom-20 left-1/3 h-40 w-56 rounded-[999px] bg-[radial-gradient(circle,rgba(148,163,184,0.45)_1px,transparent_0)] bg-[length:18px_18px] opacity-60" />
-
-          {/* Soft central dotted field behind content */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-56 w-80 rounded-[3rem] bg-[radial-gradient(circle,rgba(148,163,184,0.35)_1px,transparent_0)] bg-[length:16px_16px] opacity-55" />
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
-          {/* Text Content */}
+      <div className="relative mx-auto max-w-[1280px] px-6 pb-16 pt-28 lg:pb-20 lg:pt-32">
+        <div className="grid grid-cols-1 items-center gap-10 xl:grid-cols-12 xl:gap-6">
+          {/* Left — Copy */}
           <motion.div
-            initial={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="z-10"
+            transition={{ duration: 0.7 }}
+            className="xl:col-span-4 xl:pr-4"
           >
-            <h1 className="mb-4 md:mb-6 text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-deep leading-[1.05]">
-              <span className="block">Unlock your tech career</span>
-              <span className="block text-brand">with practical AI skills</span>
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-orange-500">
+              BE Industry-Ready, Become a ChangeMaker
+            </p>
+
+            <h1 className="font-heading text-4xl font-bold leading-[1.08] tracking-tight text-text-primary sm:text-5xl lg:text-[3.25rem]">
+              Train like you&apos;re already{' '}
+              <span className="text-orange-500">working.</span>
             </h1>
-            <p className="text-lg md:text-xl text-neutral-muted mb-6 md:mb-8 leading-relaxed max-w-xl">
-              Build job-ready, portfolio-backed skills with industry practitioners who teach from real projects, not just theory.
+
+            <p className="mt-5 max-w-md text-base leading-relaxed text-text-secondary lg:text-lg">
+              We train students through real-world project simulation so they become
+              job-ready before they graduate.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link href="/courses/prompt-engineering">
-                <HoverBorderGradient
-                  as="button"
-                  containerClassName="rounded-full w-full sm:w-auto"
-                  className="w-full sm:w-auto bg-brand text-white px-8 py-4 font-semibold shadow-lg shadow-brand/30 hover:-translate-y-0.5 transition-transform duration-200 flex items-center justify-center"
-                >
-                  Explore Courses
-                </HoverBorderGradient>
+
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href="/register" className="btn-primary-orange w-full sm:w-auto">
+                Join Free Demo
+                <ArrowIcon className="h-4 w-4" />
               </Link>
-              <Link
-                href="/about"
-                className="w-full sm:w-auto px-6 py-3 rounded-full border border-slate-300/80 bg-white/80 text-slate-deep hover:border-brand/70 hover:bg-brand/5 hover:text-brand transition-colors font-medium text-base flex items-center justify-center sm:justify-start shadow-sm shadow-slate-900/5"
-              >
-                Learn About the Academy
+              <Link href="/#programs" className="btn-text-link w-full sm:w-auto">
+                Explore Programs
+                <ArrowIcon className="h-4 w-4" />
               </Link>
             </div>
-            <p className="mt-3 text-sm text-neutral-muted">
-              Next cohort starts soon. No prior experience required.
-            </p>
+
+            <div className="hidden xl:block">
+              <HeroTrustLogos />
+            </div>
           </motion.div>
 
-          {/* Visual Composition */}
+          {/* Center — Character + Cube */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative flex justify-center lg:justify-end mt-8 lg:mt-0"
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="relative xl:col-span-4"
           >
-            {/* Photo-led composition inspired by reference designs */}
-            <div className="relative w-full max-w-lg aspect-square">
-              {/* Main Organic Shape */}
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-light/10 to-coral-light/10 rounded-[4rem] rotate-3 backdrop-blur-sm border border-white/40 shadow-2xl shadow-brand/10" />
-
-              <div className="absolute inset-6 z-10">
-                {/* Primary learner image */}
-                <div className="relative h-full w-full rounded-[3rem] overflow-hidden bg-white shadow-xl shadow-slate-900/5">
-                  <img
-                    src="/illustrations/heor.svg"
-                    alt="Learner exploring AI skills"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-
-                {/* Floating tag */}
-                <div className="absolute -top-4 right-0 sm:-right-4 rounded-full bg-white/90 backdrop-blur px-4 py-2 shadow-md shadow-slate-900/10 flex items-center gap-2">
-                  <span className="inline-block h-2 w-2 rounded-full bg-brand" />
-                  <span className="text-xs font-medium text-slate-deep">Live, cohort-based learning</span>
-                </div>
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-[340px]">
+              {/* Cube wireframe behind character */}
+              <div className="absolute inset-0 flex items-center justify-center animate-glow-pulse">
+                <Image
+                  src="/assets/hero-cube-network.svg"
+                  alt=""
+                  width={320}
+                  height={320}
+                  className="h-auto w-[85%] opacity-80"
+                  aria-hidden="true"
+                  priority
+                />
               </div>
+
+              {/* Character image — replace with /assets/hero-character.webp when available */}
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src="/assets/hero-mockup-reference.png"
+                  alt="Ugenix Academy learner with laptop"
+                  fill
+                  className="object-cover object-[48%_28%] scale-[2.8] sm:scale-[2.6]"
+                  priority
+                  sizes="(max-width: 768px) 280px, 340px"
+                />
+              </div>
+
+              {/* Bottom fade into background */}
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg-950 to-transparent" />
             </div>
           </motion.div>
+
+          {/* Right — Stat cards */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="xl:col-span-4"
+          >
+            <HeroStatCards />
+          </motion.div>
+        </div>
+
+        {/* Trust logos — visible on mobile/tablet */}
+        <div className="xl:hidden">
+          <HeroTrustLogos />
         </div>
       </div>
-
-      {/* Scroll Down Button */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        onClick={scrollToNext}
-        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-neutral-muted hover:text-brand transition-colors duration-200 ease-in-out cursor-pointer"
-        aria-label="Scroll to next section"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <svg className="w-6 h-6 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-          <span className="text-[0.65rem] sm:text-xs font-medium tracking-[0.3em] uppercase">
-            Explore
-          </span>
-        </div>
-      </motion.button>
     </section>
   )
 }
-
-

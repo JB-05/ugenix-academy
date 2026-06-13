@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Open_Sans, Inter } from 'next/font/google'
+import { Poppins, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Header from '@/components/layout/Header'
@@ -7,10 +7,11 @@ import Footer from '@/components/layout/Footer'
 import MaintenanceScreen from '@/components/layout/MaintenanceScreen'
 import { MAINTENANCE_MODE } from '@/lib/constants'
 
-const openSans = Open_Sans({
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-open-sans',
+  variable: '--font-poppins',
   display: 'swap',
+  weight: ['400', '500', '600', '700'],
 })
 
 const inter = Inter({
@@ -103,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${openSans.variable} ${inter.variable}`}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <head>
         <script
           type="application/ld+json"

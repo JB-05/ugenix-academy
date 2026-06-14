@@ -1,163 +1,188 @@
 import Link from 'next/link'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
+import Image from 'next/image'
+
+const ACCENT = '#FF6B00'
+const BODY = '#A8B0C0'
+const MUTED = '#8A94A6'
+
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 114.126 0 2.063 2.063 0 01-2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  )
+}
+
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+    </svg>
+  )
+}
+
+function YoutubeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+    </svg>
+  )
+}
+
+function TwitterIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
+
+const RESOURCES = [
+  { label: 'Blogs', href: '#' },
+  { label: 'FAQs', href: '/faq' },
+  { label: 'Guides', href: '#' },
+  { label: 'Webinars', href: '#' },
+  { label: 'Community', href: '#' },
+]
+
+const COMPANY = [
+  { label: 'About Us', href: '/about' },
+  { label: 'Our Mentors', href: '/about' },
+  { label: 'Success Stories', href: '#' },
+  { label: 'Careers', href: '#' },
+  { label: 'Contact Us', href: '/contact' },
+]
+
+const SOCIAL = [
+  { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://linkedin.com' },
+  { icon: InstagramIcon, label: 'Instagram', href: 'https://instagram.com' },
+  { icon: YoutubeIcon, label: 'YouTube', href: 'https://youtube.com' },
+  { icon: TwitterIcon, label: 'Twitter', href: 'https://twitter.com' },
+]
+
+const LEGAL = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms' },
+  { label: 'Refund Policy', href: '/refund-policy' },
+]
+
+function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+  return (
+    <div>
+      <h4
+        className="mb-5 font-sans text-xs font-semibold uppercase tracking-[0.18em]"
+        style={{ color: ACCENT }}
+      >
+        {title}
+      </h4>
+      <ul className="space-y-3">
+        {links.map((link) => (
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              className="font-sans text-sm text-white/90 transition-colors duration-200 hover:text-white"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function Footer() {
   return (
-    <footer className="relative mt-auto">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-16 space-y-6 lg:space-y-8">
-        {/* 1️⃣ Top Card — Brand Context */}
-        <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-white/50 shadow-lg shadow-black/5 p-6 lg:p-8">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
-            <h3 className="text-xl lg:text-2xl font-medium text-slate-deep">Ugenix Academy</h3>
-            <p className="text-neutral-muted text-sm lg:text-base md:text-right">
-              Professional training for the modern workforce.
-            </p>
-          </div>
-        </div>
+    <footer className="relative overflow-hidden" style={{ background: '#05070A' }}>
+      {/* Subtle grid overlay */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,107,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,107,0,0.03) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+          opacity: 0.04,
+        }}
+        aria-hidden="true"
+      />
 
-        {/* 2️⃣ Contact Card */}
-        <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-white/50 shadow-lg shadow-black/5 p-6 lg:p-8">
-          <h4 className="text-xl font-medium text-slate-deep text-center">Contact</h4>
-          <p className="text-neutral-muted text-sm mb-6 text-center">
-            For course-related queries and support.
-          </p>
-          <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4 md:gap-6 mb-6 text-sm text-neutral-muted">
-            <div>
-              <span className="font-medium text-slate-deep">Email:</span>{' '}
-              <a href="mailto:academy.ugenix@gmail.com" className="hover:text-slate-deep transition-colors duration-200">
-                academy.ugenix@gmail.com
-              </a>
-            </div>
-            <div>
-              <span className="font-medium text-slate-deep">Phone:</span>{' '}
-              <a href="tel:+918848736987" className="hover:text-slate-deep transition-colors duration-200">
-                +91 88487 36987
-              </a>
-            </div>
-            <div>
-              <span className="font-medium text-slate-deep">Location:</span>{' '}
-              <span>Pathanamthitta, Kerala, India</span>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <Link href="/contact">
-              <HoverBorderGradient
-                as="button"
-                containerClassName="rounded-full"
-                className="bg-white text-slate-900 px-6 py-2.5 font-medium text-sm"
-              >
-                Contact Us
-              </HoverBorderGradient>
+      <div className="relative mx-auto max-w-[1440px] px-8 pb-10 pt-12">
+        {/* Footer top grid — 4 columns, no newsletter */}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-12">
+          {/* Brand column */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image
+                src="/illustrations/UAlogo_short_DM.svg"
+                alt="Ugenix Academy"
+                width={40}
+                height={28}
+                className="h-9 w-auto"
+              />
+              <div className="font-sans leading-tight">
+                <span className="block text-base font-semibold text-white">Ugenix</span>
+                <span className="block text-sm font-medium" style={{ color: ACCENT }}>
+                  Academy
+                </span>
+              </div>
             </Link>
-          </div>
-        </div>
-
-        {/* 3️⃣ Navigation Grid Card */}
-        <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-white/50 shadow-lg shadow-black/5 p-6 lg:p-8">
-          {/* Main Container Title */}
-          <h3 className="text-base lg:text-lg font-semibold text-slate-deep mb-6 lg:mb-8 text-center">
-            Site Navigation
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Explore Column */}
-            <div>
-              <h4 className="text-sm font-medium text-slate-deep mb-4">Explore</h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                  <Link href="/" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#courses" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Courses
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#how-it-works" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    How It Works
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    About Academy
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            
-            {/* Resources Column */}
-            <div>
-              <h4 className="text-sm font-medium text-slate-deep mb-4">Resources</h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                  <Link href="/faq" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/contact" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            
-            {/* Legal Column */}
-            <div>
-              <h4 className="text-sm font-medium text-slate-deep mb-4">Legal</h4>
-              <ul className="space-y-3 text-sm">
-                <li>
-                  <Link href="/privacy-policy" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/terms" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Terms & Conditions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/refund-policy" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Refund Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/code-of-conduct" className="text-neutral-muted hover:text-slate-deep transition-colors duration-200">
-                    Code of Conduct
-                  </Link>
-                </li>
-              </ul>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed" style={{ color: BODY }}>
+              We don&apos;t just teach.
+              <br />
+              We build careers.
+            </p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed" style={{ color: BODY }}>
+              Industry-aligned programs designed to get you hired and help you grow.
+            </p>
+            <p className="mt-6 font-sans text-sm leading-relaxed" style={{ color: BODY }}>
+              Build. Apply.{' '}
+              <span style={{ color: ACCENT }}>Succeed.</span>
+              <br />
+              The Future is Built by{' '}
+              <span style={{ color: ACCENT }}>doers.</span>
+            </p>
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIAL.map(({ icon: Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.04] text-white/70 transition-all duration-200 hover:border-[#FF6B00] hover:text-white"
+                >
+                  <Icon className="h-4 w-4 strokeWidth={1.75}"  />
+                </a>
+              ))}
             </div>
           </div>
+
+          <FooterColumn title="Resources" links={RESOURCES} />
+          <FooterColumn title="Company" links={COMPANY} />
         </div>
 
-        {/* 4️⃣ Bottom Bar */}
-        <div className="relative rounded-xl bg-gradient-to-br from-white/70 via-white/60 to-white/50 backdrop-blur-sm border border-white/40 shadow-md shadow-black/5 px-6 py-4 lg:px-8 lg:py-5">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-neutral-muted">
-              <p>An initiative by</p>
-              <a
-                href="https://ugenix.in"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-opacity duration-200 ease-in-out hover:opacity-80"
+        {/* Divider */}
+        <div className="my-10 h-px bg-white/[0.08]" />
+
+        {/* Footer bottom */}
+        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+          <p className="font-sans text-sm" style={{ color: MUTED }}>
+            &copy; {new Date().getFullYear()} Ugenix Academy. All rights reserved.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            {LEGAL.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="font-sans text-sm transition-colors duration-200 hover:text-white"
+                style={{ color: MUTED }}
               >
-                <img
-                  src="/illustrations/Ugenix Logo Long.svg"
-                  alt="Ugenix"
-                  className="h-8 w-auto"
-                />
-              </a>
-            </div>
-            <div className="text-center md:text-right text-sm text-neutral-muted">
-            <p>&copy; {new Date().getFullYear()} Ugenix Academy. All rights reserved.</p>
-            </div>
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
     </footer>
   )
 }
-

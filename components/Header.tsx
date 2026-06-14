@@ -92,17 +92,48 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
-            <Link
-              href="/register"
-              className={cn(
-                isHome
-                  ? 'btn-ghost-orange text-sm'
-                  : 'inline-flex items-center gap-2 rounded-btn border border-brand px-5 py-2.5 text-sm font-medium text-brand transition-colors hover:bg-brand/5'
-              )}
-            >
-              Join Free Demo
-              <ArrowIcon className="h-3.5 w-3.5" />
-            </Link>
+          <Link
+  href="/#programs"
+  className="
+    group inline-flex items-center gap-2.5
+
+    rounded-xl
+    border border-[#FF6B00]/15
+    bg-[#FF6B00]/4
+
+    px-5 py-2.5
+
+    text-sm font-medium
+    text-[#FF6B00]
+    hover:text-[#FF6B00]
+    focus:text-[#FF6B00]
+    active:text-[#FF6B00]
+    visited:text-[#FF6B00]
+
+    no-underline
+
+    transition-all duration-300 ease-out
+
+    hover:border-[#FF6B00]/30
+    hover:bg-[#FF6B00]/8
+    hover:shadow-lg hover:shadow-[#FF6B00]/10
+    hover:-translate-y-0.5
+
+    active:translate-y-0
+    active:scale-[0.98]
+  "
+>
+  <span className="text-inherit">View Programs</span>
+
+  <ArrowIcon
+    className="
+      h-4 w-4
+      text-inherit
+      transition-all duration-300
+      group-hover:translate-x-1
+    "
+  />
+</Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -168,15 +199,15 @@ export default function Header() {
 
               <div className="pb-10">
                 <Link
-                  href="/register"
+                  href="/#programs"
                   onClick={closeMenu}
                   className={cn(
-                    'flex w-full items-center justify-center gap-2',
+                    'group flex w-full items-center justify-center gap-2',
                     isHome ? 'btn-primary-orange' : 'rounded-btn bg-white px-6 py-3.5 font-medium text-brand'
                   )}
                 >
-                  Join Free Demo
-                  <ArrowIcon className="h-4 w-4" />
+                  View Programs
+                  <ArrowIcon className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5" />
                 </Link>
               </div>
             </div>

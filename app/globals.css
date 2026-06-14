@@ -97,6 +97,44 @@
       animation: none;
     }
   }
+
+  @keyframes why-us-grid-drift {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+
+  @keyframes why-us-chart-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes why-us-building-pulse {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+  }
+
+  .why-us-grid-drift {
+    animation: why-us-grid-drift 40s linear infinite;
+  }
+
+  .why-us-chart-line {
+    animation: why-us-chart-draw 2s ease-out forwards;
+  }
+
+  .why-us-building-pulse {
+    animation: why-us-building-pulse 4s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .why-us-grid-drift,
+    .why-us-chart-line,
+    .why-us-building-pulse {
+      animation: none;
+    }
+
+    .why-us-chart-line {
+      stroke-dashoffset: 0;
+    }
+  }
 }
 
 @layer components {
@@ -176,11 +214,11 @@
 
 @layer components {
   .btn-primary-orange {
-    @apply inline-flex items-center justify-center gap-2 rounded-btn bg-orange-500 px-6 py-3.5 font-medium text-text-primary transition-all duration-200 hover:-translate-y-0.5 hover:shadow-orange-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-950;
+    @apply inline-flex items-center justify-center gap-2 rounded-btn bg-orange-500 px-6 py-3.5 font-medium text-text-primary transition-[background-color,box-shadow] duration-200 ease-out hover:bg-[#D45600] hover:shadow-[0_1px_2px_rgba(0,0,0,0.2),0_8px_20px_rgba(228,87,46,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-950 active:bg-[#C04E00];
   }
 
   .btn-ghost-orange {
-    @apply inline-flex items-center justify-center gap-2 rounded-btn border border-orange-500/80 bg-transparent px-5 py-2.5 text-sm font-medium text-orange-500 transition-all duration-200 hover:border-orange-400 hover:bg-orange-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50;
+    @apply inline-flex items-center justify-center gap-2 rounded-btn border border-orange-500/80 bg-transparent px-5 py-2.5 text-sm font-medium text-orange-500 transition-[border-color,background-color,color] duration-200 ease-out hover:border-orange-400 hover:bg-orange-500/[0.07] hover:text-orange-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50;
   }
 
   .btn-text-link {

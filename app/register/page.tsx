@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useEffect, useRef, memo } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { REGISTRATION_ENDED } from '@/lib/constants'
+import { PROMPT_ENGINEERING_ENDED } from '@/lib/constants'
 
 // Static data - moved outside component to prevent recreation on every render
 const PAYMENT_INFO = {
@@ -22,23 +22,23 @@ const GeometricShapes = memo(() => (
   <>
     {/* Mobile/Tablet - Smaller semi-transparent shapes */}
     <div 
-      className="absolute left-0 top-32 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-brand/25 opacity-40 sm:opacity-50" 
+      className="absolute left-0 top-32 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-orange-500/25 opacity-40 sm:opacity-50"
       style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} 
     />
-    <div className="absolute right-0 top-1/3 w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-coral/20 opacity-35 sm:opacity-45 rotate-45" />
+    <div className="absolute right-0 top-1/3 w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 bg-orange-500/15 opacity-35 sm:opacity-45 rotate-45" />
     
     {/* Desktop - Larger, solid colored shapes */}
     <div 
-      className="hidden lg:block absolute left-0 top-20 w-80 h-80 bg-brand" 
+      className="hidden lg:block absolute left-0 top-20 w-80 h-80 bg-orange-500/30"
       style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }} 
     />
-    <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-coral rotate-45" />
+    <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/20 rotate-45" />
     <div 
-      className="hidden lg:block absolute right-0 top-32 w-72 h-72 bg-violet-soft" 
+      className="hidden lg:block absolute right-0 top-32 w-72 h-72 bg-bg-850"
       style={{ clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)' }} 
     />
     <div 
-      className="hidden lg:block absolute right-0 bottom-20 w-96 h-96 bg-brand-light" 
+      className="hidden lg:block absolute right-0 bottom-20 w-96 h-96 bg-bg-800"
       style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' }} 
     />
   </>
@@ -47,22 +47,22 @@ GeometricShapes.displayName = 'GeometricShapes'
 
 // Memoized success screen component
 const SuccessScreen = memo(() => (
-  <div className="min-h-screen bg-neutral-offwhite pt-24 sm:pt-28 md:pt-32">
+  <div className="min-h-screen bg-bg-950 pt-24 sm:pt-28 md:pt-32">
     <section className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
-      <div className="relative rounded-2xl bg-gradient-to-br from-white/80 via-white/70 to-white/60 backdrop-blur-md border border-white/50 shadow-lg shadow-black/5 p-8 lg:p-12 text-center">
+      <div className="dark-card relative p-8 text-center lg:p-12">
         <div className="mb-6">
-          <svg className="w-16 h-16 text-brand mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <svg className="w-16 h-16 text-orange-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <h1 className="text-3xl font-semibold mb-4 text-slate-deep">Registration Successful</h1>
-        <p className="text-lg text-neutral-muted mb-8 leading-relaxed">
+        <h1 className="text-3xl font-semibold mb-4 text-text-primary">Registration Successful</h1>
+        <p className="text-lg text-text-secondary mb-8 leading-relaxed">
           Thank you for registering. We'll be in touch shortly with further details 
           about your course enrollment.
         </p>
         <Link
           href="/"
-          className="inline-flex items-center justify-center px-8 py-3 bg-brand text-white font-medium hover:bg-brand-dark hover:text-white transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+          className="inline-flex items-center justify-center px-8 py-3 bg-orange-500 text-text-primary font-medium hover:bg-[#D45600] transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-950"
         >
           Return to Home
         </Link>
@@ -77,15 +77,15 @@ export default function RegisterPage() {
 
   // When registration has ended, redirect to home
   useEffect(() => {
-    if (REGISTRATION_ENDED) {
+    if (PROMPT_ENGINEERING_ENDED) {
       router.replace('/')
     }
   }, [router])
 
-  if (REGISTRATION_ENDED) {
+  if (PROMPT_ENGINEERING_ENDED) {
     return (
-      <div className="min-h-screen bg-neutral-offwhite flex items-center justify-center pt-24">
-        <p className="text-neutral-muted">Redirecting...</p>
+      <div className="min-h-screen bg-bg-950 flex items-center justify-center pt-24">
+        <p className="text-text-secondary">Redirecting...</p>
       </div>
     )
   }
@@ -405,14 +405,14 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-offwhite relative overflow-hidden pt-24 sm:pt-28 md:pt-32">
+    <div className="min-h-screen bg-bg-950 relative overflow-hidden pt-24 sm:pt-28 md:pt-32">
       <GeometricShapes />
       
       <section className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 relative z-10">
         <div className="mb-12">
           <button
             onClick={() => router.back()}
-            className="mb-6 flex items-center gap-2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 text-sm font-medium"
+            className="dark-back-link"
           >
             <svg
               className="w-5 h-5"
@@ -425,8 +425,8 @@ export default function RegisterPage() {
             </svg>
             Back
           </button>
-          <h1 className="mb-4 text-slate-deep">Course Registration</h1>
-          <p className="text-lg text-neutral-muted leading-relaxed">
+          <h1 className="mb-4 text-text-primary">Course Registration</h1>
+          <p className="text-lg text-text-secondary leading-relaxed">
             Complete the form below to register for your chosen course. 
             We'll contact you with enrollment details.
           </p>
@@ -434,7 +434,7 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-deep mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-2">
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -448,8 +448,8 @@ export default function RegisterPage() {
                 className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
                   formErrors.name && touchedFields.has('name')
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
-                    : 'border-neutral-border focus:border-brand focus:ring-brand/20'
-                } bg-white text-slate-deep`}
+                    : 'border-border-primary focus:border-orange-500 focus:ring-orange-500/20'
+                } bg-bg-900 text-text-primary`}
                 placeholder="Enter your full name"
                 aria-invalid={formErrors.name && touchedFields.has('name') ? 'true' : 'false'}
                 aria-describedby={formErrors.name && touchedFields.has('name') ? 'name-error' : undefined}
@@ -462,7 +462,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="courseYear" className="block text-sm font-medium text-slate-deep mb-2">
+              <label htmlFor="courseYear" className="block text-sm font-medium text-text-primary mb-2">
                 Course Year <span className="text-red-500">*</span>
               </label>
               <select
@@ -475,8 +475,8 @@ export default function RegisterPage() {
                 className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all appearance-none cursor-pointer ${
                   formErrors.courseYear && touchedFields.has('courseYear')
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
-                    : 'border-neutral-border focus:border-brand focus:ring-brand/20'
-                } bg-white text-slate-deep`}
+                    : 'border-border-primary focus:border-orange-500 focus:ring-orange-500/20'
+                } bg-bg-900 text-text-primary`}
                 aria-invalid={formErrors.courseYear && touchedFields.has('courseYear') ? 'true' : 'false'}
                 aria-describedby={formErrors.courseYear && touchedFields.has('courseYear') ? 'courseYear-error' : undefined}
               >
@@ -496,7 +496,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="branch" className="block text-sm font-medium text-slate-deep mb-2">
+              <label htmlFor="branch" className="block text-sm font-medium text-text-primary mb-2">
                 Branch <span className="text-red-500">*</span>
               </label>
               <input
@@ -510,8 +510,8 @@ export default function RegisterPage() {
                 className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
                   formErrors.branch && touchedFields.has('branch')
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
-                    : 'border-neutral-border focus:border-brand focus:ring-brand/20'
-                } bg-white text-slate-deep`}
+                    : 'border-border-primary focus:border-orange-500 focus:ring-orange-500/20'
+                } bg-bg-900 text-text-primary`}
                 placeholder="Enter your branch (e.g., Computer Science, Electronics, etc.)"
                 aria-invalid={formErrors.branch && touchedFields.has('branch') ? 'true' : 'false'}
                 aria-describedby={formErrors.branch && touchedFields.has('branch') ? 'branch-error' : undefined}
@@ -524,7 +524,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-slate-deep mb-2">
+              <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-2">
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
@@ -538,8 +538,8 @@ export default function RegisterPage() {
                 className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
                   formErrors.phone && touchedFields.has('phone')
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
-                    : 'border-neutral-border focus:border-brand focus:ring-brand/20'
-                } bg-white text-slate-deep`}
+                    : 'border-border-primary focus:border-orange-500 focus:ring-orange-500/20'
+                } bg-bg-900 text-text-primary`}
                 placeholder="Enter your phone number"
                 aria-invalid={formErrors.phone && touchedFields.has('phone') ? 'true' : 'false'}
                 aria-describedby={formErrors.phone && touchedFields.has('phone') ? 'phone-error' : undefined}
@@ -552,7 +552,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-deep mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-2">
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -566,8 +566,8 @@ export default function RegisterPage() {
                 className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
                   formErrors.email && touchedFields.has('email')
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20'
-                    : 'border-neutral-border focus:border-brand focus:ring-brand/20'
-                } bg-white text-slate-deep`}
+                    : 'border-border-primary focus:border-orange-500 focus:ring-orange-500/20'
+                } bg-bg-900 text-text-primary`}
                 placeholder="Enter your email address"
                 aria-invalid={formErrors.email && touchedFields.has('email') ? 'true' : 'false'}
                 aria-describedby={formErrors.email && touchedFields.has('email') ? 'email-error' : undefined}
@@ -580,43 +580,43 @@ export default function RegisterPage() {
             </div>
 
             {/* Payment Information Section - Developer Preset */}
-            <div className="pt-6 border-t border-neutral-border">
-              <h3 className="text-lg font-semibold text-slate-deep mb-4">Payment Information</h3>
+            <div className="pt-6 border-t border-border-primary">
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Payment Information</h3>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-deep mb-2">
+                  <label className="block text-sm font-medium text-text-primary mb-2">
                     Payment Number
                   </label>
-                  <div className="w-full px-4 py-3 border border-neutral-border bg-neutral-offwhite text-slate-deep rounded-lg">
+                  <div className="w-full rounded-lg border border-border-primary bg-bg-900 px-4 py-3 text-text-primary">
                     {PAYMENT_INFO.phoneNumber}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-deep mb-2">
+                  <label className="block text-sm font-medium text-text-primary mb-2">
                     UPI ID
                   </label>
-                  <div className="w-full px-4 py-3 border border-neutral-border bg-neutral-offwhite text-slate-deep rounded-lg">
+                  <div className="w-full rounded-lg border border-border-primary bg-bg-900 px-4 py-3 text-text-primary">
                     {PAYMENT_INFO.upiId}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-deep mb-2">
+                  <label className="block text-sm font-medium text-text-primary mb-2">
                     Payment QR
                   </label>
-                  <div className="mt-1 border-2 border-neutral-border rounded-lg overflow-hidden bg-neutral-offwhite">
+                  <div className="mt-1 overflow-hidden rounded-lg border-2 border-border-primary bg-bg-900">
                     <div className="flex justify-center items-center px-6 py-6 sm:py-8 min-h-[200px]">
                       <div className="text-center">
                         <img
                           src="/paymentqr/academy%20payment%20qr%2028-01-26.jpeg"
                           alt="UgeniX Academy payment QR code"
-                          className="mx-auto w-full max-w-xs h-auto object-contain rounded-lg bg-white"
+                          className="mx-auto h-auto w-full max-w-xs rounded-lg bg-bg-900 object-contain"
                           loading="lazy"
                           decoding="async"
                         />
-                        <p className="mt-3 text-sm text-neutral-muted">
+                        <p className="mt-3 text-sm text-text-secondary">
                           Scan this QR to make the payment, then upload the payment screenshot below.
                         </p>
                       </div>
@@ -627,14 +627,14 @@ export default function RegisterPage() {
             </div>
 
             {/* Payment Screenshot Section */}
-            <div className="pt-6 border-t border-neutral-border">
-              <h3 className="text-lg font-semibold text-slate-deep mb-4">Payment Screenshot</h3>
+            <div className="pt-6 border-t border-border-primary">
+              <h3 className="text-lg font-semibold text-text-primary mb-4">Payment Screenshot</h3>
               
               <div>
-                <label htmlFor="paymentScreenshot" className="block text-sm font-medium text-slate-deep mb-2">
+                <label htmlFor="paymentScreenshot" className="block text-sm font-medium text-text-primary mb-2">
                   Upload Payment Screenshot <span className="text-red-500">*</span>
                 </label>
-                <div className="mt-1 border-2 border-neutral-border rounded-lg overflow-hidden bg-neutral-offwhite">
+                <div className="mt-1 border-2 border-border-primary rounded-lg overflow-hidden bg-bg-950">
                   {formData.paymentScreenshot && imagePreviewUrl ? (
                     <div className="relative">
                       <img
@@ -667,11 +667,11 @@ export default function RegisterPage() {
                   ) : (
                     <div className="flex justify-center items-center px-6 py-12 min-h-[200px]">
                       <div className="text-center">
-                        <svg className="mx-auto h-12 w-12 text-neutral-muted mb-4" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true" role="img">
+                        <svg className="mx-auto h-12 w-12 text-text-secondary mb-4" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true" role="img">
                           <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-4h12m-6-6h.01M36 20h.01" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                        <div className="flex text-sm text-neutral-muted justify-center">
-                          <label htmlFor="paymentScreenshot" className="relative cursor-pointer rounded-md font-medium text-brand hover:text-brand-dark focus-within:outline-none focus-within:ring-2 focus-within:ring-brand focus-within:ring-offset-2">
+                        <div className="flex text-sm text-text-secondary justify-center">
+                          <label htmlFor="paymentScreenshot" className="relative cursor-pointer rounded-md font-medium text-orange-500 hover:text-orange-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-orange-500/50 focus-within:ring-offset-2 focus-within:ring-offset-bg-950">
                             <span>Upload a file</span>
                             <input
                               id="paymentScreenshot"
@@ -685,7 +685,7 @@ export default function RegisterPage() {
                           </label>
                           <p className="pl-1">or drag and drop</p>
                         </div>
-                        <p className="text-xs text-neutral-muted mt-2">PNG, JPG, GIF up to 10MB</p>
+                        <p className="text-xs text-text-secondary mt-2">PNG, JPG, GIF up to 10MB</p>
                       </div>
                     </div>
                   )}
@@ -710,7 +710,7 @@ export default function RegisterPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-8 py-4 bg-brand text-white font-medium hover:bg-brand-dark transition-colors duration-200 ease-in-out rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="btn-primary-orange w-full px-8 py-4 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center" aria-live="polite" aria-busy="true">

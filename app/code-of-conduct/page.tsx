@@ -6,12 +6,12 @@ export default function CodeOfConductPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen pt-32 md:pt-36 pb-16 md:pb-24">
+    <div className="dark-page">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+        <div className="dark-card p-8 md:p-10 lg:p-12">
           <button
             onClick={() => router.back()}
-            className="mb-6 flex items-center gap-2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 text-sm font-medium"
+            className="dark-back-link"
           >
             <svg
               className="w-5 h-5"
@@ -24,11 +24,11 @@ export default function CodeOfConductPage() {
             </svg>
             Back
           </button>
-          <h1 className="mb-8 text-slate-deep font-medium">Code of Conduct</h1>
+          <h1 className="mb-8 text-text-primary font-medium">Code of Conduct</h1>
           
-          <div className="space-y-8 text-neutral-muted leading-relaxed">
+          <div className="dark-prose">
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">4.1 Purpose and Scope</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">4.1 Purpose and Scope</h2>
               <p className="mb-4">
                 This Code of Conduct outlines the standards of behavior expected from all learners participating in
                 Ugenix Academy's courses and live classes. Its purpose is to ensure a respectful, inclusive, safe, and
@@ -41,7 +41,7 @@ export default function CodeOfConductPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">4.2 Expected Standards of Behavior</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">4.2 Expected Standards of Behavior</h2>
               <p>
                 Learners are expected to behave in a professional and respectful manner at all times. This includes
                 engaging courteously with instructors and fellow learners, following class guidelines, and
@@ -51,7 +51,7 @@ export default function CodeOfConductPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">4.3 Prohibited Conduct</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">4.3 Prohibited Conduct</h2>
               <p className="mb-4">
                 Ugenix Academy strictly prohibits behavior that disrupts learning or compromises the safety and
                 dignity of others. Prohibited conduct includes, but is not limited to, harassment, bullying,
@@ -66,7 +66,7 @@ export default function CodeOfConductPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">4.4 Platform Integrity and Security</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">4.4 Platform Integrity and Security</h2>
               <p>
                 Users must not attempt to interfere with the technical operation of live classes or the academy's
                 systems. Any attempt to hack, misuse access links, introduce malicious software, or disrupt sessions
@@ -75,7 +75,7 @@ export default function CodeOfConductPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">4.5 Enforcement and Disciplinary Action</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">4.5 Enforcement and Disciplinary Action</h2>
               <p>
                 Violations of this Code of Conduct may result in disciplinary actions, including warnings, removal
                 from live sessions, temporary suspension, or permanent termination of access without refund,
@@ -84,7 +84,7 @@ export default function CodeOfConductPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">4.6 Reporting Violations</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">4.6 Reporting Violations</h2>
               <p className="mb-2">
                 Learners who witness or experience violations of this Code of Conduct are encouraged to report such
                 incidents promptly by contacting:
@@ -94,7 +94,7 @@ export default function CodeOfConductPage() {
                   Email:{' '}
                   <a
                     href="mailto:academy.ugenix@gmail.com"
-                    className="text-brand hover:text-brand-dark transition-colors"
+                    className="text-orange-500 transition-colors hover:text-orange-400"
                   >
                     academy.ugenix@gmail.com
                   </a>

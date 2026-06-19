@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -9,22 +8,19 @@ import { ArrowIcon } from '@/components/sections/HeroTrustLogos'
 
 const NAV_LINKS = [
   { href: '/#programs', label: 'Programs', hasDropdown: true },
-  { href: '/#programs', label: 'WorkSim' },
-  { href: '/#programs', label: 'Success Stories' },
   { href: '/faq', label: 'Resources', hasDropdown: true },
   { href: '/about', label: 'About Us' },
 ]
 
 export default function Header() {
-  const pathname = usePathname()
-  const isHome = pathname === '/'
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60)
+      setIsScrolled(window.scrollY > 24)
     }
+    handleScroll()
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -42,43 +38,47 @@ export default function Header() {
     <>
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 transition-all duration-300',
-          isMenuOpen ? 'z-50' : 'z-30',
-          isHome
-            ? isScrolled
-              ? 'bg-bg-950/90 backdrop-blur-xl border-b border-border-primary'
-              : 'bg-transparent'
-            : isScrolled
-              ? 'bg-white/90 backdrop-blur-xl border-b border-neutral-border shadow-sm'
-              : 'bg-transparent'
+          'pointer-events-none fixed left-0 right-0 top-0 z-30 px-4 pt-4 transition-all duration-300 sm:px-6 sm:pt-5',
+          isMenuOpen && 'z-50'
         )}
       >
-        <nav className="mx-auto flex h-20 max-w-[1280px] items-center justify-between px-6">
-          {/* Logo */}
+        <nav
+          className={cn(
+            'pointer-events-auto mx-auto flex h-[3.25rem] max-w-[1280px] items-center justify-between rounded-full border px-4 sm:h-14 sm:px-5 lg:h-[3.75rem] lg:px-8',
+            'bg-white/[0.04] backdrop-blur-xl backdrop-saturate-150',
+            'border-white/[0.08]',
+            'shadow-[0_8px_32px_rgba(0,0,0,0.28),inset_0_1px_0_rgba(255,255,255,0.07)]',
+            'transition-[background-color,border-color,box-shadow,transform] duration-300 ease-out',
+            isScrolled &&
+              'translate-y-0 border-white/[0.12] bg-bg-950/60 shadow-[0_14px_40px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.09)]',
+            !isScrolled && 'translate-y-0',
+            isMenuOpen &&
+              'border-orange-500/20 bg-bg-950/75 shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.08)]'
+          )}
+        >
           <Link
             href="/"
-            className="flex items-center shrink-0"
+            className="flex shrink-0 items-center"
             onClick={closeMenu}
           >
             <img
+              src="/illustrations/UAlogo_short_DM.svg"
+              alt="Ugenix Academy"
+              className="h-6 w-auto sm:hidden"
+            />
+            <img
               src="/illustrations/CF_logo_long_horizontal_DM.svg"
               alt="Ugenix Academy"
-              className="h-10 w-auto"
+              className="hidden h-7 w-auto max-w-[10.5rem] sm:block md:h-8 md:max-w-none lg:h-9 xl:h-10"
             />
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden lg:flex items-center gap-7">
+          <div className="hidden items-center gap-1 lg:flex xl:gap-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
-                className={cn(
-                  'inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200',
-                  isHome
-                    ? 'text-text-secondary hover:text-text-primary'
-                    : 'text-neutral-muted hover:text-brand'
-                )}
+                className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-text-secondary transition-colors duration-200 hover:bg-white/[0.05] hover:text-text-primary xl:px-3.5"
               >
                 {link.label}
                 {link.hasDropdown && (
@@ -90,67 +90,28 @@ export default function Header() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
           <div className="hidden lg:block">
-          <Link
-  href="/#programs"
-  className="
-    group inline-flex items-center gap-2.5
-
-    rounded-xl
-    border border-[#FF6B00]/15
-    bg-[#FF6B00]/4
-
-    px-5 py-2.5
-
-    text-sm font-medium
-    text-[#FF6B00]
-    hover:text-[#FF6B00]
-    focus:text-[#FF6B00]
-    active:text-[#FF6B00]
-    visited:text-[#FF6B00]
-
-    no-underline
-
-    transition-all duration-300 ease-out
-
-    hover:border-[#FF6B00]/30
-    hover:bg-[#FF6B00]/8
-    hover:shadow-lg hover:shadow-[#FF6B00]/10
-    hover:-translate-y-0.5
-
-    active:translate-y-0
-    active:scale-[0.98]
-  "
->
-  <span className="text-inherit">View Programs</span>
-
-  <ArrowIcon
-    className="
-      h-4 w-4
-      text-inherit
-      transition-all duration-300
-      group-hover:translate-x-1
-    "
-  />
-</Link>
+            <Link
+              href="/#programs"
+              className="group inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/20 bg-[#FF6B00]/10 px-5 py-2.5 text-sm font-medium text-[#FF6B00] no-underline shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#FF6B00]/35 hover:bg-[#FF6B00]/15 hover:shadow-[0_8px_24px_rgba(255,98,0,0.15)] active:translate-y-0 active:scale-[0.98]"
+            >
+              <span className="text-inherit">View Programs</span>
+              <ArrowIcon className="h-4 w-4 text-inherit transition-all duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={cn(
-              'lg:hidden relative p-2 -mr-2 rounded focus:outline-none focus-visible:ring-2',
+              'relative -mr-1 flex h-9 w-9 items-center justify-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 lg:hidden',
               isMenuOpen
-                ? 'text-text-primary focus-visible:ring-orange-500/50'
-                : isHome
-                  ? 'text-text-secondary hover:text-text-primary focus-visible:ring-orange-500/50'
-                  : 'text-neutral-muted hover:text-slate-deep focus-visible:ring-brand/30'
+                ? 'bg-white/[0.08] text-text-primary focus-visible:ring-orange-500/50'
+                : 'text-text-secondary hover:bg-white/[0.06] hover:text-text-primary focus-visible:ring-orange-500/50'
             )}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               {isMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -165,7 +126,6 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -173,42 +133,33 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className={cn(
-              'lg:hidden fixed inset-0 z-[45]',
-              isHome ? 'bg-bg-950' : 'bg-brand'
-            )}
+            className="fixed inset-0 z-[45] bg-bg-950/80 backdrop-blur-md lg:hidden"
           >
-            <div className="flex h-full flex-col pt-24 px-6">
-              <div className="flex-1 space-y-1">
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={closeMenu}
-                    className={cn(
-                      'block py-4 text-xl font-medium border-b transition-colors',
-                      isHome
-                        ? 'text-text-primary border-border-primary hover:text-orange-500'
-                        : 'text-white border-white/20 hover:opacity-80'
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
+            <div className="flex h-full flex-col px-4 pb-8 pt-24 sm:px-6">
+              <div className="mx-auto w-full max-w-lg flex-1 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.04] p-2 shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl">
+                <div className="space-y-1 p-2">
+                  {NAV_LINKS.map((link) => (
+                    <Link
+                      key={link.label}
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="block rounded-2xl px-4 py-3.5 text-lg font-medium text-text-primary transition-colors hover:bg-white/[0.06] hover:text-orange-500"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
 
-              <div className="pb-10">
-                <Link
-                  href="/#programs"
-                  onClick={closeMenu}
-                  className={cn(
-                    'group flex w-full items-center justify-center gap-2',
-                    isHome ? 'btn-primary-orange' : 'rounded-btn bg-white px-6 py-3.5 font-medium text-brand'
-                  )}
-                >
-                  View Programs
-                  <ArrowIcon className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5" />
-                </Link>
+                <div className="border-t border-white/[0.06] p-3">
+                  <Link
+                    href="/#programs"
+                    onClick={closeMenu}
+                    className="btn-primary-orange group flex w-full items-center justify-center gap-2 rounded-full"
+                  >
+                    View Programs
+                    <ArrowIcon className="h-4 w-4 transition-transform duration-200 ease-out group-hover:translate-x-0.5" />
+                  </Link>
+                </div>
               </div>
             </div>
           </motion.div>

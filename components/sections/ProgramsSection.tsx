@@ -2,8 +2,76 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { PAST_PROGRAMS } from '@/lib/programs-data'
+import { ArrowRight } from 'lucide-react'
+import { PAST_PROGRAMS, UPCOMING_PROGRAMS } from '@/lib/programs-data'
 import { ArrowIcon } from './HeroTrustLogos'
+
+function StatusBadge({ status }: { status: 'Active' | 'Coming Soon' }) {
+  const isActive = status === 'Active'
+
+  return (
+    <span
+      className={
+        isActive
+          ? 'inline-flex items-center rounded-full border border-green-500/40 bg-green-500/15 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-green-400'
+          : 'inline-flex items-center rounded-full border border-border-primary bg-bg-900/60 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-text-muted'
+      }
+    >
+      {status}
+    </span>
+  )
+}
+
+function UpcomingProgramCard({
+  program,
+  index,
+}: {
+  program: (typeof UPCOMING_PROGRAMS)[number]
+  index: number
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      className="flex h-full flex-col rounded-card border border-border-primary bg-bg-850/80 p-5 sm:p-6"
+    >
+      <StatusBadge status={program.status} />
+      <h3 className="mt-3 font-heading text-lg font-semibold text-text-primary sm:text-xl">
+        {program.name}
+      </h3>
+      <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{program.description}</p>
+
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <Link
+          href={program.href}
+          className="inline-flex items-center justify-center gap-1.5 text-sm font-medium text-orange-500 transition-colors hover:text-orange-400 sm:justify-start"
+        >
+          View details
+          <ArrowIcon className="h-3.5 w-3.5" />
+        </Link>
+        {program.registrationOpen ? (
+          <Link href="/register/worksim" className="btn-hero-primary-sm group w-full sm:ml-auto sm:w-auto">
+            <span className="relative z-10 text-white">Register</span>
+            <ArrowRight
+              size={16}
+              className="relative z-10 text-white transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
+        ) : (
+          <button
+            type="button"
+            disabled
+            className="inline-flex w-full cursor-not-allowed items-center justify-center rounded-2xl border border-border-primary bg-bg-850 px-6 py-3 text-sm font-semibold text-text-muted opacity-80 sm:ml-auto sm:w-auto"
+          >
+            Registration closed
+          </button>
+        )}
+      </div>
+    </motion.div>
+  )
+}
 
 function PastProgramCard({
   program,
@@ -26,7 +94,7 @@ function PastProgramCard({
         <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-text-muted">
           {program.status}
         </p>
-        <h3 className="mt-2 font-heading text-lg font-semibold text-text-primary group-hover:text-orange-500 transition-colors">
+        <h3 className="mt-2 font-heading text-lg font-semibold text-text-primary transition-colors group-hover:text-orange-500">
           {program.name}
         </h3>
         <p className="mt-2 flex-1 text-sm leading-relaxed text-text-muted">{program.description}</p>
@@ -44,10 +112,9 @@ function PastProgramCard({
 
 export default function ProgramsSection() {
   return (
-    <section id="programs" className="relative bg-bg-950 py-16 md:py-24 scroll-mt-24">
-      <div className="pointer-events-none absolute inset-0 hero-dark-grid opacity-25"/>
+    <section id="programs" className="relative scroll-mt-24 bg-bg-950 py-16 md:py-24">
+      <div className="pointer-events-none absolute inset-0 hero-dark-grid opacity-25" />
       <div className="relative mx-auto max-w-[1280px] px-6">
-        {/* Header */}
         <div className="mb-10 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-orange-500">
@@ -67,21 +134,26 @@ export default function ProgramsSection() {
           </Link>
         </div>
 
-        {/* Coming soon */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.5 }}
-          className="flex items-center justify-center rounded-card border border-dashed border-border-primary bg-bg-850/40 px-6 py-16 md:py-20"
-        >
-          <p className="font-heading text-xl font-semibold text-text-muted md:text-2xl">
-            Coming Soon
+        <div>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">
+            Up Next
           </p>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5 }}
+            className="rounded-card border border-dashed border-border-primary bg-bg-850/40 p-4 sm:p-6"
+          >
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              {UPCOMING_PROGRAMS.map((program, i) => (
+                <UpcomingProgramCard key={program.id} program={program} index={i} />
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
-        {/* Past Programs */}
-        <div id="past-programs" className="mt-16 md:mt-20 scroll-mt-24">
+        <div id="past-programs" className="mt-16 scroll-mt-24 md:mt-20">
           <div className="mb-8">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-text-muted">
               Archive

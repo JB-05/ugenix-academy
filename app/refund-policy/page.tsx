@@ -6,12 +6,12 @@ export default function RefundPolicyPage() {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen pt-32 md:pt-36 pb-16 md:pb-24">
+    <div className="dark-page">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
+        <div className="dark-card p-8 md:p-10 lg:p-12">
           <button
             onClick={() => router.back()}
-            className="mb-6 flex items-center gap-2 text-neutral-muted hover:text-slate-deep transition-colors duration-200 text-sm font-medium"
+            className="dark-back-link"
           >
             <svg
               className="w-5 h-5"
@@ -24,11 +24,11 @@ export default function RefundPolicyPage() {
             </svg>
             Back
           </button>
-          <h1 className="mb-8 text-slate-deep font-medium">Refund Policy</h1>
+          <h1 className="mb-8 text-text-primary font-medium">Refund Policy</h1>
           
-          <div className="space-y-8 text-neutral-muted leading-relaxed">
+          <div className="dark-prose">
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">3.1 General Policy</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">3.1 General Policy</h2>
               <p>
                 All fees paid to Ugenix Academy for course enrollment are strictly non-refundable unless explicitly
                 stated otherwise on the respective course enrollment or payment page. By completing the payment
@@ -38,7 +38,7 @@ export default function RefundPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">3.2 Limited Exceptions</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">3.2 Limited Exceptions</h2>
               <p>
                 Refunds may be considered only in exceptional circumstances and solely at the discretion of Ugenix
                 Academy. Such circumstances are limited to situations where a course is cancelled by Ugenix
@@ -50,7 +50,7 @@ export default function RefundPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-xl font-medium text-slate-deep mb-4">3.3 Non-Eligibility for Refunds</h2>
+              <h2 className="text-xl font-medium text-text-primary mb-4">3.3 Non-Eligibility for Refunds</h2>
               <p className="mb-4">
                 Refunds will not be issued under any circumstances arising from missed or unattended classes,
                 partial participation, dissatisfaction with course content, teaching style, or learning outcomes, or due

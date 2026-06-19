@@ -1,3 +1,5 @@
+import { WORKSIM_REGISTRATION_ENDED } from './constants'
+
 export interface PastProgram {
   id: string
   name: string
@@ -6,6 +8,28 @@ export interface PastProgram {
   meta?: string
   href: string
 }
+
+export interface UpcomingProgram {
+  id: string
+  name: string
+  description: string
+  status: 'Active' | 'Coming Soon'
+  meta?: string
+  href: string
+  registrationOpen?: boolean
+}
+
+export const UPCOMING_PROGRAMS: UpcomingProgram[] = [
+  {
+    id: 'worksim',
+    name: 'Ugenix WorkSim',
+    description:
+      'Train through real-world project simulation — work in teams, ship industry-style deliverables, and build job-ready experience before you graduate.',
+    status: 'Active',
+    href: '/courses/worksim',
+    registrationOpen: !WORKSIM_REGISTRATION_ENDED,
+  },
+]
 
 export const PAST_PROGRAMS: PastProgram[] = [
   {

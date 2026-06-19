@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { BriefcaseBusiness, Code2, Users, BadgeCheck, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -7,11 +8,13 @@ const ACCENT = '#FF6B00'
 const CARD_BG = '#0B0F14'
 const TEXT_SECONDARY = '#A3A9B7'
 
-const CARD_CLASS = cn(
-  'group relative overflow-hidden rounded-[20px] border border-white/[0.08]',
-  'shadow-[0_10px_30px_rgba(0,0,0,0.25)]',
+const NEUMORPHIC_CARD = cn(
+  'group relative overflow-hidden rounded-[20px]',
+  'border border-white/[0.03]',
+  'shadow-[-6px_-6px_16px_rgba(255,255,255,0.04),10px_12px_28px_rgba(0,0,0,0.7),inset_1px_1px_1px_rgba(255,255,255,0.06)]',
   'transition-all duration-300 ease-out',
-  'hover:-translate-y-1 hover:border-[#FF6B00] hover:shadow-[0_0_25px_rgba(255,107,0,0.08)]'
+  'hover:-translate-y-0.5',
+  'hover:shadow-[-6px_-6px_18px_rgba(255,107,0,0.07),12px_14px_32px_rgba(0,0,0,0.75),inset_1px_1px_2px_rgba(255,255,255,0.08)]'
 )
 
 const FEATURES = [
@@ -41,7 +44,6 @@ function WireframeCubes() {
   return (
     <div className="relative mt-auto flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden py-4" aria-hidden="true">
       <div className="relative h-full w-full max-h-[200px] max-w-[220px]">
-        {/* Center glow */}
         <div
           className="absolute left-1/2 top-[55%] h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full"
           style={{
@@ -49,7 +51,6 @@ function WireframeCubes() {
             opacity: 0.15,
           }}
         />
-        
       </div>
     </div>
   )
@@ -65,7 +66,7 @@ function FeatureCard({
   description: string
 }) {
   return (
-    <article className={cn(CARD_CLASS, 'flex h-full flex-col p-6')} style={{ background: CARD_BG }}>
+    <article className={cn(NEUMORPHIC_CARD, 'flex h-full flex-col p-6')} style={{ background: CARD_BG }}>
       <div className="flex items-center gap-2.5">
         <Icon className="h-[18px] w-[18px] shrink-0" style={{ color: ACCENT }} strokeWidth={2} />
         <h3 className="font-sans text-base font-semibold leading-tight text-white">{title}</h3>
@@ -82,57 +83,55 @@ function FeatureCard({
   )
 }
 
-function ProfileCard({ accent = false }: { accent?: boolean }) {
+function PortfolioDevicesVisual() {
   return (
-    <div className="rounded border border-white/[0.06] p-1" style={{ background: '#0B0F14' }}>
+    <div className="relative mt-auto min-h-0 w-full flex-1 overflow-hidden" aria-hidden="true">
       <div
-        className="mx-auto mb-0.5 h-3 w-3 rounded-full"
-        style={{ background: accent ? `${ACCENT}55` : 'rgba(255,255,255,0.12)' }}
+        className="pointer-events-none absolute bottom-6 left-1/2 z-0 h-28 w-40 -translate-x-1/2 rounded-full blur-2xl"
+        style={{ background: 'radial-gradient(circle, rgba(255,107,0,0.35), transparent 70%)' }}
       />
-      <div className="mx-auto h-0.5 w-[70%] rounded-sm bg-white/[0.1]" />
-      <div className="mx-auto mt-0.5 h-0.5 w-[50%] rounded-sm bg-white/[0.06]" />
+      <div className="absolute inset-x-0 bottom-0 flex h-full max-h-[230px] items-end justify-center overflow-hidden pb-0">
+        <Image
+          src="/assets/features-portfolio-laptop.png"
+          alt=""
+          width={520}
+          height={360}
+          className="relative z-10 w-[74%] max-w-[300px] shrink-0 object-contain object-bottom drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
+          priority={false}
+        />
+        <Image
+          src="/assets/features-portfolio-phone.png"
+          alt=""
+          width={200}
+          height={320}
+          className="relative z-20 -ml-8 mb-1 w-[32%] max-w-[130px] shrink-0 object-contain object-bottom drop-shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
+          priority={false}
+        />
+      </div>
     </div>
   )
 }
 
-function DashboardMockup() {
+function RightCardGlow() {
   return (
-    <div className="relative mt-auto min-h-0 w-full flex-1 overflow-hidden" aria-hidden="true">
-      <div className="absolute inset-x-0 bottom-0 flex h-full max-h-[200px] items-end justify-center overflow-hidden pb-1">
-        {/* Tablet */}
-        <div
-          className="relative z-10 w-[72%] shrink-0 rounded-lg border border-white/[0.08] p-1"
-          style={{ background: '#0E1218' }}
-        >
-          <div className="rounded-md border border-white/[0.06] p-2" style={{ background: '#080B10' }}>
-            <div className="mb-2 flex items-center gap-1">
-              <div className="h-1 w-1 rounded-full" style={{ background: ACCENT, opacity: 0.5 }} />
-              <div className="h-0.5 w-10 rounded-sm bg-white/[0.08]" />
-            </div>
-            <div className="grid grid-cols-3 gap-1">
-              {[true, false, true, false, true, false].map((accent, i) => (
-                <ProfileCard key={i} accent={accent} />
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Phone — kept inside card bounds */}
-        <div
-          className="relative z-20 -ml-3 w-[28%] shrink-0 rounded-[10px] border border-white/[0.08] p-0.5"
-          style={{ background: '#0E1218' }}
-        >
-          <div className="rounded-[8px] border border-white/[0.06] p-1.5" style={{ background: '#080B10' }}>
-            <div className="mx-auto mb-1.5 h-0.5 w-4 rounded-full bg-white/[0.1]" />
-            <div className="grid grid-cols-2 gap-0.5">
-              {[true, false, false, true].map((accent, i) => (
-                <ProfileCard key={i} accent={accent} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-[20px]"
+        style={{
+          background: `
+            radial-gradient(ellipse 150% 110% at -5% -10%, rgba(255,107,0,0.62) 0%, rgba(255,107,0,0.28) 28%, transparent 58%),
+            radial-gradient(ellipse 90% 70% at 20% 0%, rgba(255,140,60,0.4) 0%, transparent 48%),
+            radial-gradient(ellipse 60% 50% at 0% 40%, rgba(198,167,94,0.12) 0%, transparent 55%)
+          `,
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -left-8 -top-8 h-40 w-40 rounded-full blur-3xl"
+        style={{ background: 'rgba(255,107,0,0.22)' }}
+        aria-hidden="true"
+      />
+    </>
   )
 }
 
@@ -158,9 +157,8 @@ export default function FeaturesSection() {
           className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1.2fr_2fr_1.2fr]"
           style={{ gap: '16px' }}
         >
-          {/* Left card — column 1 */}
           <article
-            className={cn(CARD_CLASS, 'flex min-h-[316px] flex-col p-6 lg:h-full lg:p-8')}
+            className={cn(NEUMORPHIC_CARD, 'flex min-h-[316px] flex-col p-6 lg:h-full lg:p-8')}
             style={{ background: CARD_BG }}
           >
             <h2 className="shrink-0 font-sans text-[32px] font-bold leading-[1.2] text-white">
@@ -171,7 +169,6 @@ export default function FeaturesSection() {
             <WireframeCubes />
           </article>
 
-          {/* Middle 2×2 — column 2 */}
           <div
             className="grid min-h-[316px] grid-cols-1 gap-4 sm:grid-cols-2 lg:h-full lg:grid-rows-2"
             style={{ gap: '16px' }}
@@ -183,25 +180,19 @@ export default function FeaturesSection() {
             ))}
           </div>
 
-          {/* Right card — column 3 */}
           <article
-            className={cn(CARD_CLASS, 'flex min-h-[316px] flex-col p-6 lg:h-full lg:p-8')}
+            className={cn(NEUMORPHIC_CARD, 'flex min-h-[316px] flex-col p-6 lg:h-full lg:p-8')}
             style={{ background: CARD_BG }}
           >
-            <div
-              className="pointer-events-none absolute inset-0 overflow-hidden"
-              style={{
-                background:
-                  'radial-gradient(circle at top left, rgba(255,107,0,0.204), transparent 55%)',
-              }}
-              aria-hidden="true"
-            />
-            <div className="relative shrink-0">
+            <RightCardGlow />
+            <div className="relative z-10 shrink-0">
               <p className="font-sans text-[34px] font-bold leading-[1.25] text-white">Your work.</p>
               <p className="font-sans text-[34px] font-bold leading-[1.25] text-white">Your portfolio.</p>
               <p className="font-sans text-[34px] font-bold leading-[1.25] text-white">Your future.</p>
             </div>
-            <DashboardMockup />
+            <div className="relative z-10">
+              <PortfolioDevicesVisual />
+            </div>
           </article>
         </div>
       </div>

@@ -1,43 +1,28 @@
 import Link from 'next/link'
-import { HoverBorderGradient } from '@/components/ui/hover-border-gradient'
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col justify-center pt-32 md:pt-36 pb-16 md:pb-24">
-      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 w-full">
-        {/* Glass Container */}
-        <div className="rounded-3xl bg-white/70 backdrop-blur-xl border border-white/70 shadow-lg shadow-black/10 p-8 md:p-10 lg:p-12">
-          {/* Error Code */}
+    <div className="dark-page flex flex-col justify-center">
+      <div className="mx-auto w-full max-w-2xl px-4 sm:px-6 lg:px-8">
+        <div className="dark-card p-8 md:p-10 lg:p-12">
           <div className="mb-8">
-            <h1 className="text-6xl md:text-7xl font-light text-neutral-muted mb-6">404</h1>
+            <h1 className="mb-6 text-6xl font-light text-text-muted md:text-7xl">404</h1>
           </div>
 
-          {/* Primary Message */}
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-slate-deep">
+          <h2 className="mb-4 text-2xl font-semibold text-text-primary md:text-3xl">
             Page not found
           </h2>
 
-          {/* Supporting Copy */}
-          <p className="text-lg text-neutral-muted mb-8 leading-relaxed">
-            The page you're looking for doesn't exist or the link may be outdated.
+          <p className="mb-8 text-lg leading-relaxed text-text-secondary">
+            The page you&apos;re looking for doesn&apos;t exist or the link may be outdated.
           </p>
 
-          {/* Actions */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/">
-              <HoverBorderGradient
-                as="button"
-                containerClassName="rounded-full"
-                className="bg-white text-slate-900 px-6 py-3 font-medium"
-              >
-                Go back home
-              </HoverBorderGradient>
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <Link href="/" className="btn-primary-orange">
+              Go back home
             </Link>
-            <Link
-              href="/#courses"
-              className="btn-secondary-baseline"
-            >
-              Browse courses
+            <Link href="/#programs" className="btn-ghost-orange">
+              Browse programs
             </Link>
           </div>
         </div>
@@ -45,6 +30,3 @@ export default function NotFound() {
     </div>
   )
 }
-
-
-

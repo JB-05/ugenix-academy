@@ -136,12 +136,7 @@ export default function CTASection() {
       />
 
       <div className="relative mx-auto max-w-[1440px] px-8 pb-12 pt-16 lg:pb-0 lg:pt-20">
-        <div
-          className="relative min-h-[220px] overflow-hidden rounded-[24px] border border-white/[0.08] p-8 transition-[border-color,box-shadow] duration-300 ease-out hover:border-white/[0.14] hover:shadow-[0_12px_40px_rgba(0,0,0,0.35)] lg:p-12"
-          style={{
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
-          }}
-        >
+        <div className="glass-card-warm relative min-h-[220px] p-8 transition-[border-color,box-shadow] duration-300 ease-out hover:border-white/[0.12] hover:shadow-[0_12px_40px_rgba(0,0,0,0.35),0_0_48px_rgba(255,107,0,0.07)] lg:p-12">
           <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
             <div
               className="absolute inset-0"

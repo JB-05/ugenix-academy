@@ -113,8 +113,8 @@ export default function RootLayout({
       </head>
       <body className="overflow-x-hidden">
         {/* Global fixed background layer */}
-        <div className="fixed inset-0 -z-10 bg-[#F5F3F0]">
-          <div className="absolute inset-0 hero-grid-pattern opacity-60" />
+        <div className="fixed inset-0 -z-10 bg-bg-950">
+          <div className="absolute inset-0 hero-dark-grid opacity-40" />
         </div>
 
         {MAINTENANCE_MODE ? (

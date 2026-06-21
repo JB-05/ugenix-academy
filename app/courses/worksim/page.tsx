@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
+import { WORKSIM_REGISTRATION_URL } from '@/lib/constants'
 import { UPCOMING_PROGRAMS } from '@/lib/programs-data'
 
 const PROGRAM = UPCOMING_PROGRAMS.find((p) => p.id === 'worksim')!
@@ -179,7 +180,12 @@ export default function WorkSimPage() {
 
         <section className="mb-8 mt-16 text-center">
           {PROGRAM.registrationOpen ? (
-            <Link href="/register/worksim" className="btn-hero-primary group">
+            <Link
+              href={WORKSIM_REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-hero-primary group"
+            >
               <span className="relative z-10 text-white">Register for WorkSim</span>
               <ArrowRight
                 size={18}

@@ -38,8 +38,8 @@ export default function Header() {
     <>
       <header
         className={cn(
-          'pointer-events-none fixed left-0 right-0 top-0 z-30 px-4 pt-4 transition-all duration-300 sm:px-6 sm:pt-5',
-          isMenuOpen && 'z-50'
+          'pointer-events-none fixed left-0 right-0 top-0 z-50 px-4 pt-4 transition-all duration-300 sm:px-6 sm:pt-5',
+          isMenuOpen && 'z-[60]'
         )}
       >
         <nav
@@ -64,12 +64,12 @@ export default function Header() {
             <img
               src="/illustrations/UAlogo_short_DM.svg"
               alt="Ugenix Academy"
-              className="h-6 w-auto sm:hidden"
+              className="h-[19px] w-auto sm:hidden"
             />
             <img
               src="/illustrations/CF_logo_long_horizontal_DM.svg"
               alt="Ugenix Academy"
-              className="hidden h-7 w-auto max-w-[10.5rem] sm:block md:h-8 md:max-w-none lg:h-9 xl:h-10"
+              className="hidden h-[22px] w-auto max-w-[8.4rem] sm:block md:h-[26px] md:max-w-none lg:h-[29px] xl:h-8"
             />
           </Link>
 
@@ -133,7 +133,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[45] bg-bg-950/80 backdrop-blur-md lg:hidden"
+            className="fixed inset-0 z-[55] bg-bg-950/80 backdrop-blur-md lg:hidden"
           >
             <div className="flex h-full flex-col px-4 pb-8 pt-24 sm:px-6">
               <div className="mx-auto w-full max-w-lg flex-1 overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.04] p-2 shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl">

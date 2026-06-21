@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { WORKSIM_REGISTRATION_URL } from '@/lib/constants'
 import { PAST_PROGRAMS, UPCOMING_PROGRAMS } from '@/lib/programs-data'
 import { ArrowIcon } from './HeroTrustLogos'
 
@@ -52,7 +53,12 @@ function UpcomingProgramCard({
           <ArrowIcon className="h-3.5 w-3.5" />
         </Link>
         {program.registrationOpen ? (
-          <Link href="/register/worksim" className="btn-hero-primary-sm group w-full sm:ml-auto sm:w-auto">
+          <Link
+            href={WORKSIM_REGISTRATION_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-hero-primary-sm group w-full sm:ml-auto sm:w-auto"
+          >
             <span className="relative z-10 text-white">Register</span>
             <ArrowRight
               size={16}

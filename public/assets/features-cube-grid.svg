@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260" fill="none">
+  <defs>
+    <filter id="cubeGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="cubeFill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6B00" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#E4572E" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#E4572E" stop-opacity="0.15"/>
+    </radialGradient>
+    <radialGradient id="ambient" cx="50%" cy="65%" r="45%">
+      <stop offset="0%" stop-color="#E4572E" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#E4572E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="160" cy="175" rx="120" ry="70" fill="url(#ambient)"/>
+  <g stroke="#E4572E" stroke-width="1.15" stroke-linejoin="round">
+    <!-- Row 1 -->
+    <g opacity="0.95">
+      <path d="M58 92 L98 115 L98 155 L58 132 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)"/>
+      <path d="M58 92 L78 80 L118 103 L98 115 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)" opacity="0.85"/>
+      <path d="M98 115 L118 103 L118 143 L98 155 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)" opacity="0.7"/>
+    </g>
+    <g opacity="0.9">
+      <path d="M118 103 L158 126 L158 166 L118 143 Z" fill="none"/>
+      <path d="M118 103 L138 91 L178 114 L158 126 Z" fill="none"/>
+      <path d="M158 126 L178 114 L178 154 L158 166 Z" fill="none"/>
+    </g>
+    <g opacity="0.9">
+      <path d="M178 114 L218 137 L218 177 L178 154 Z" fill="none"/>
+      <path d="M178 114 L198 102 L238 125 L218 137 Z" fill="none"/>
+      <path d="M218 137 L238 125 L238 165 L218 177 Z" fill="none"/>
+    </g>
+    <!-- Row 2 -->
+    <g opacity="0.95">
+      <path d="M28 132 L68 155 L68 195 L28 172 Z" fill="none"/>
+      <path d="M28 132 L48 120 L88 143 L68 155 Z" fill="none"/>
+      <path d="M68 155 L88 143 L88 183 L68 195 Z" fill="none"/>
+    </g>
+    <g opacity="0.95">
+      <path d="M88 143 L128 166 L128 206 L88 183 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)"/>
+      <path d="M88 143 L108 131 L148 154 L128 166 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)" opacity="0.85"/>
+      <path d="M128 166 L148 154 L148 194 L128 206 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)" opacity="0.7"/>
+    </g>
+    <g opacity="0.9">
+      <path d="M148 154 L188 177 L188 217 L148 194 Z" fill="none"/>
+      <path d="M148 154 L168 142 L208 165 L188 177 Z" fill="none"/>
+      <path d="M188 177 L208 165 L208 205 L188 217 Z" fill="none"/>
+    </g>
+    <!-- Row 3 -->
+    <g opacity="0.9">
+      <path d="M58 172 L98 195 L98 235 L58 212 Z" fill="none"/>
+      <path d="M58 172 L78 160 L118 183 L98 195 Z" fill="none"/>
+      <path d="M98 195 L118 183 L118 223 L98 235 Z" fill="none"/>
+    </g>
+    <g opacity="0.95">
+      <path d="M118 183 L158 206 L158 246 L118 223 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)"/>
+      <path d="M118 183 L138 171 L178 194 L158 206 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)" opacity="0.85"/>
+      <path d="M158 206 L178 194 L178 234 L158 246 Z" fill="url(#cubeFill)" filter="url(#cubeGlow)" opacity="0.7"/>
+    </g>
+    <g opacity="0.9">
+      <path d="M178 194 L218 217 L218 257 L178 234 Z" fill="none"/>
+      <path d="M178 194 L198 182 L238 205 L218 217 Z" fill="none"/>
+      <path d="M218 217 L238 205 L238 245 L218 257 Z" fill="none"/>
+    </g>
+  </g>
+</svg>

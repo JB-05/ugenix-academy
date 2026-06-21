@@ -4,8 +4,8 @@ export const PROMPT_ENGINEERING_ENDED = true;
 /** Set to true when Ugenix WorkSim registrations have ended. */
 export const WORKSIM_REGISTRATION_ENDED = false;
 
-/** Display fee for WorkSim registration (INR). Server uses WORKSIM_REGISTRATION_AMOUNT_PAISE env. */
-export const WORKSIM_REGISTRATION_FEE_INR = 500;
+/** External WorkSim / internship registration page. */
+export const WORKSIM_REGISTRATION_URL = 'https://internship-registration-s6.vercel.app/';
 
 /** Set to true when V.I.S.T.A. idea pitching registrations have ended. */
 export const VISTA_REGISTRATION_ENDED = true;

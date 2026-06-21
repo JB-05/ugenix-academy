@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
 import HeroSection from '@/components/sections/HeroSection'
+import WorkSimShowcaseSection from '@/components/sections/WorkSimShowcaseSection'
 import FeaturesSection from '@/components/sections/FeaturesSection'
 import WhyChooseSection from '@/components/WhyChooseSection'
 import ProgramsSection from '@/components/sections/ProgramsSection'
@@ -28,7 +29,7 @@ export default function Home() {
             animate={{ y: '-100%' }}
             exit={{ y: '-100%' }}
             transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-bg-950 flex items-center justify-center"
+            className="fixed inset-0 z-[70] bg-bg-950 flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-4">
               <div className="rounded-3xl px-8 py-6">
@@ -54,6 +55,7 @@ export default function Home() {
       {/* Main page content (always rendered beneath the shutter) */}
       <div className="relative">
         <HeroSection />
+        <WorkSimShowcaseSection />
         <FeaturesSection />
         <WhyChooseSection />
         <ProgramsSection />

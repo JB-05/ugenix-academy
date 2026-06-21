@@ -1,58 +1,87 @@
 'use client'
 
 import Image from 'next/image'
-import { BriefcaseBusiness, Code2, Users, BadgeCheck, ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
+import {
+  BriefcaseBusiness,
+  Laptop,
+  UserSearch,
+  Users,
+} from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const ACCENT = '#FF6B00'
-const CARD_BG = '#0B0F14'
-const TEXT_SECONDARY = '#A3A9B7'
+const CARD_CLASS =
+  'relative overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0a0a0a]'
 
-const NEUMORPHIC_CARD = cn(
-  'group relative overflow-hidden rounded-[20px]',
-  'border border-white/[0.03]',
-  'shadow-[-6px_-6px_16px_rgba(255,255,255,0.04),10px_12px_28px_rgba(0,0,0,0.7),inset_1px_1px_1px_rgba(255,255,255,0.06)]',
-  'transition-all duration-300 ease-out',
-  'hover:-translate-y-0.5',
-  'hover:shadow-[-6px_-6px_18px_rgba(255,107,0,0.07),12px_14px_32px_rgba(0,0,0,0.75),inset_1px_1px_2px_rgba(255,255,255,0.08)]'
-)
+const EASE = [0.22, 1, 0.36, 1] as const
+const HOVER_TRANSITION = { duration: 0.55, ease: EASE }
+
+const viewport = { once: true, margin: '-60px' as const }
+
+const hoverVariants = {
+  rest: {},
+  hover: {},
+} as const
+
+const ambientVariants = {
+  rest: { opacity: 0 },
+  hover: { opacity: 1, transition: HOVER_TRANSITION },
+}
+
+const contentFloatVariants = {
+  rest: { y: 0 },
+  hover: { y: -4, transition: HOVER_TRANSITION },
+}
+
+const descriptionVariants = {
+  rest: { opacity: 0.85 },
+  hover: { opacity: 1, transition: HOVER_TRANSITION },
+}
 
 const FEATURES = [
   {
     icon: BriefcaseBusiness,
     title: 'Industry Projects',
     description: 'Work on real projects scoped by industry experts.',
-  },
-  {
-    icon: Code2,
-    title: 'Expert Code Reviews',
-    description: 'Get feedback from practicing professionals, not just teachers.',
+    column: 2,
+    row: 1,
   },
   {
     icon: Users,
     title: 'Team Collaboration',
     description: 'Work in teams, just like real companies.',
+    column: 2,
+    row: 2,
   },
   {
-    icon: BadgeCheck,
+    icon: Laptop,
+    title: 'Expert Code Reviews',
+    description: 'Get feedback from practicing professionals, not just teachers.',
+    column: 3,
+    row: 1,
+  },
+  {
+    icon: UserSearch,
     title: 'Career Support',
     description: 'Resume, interview prep & placement guidance.',
+    column: 3,
+    row: 2,
   },
-]
+] as const
 
-function WireframeCubes() {
+const PORTFOLIO_LINES = ['Your work.', 'Your portfolio.', 'Your future.'] as const
+
+function CardAmbientLayer() {
   return (
-    <div className="relative mt-auto flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden py-4" aria-hidden="true">
-      <div className="relative h-full w-full max-h-[200px] max-w-[220px]">
-        <div
-          className="absolute left-1/2 top-[55%] h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background: 'radial-gradient(circle, rgba(255,107,0,0.25), transparent 70%)',
-            opacity: 0.15,
-          }}
-        />
-      </div>
-    </div>
+    <motion.div
+      variants={ambientVariants}
+      className="pointer-events-none absolute inset-0 rounded-[18px]"
+      style={{
+        background:
+          'radial-gradient(ellipse 90% 80% at 20% 15%, rgba(228,87,46,0.1) 0%, transparent 58%)',
+      }}
+      aria-hidden="true"
+    />
   )
 }
 
@@ -60,54 +89,82 @@ function FeatureCard({
   icon: Icon,
   title,
   description,
+  index,
 }: {
   icon: typeof BriefcaseBusiness
   title: string
   description: string
+  index: number
 }) {
   return (
-    <article className={cn(NEUMORPHIC_CARD, 'flex h-full flex-col p-6')} style={{ background: CARD_BG }}>
-      <div className="flex items-center gap-2.5">
-        <Icon className="h-[18px] w-[18px] shrink-0" style={{ color: ACCENT }} strokeWidth={2} />
-        <h3 className="font-sans text-base font-semibold leading-tight text-white">{title}</h3>
-      </div>
-      <p className="mt-3 flex-1 text-sm leading-[1.6]" style={{ color: TEXT_SECONDARY }}>
-        {description}
-      </p>
-      <ArrowRight
-        className="mt-3 h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
-        style={{ color: ACCENT }}
-        strokeWidth={2}
-      />
-    </article>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={viewport}
+      transition={{ duration: 0.95, delay: 0.25 + index * 0.16, ease: EASE }}
+      className="h-full"
+    >
+      <motion.article
+        initial="rest"
+        whileHover="hover"
+        variants={hoverVariants}
+        className={cn(CARD_CLASS, 'flex h-full flex-col p-5 sm:p-6')}
+      >
+      <CardAmbientLayer />
+      <motion.div variants={contentFloatVariants} className="relative z-10 flex h-full flex-col">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={viewport}
+          transition={{ duration: 0.75, delay: 0.35 + index * 0.16, ease: EASE }}
+        >
+          <Icon className="h-[18px] w-[18px] shrink-0 text-orange-500" strokeWidth={1.75} />
+        </motion.div>
+        <h3 className="mt-3 font-heading text-base font-semibold leading-tight text-white sm:text-[17px]">
+          {title}
+        </h3>
+        <motion.p
+          variants={descriptionVariants}
+          className="mt-2 flex-1 text-sm leading-relaxed text-zinc-400"
+        >
+          {description}
+        </motion.p>
+      </motion.div>
+      </motion.article>
+    </motion.div>
   )
 }
 
 function PortfolioDevicesVisual() {
   return (
-    <div className="relative mt-auto min-h-0 w-full flex-1 overflow-hidden" aria-hidden="true">
-      <div
-        className="pointer-events-none absolute bottom-6 left-1/2 z-0 h-28 w-40 -translate-x-1/2 rounded-full blur-2xl"
-        style={{ background: 'radial-gradient(circle, rgba(255,107,0,0.35), transparent 70%)' }}
-      />
-      <div className="absolute inset-x-0 bottom-0 flex h-full max-h-[230px] items-end justify-center overflow-hidden pb-0">
-        <Image
-          src="/assets/features-portfolio-laptop.png"
-          alt=""
-          width={520}
-          height={360}
-          className="relative z-10 w-[74%] max-w-[300px] shrink-0 object-contain object-bottom drop-shadow-[0_16px_40px_rgba(0,0,0,0.55)]"
-          priority={false}
+    <div
+      className="relative mt-auto min-h-[240px] w-full flex-1 overflow-visible sm:min-h-[280px] lg:min-h-[320px]"
+      aria-hidden="true"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 56, scale: 0.9 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={viewport}
+        transition={{ duration: 1.2, delay: 0.55, ease: EASE }}
+        className="relative h-full w-full"
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={viewport}
+          transition={{ duration: 1.4, delay: 0.65, ease: EASE }}
+          className="pointer-events-none absolute bottom-10 left-1/2 z-0 h-36 w-56 -translate-x-1/2 rounded-full bg-orange-500/20 blur-3xl"
         />
-        <Image
-          src="/assets/features-portfolio-phone.png"
-          alt=""
-          width={200}
-          height={320}
-          className="relative z-20 -ml-8 mb-1 w-[32%] max-w-[130px] shrink-0 object-contain object-bottom drop-shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
-          priority={false}
-        />
-      </div>
+        <div className="absolute inset-x-0 bottom-0 flex h-full items-end justify-center pb-0">
+          <Image
+            src="/assets/features-portfolio-phone-tablet.png"
+            alt=""
+            width={720}
+            height={520}
+            className="relative z-10 w-full max-w-[480px] object-contain object-bottom drop-shadow-[0_20px_48px_rgba(0,0,0,0.55)] sm:max-w-[540px] lg:max-w-[620px]"
+          />
+        </div>
+      </motion.div>
     </div>
   )
 }
@@ -115,20 +172,27 @@ function PortfolioDevicesVisual() {
 function RightCardGlow() {
   return (
     <>
-      <div
-        className="pointer-events-none absolute inset-0 overflow-hidden rounded-[20px]"
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={viewport}
+        transition={{ duration: 1.6, delay: 0.25, ease: EASE }}
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-[18px]"
         style={{
           background: `
-            radial-gradient(ellipse 150% 110% at -5% -10%, rgba(255,107,0,0.62) 0%, rgba(255,107,0,0.28) 28%, transparent 58%),
-            radial-gradient(ellipse 90% 70% at 20% 0%, rgba(255,140,60,0.4) 0%, transparent 48%),
-            radial-gradient(ellipse 60% 50% at 0% 40%, rgba(198,167,94,0.12) 0%, transparent 55%)
+            radial-gradient(ellipse 130% 90% at -8% -12%, rgba(228,87,46,0.55) 0%, rgba(228,87,46,0.22) 32%, transparent 62%),
+            radial-gradient(ellipse 70% 55% at 18% 0%, rgba(255,107,0,0.28) 0%, transparent 52%)
           `,
         }}
         aria-hidden="true"
       />
-      <div
-        className="pointer-events-none absolute -left-8 -top-8 h-40 w-40 rounded-full blur-3xl"
-        style={{ background: 'rgba(255,107,0,0.22)' }}
+      <motion.div
+        variants={ambientVariants}
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-[18px]"
+        style={{
+          background:
+            'radial-gradient(ellipse 100% 90% at 10% 0%, rgba(255,107,0,0.18) 0%, transparent 55%)',
+        }}
         aria-hidden="true"
       />
     </>
@@ -137,63 +201,120 @@ function RightCardGlow() {
 
 export default function FeaturesSection() {
   return (
-    <section
-      id="features"
-      className="relative scroll-mt-24 overflow-hidden py-16 md:py-20"
-      style={{ background: '#05070A' }}
-    >
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,107,0,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,107,0,0.02) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto max-w-[1440px] px-8">
-        <div
-          className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1.2fr_2fr_1.2fr]"
-          style={{ gap: '16px' }}
-        >
-          <article
-            className={cn(NEUMORPHIC_CARD, 'flex min-h-[316px] flex-col p-6 lg:h-full lg:p-8')}
-            style={{ background: CARD_BG }}
+    <section id="features" className="relative scroll-mt-24 overflow-hidden bg-[#050505] py-10 sm:py-14 lg:py-20">
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-[1.35fr_1fr_1fr_1.35fr] lg:grid-rows-2 lg:gap-4">
+          <motion.div
+            initial={{ opacity: 0, x: -40, y: 24 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 1, ease: EASE }}
+            className="h-full sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-span-2 lg:row-start-1"
           >
-            <h2 className="shrink-0 font-sans text-[32px] font-bold leading-[1.2] text-white">
-              Everything you need
-              <br />
-              to become <br /> job-ready.
-            </h2>
-            <WireframeCubes />
-          </article>
+            <motion.article
+              initial="rest"
+              whileHover="hover"
+              variants={hoverVariants}
+              className={cn(
+                CARD_CLASS,
+                'flex h-full min-h-[300px] items-center justify-center p-5 text-center sm:min-h-[340px] sm:p-6 lg:min-h-0 lg:p-8'
+              )}
+            >
+            <CardAmbientLayer />
+            <motion.h2
+              variants={contentFloatVariants}
+              className="relative z-10 font-heading text-[1.65rem] font-bold leading-[1.15] text-white sm:text-[1.85rem] lg:text-[2rem] xl:text-[2.15rem]"
+            >
+              <motion.span
+                className="block"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.85, delay: 0.2, ease: EASE }}
+              >
+                Everything you need
+              </motion.span>
+              <motion.span
+                className="block"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.85, delay: 0.35, ease: EASE }}
+              >
+                to become
+              </motion.span>
+              <motion.span
+                className="block text-orange-500"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewport}
+                transition={{ duration: 0.85, delay: 0.5, ease: EASE }}
+              >
+                job-ready.
+              </motion.span>
+            </motion.h2>
+            </motion.article>
+          </motion.div>
 
-          <div
-            className="grid min-h-[316px] grid-cols-1 gap-4 sm:grid-cols-2 lg:h-full lg:grid-rows-2"
-            style={{ gap: '16px' }}
-          >
-            {FEATURES.map((feature) => (
-              <div key={feature.title} className="min-h-[150px] overflow-hidden lg:min-h-0 lg:h-full">
-                <FeatureCard {...feature} />
-              </div>
-            ))}
-          </div>
+          {FEATURES.map((feature, index) => (
+            <div
+              key={feature.title}
+              className={cn(
+                'min-h-[168px] sm:min-h-[180px] lg:min-h-0',
+                feature.column === 2 && feature.row === 1 && 'lg:col-start-2 lg:row-start-1',
+                feature.column === 2 && feature.row === 2 && 'lg:col-start-2 lg:row-start-2',
+                feature.column === 3 && feature.row === 1 && 'lg:col-start-3 lg:row-start-1',
+                feature.column === 3 && feature.row === 2 && 'lg:col-start-3 lg:row-start-2'
+              )}
+            >
+              <FeatureCard
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                index={index}
+              />
+            </div>
+          ))}
 
-          <article
-            className={cn(NEUMORPHIC_CARD, 'flex min-h-[316px] flex-col p-6 lg:h-full lg:p-8')}
-            style={{ background: CARD_BG }}
+          <motion.div
+            initial={{ opacity: 0, x: 40, y: 24 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={viewport}
+            transition={{ duration: 1, ease: EASE }}
+            className="h-full sm:col-span-2 lg:col-span-1 lg:col-start-4 lg:row-span-2 lg:row-start-1"
           >
+            <motion.article
+              initial="rest"
+              whileHover="hover"
+              variants={hoverVariants}
+              className={cn(
+                CARD_CLASS,
+                'flex h-full min-h-[320px] flex-col overflow-visible p-5 sm:min-h-[360px] sm:p-6 lg:min-h-0 lg:p-8'
+              )}
+            >
             <RightCardGlow />
-            <div className="relative z-10 shrink-0">
-              <p className="font-sans text-[34px] font-bold leading-[1.25] text-white">Your work.</p>
-              <p className="font-sans text-[34px] font-bold leading-[1.25] text-white">Your portfolio.</p>
-              <p className="font-sans text-[34px] font-bold leading-[1.25] text-white">Your future.</p>
-            </div>
-            <div className="relative z-10">
+            <motion.div
+              variants={contentFloatVariants}
+              className="relative z-10 flex min-h-0 flex-1 flex-col"
+            >
+              <div className="shrink-0">
+                {PORTFOLIO_LINES.map((line, index) => (
+                  <motion.p
+                    key={line}
+                    initial={{ opacity: 0, y: 22 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={viewport}
+                    transition={{ duration: 0.85, delay: 0.2 + index * 0.15, ease: EASE }}
+                    className="font-heading text-[1.65rem] font-bold leading-[1.15] text-white sm:text-[1.85rem] lg:text-[2rem] xl:text-[2.15rem]"
+                  >
+                    {line}
+                  </motion.p>
+                ))}
+              </div>
               <PortfolioDevicesVisual />
-            </div>
-          </article>
+            </motion.div>
+            </motion.article>
+          </motion.div>
         </div>
       </div>
     </section>

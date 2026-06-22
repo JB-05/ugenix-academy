@@ -42,14 +42,14 @@ const RESOURCES = [
   { label: 'FAQs', href: '/faq' },
   { label: 'Guides', href: '#' },
   { label: 'Webinars', href: '#' },
-  { label: 'Community', href: '#' },
+  { label: 'Community', href: '/community' },
 ]
 
 const COMPANY = [
   { label: 'About Us', href: '/about' },
-  { label: 'Our Mentors', href: '/about' },
+  { label: 'Our Mentors', href: '/mentors' },
   { label: 'Success Stories', href: '#' },
-  { label: 'Careers', href: '#' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact Us', href: '/contact' },
 ]
 

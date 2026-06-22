@@ -1,5 +1,20 @@
 import { WORKSIM_REGISTRATION_ENDED } from './constants'
 
+export type ProgramIconId = 'box' | 'trending-up' | 'laptop' | 'flask' | 'target'
+
+export type CatalogProgramStatus = 'active' | 'coming-soon'
+export type CatalogProgramCta = 'explore' | 'coming-soon'
+
+export interface CatalogProgram {
+  id: string
+  name: string
+  description: string
+  href: string
+  icon: ProgramIconId
+  status: CatalogProgramStatus
+  cta: CatalogProgramCta
+}
+
 export interface PastProgram {
   id: string
   name: string
@@ -18,6 +33,54 @@ export interface UpcomingProgram {
   href: string
   registrationOpen?: boolean
 }
+
+export const CATALOG_PROGRAMS: CatalogProgram[] = [
+  {
+    id: 'core',
+    name: 'Ugenix Core',
+    description: 'Foundation program for beginners to build strong basics.',
+    href: '/contact',
+    icon: 'box',
+    status: 'coming-soon',
+    cta: 'coming-soon',
+  },
+  {
+    id: 'pro',
+    name: 'Ugenix Pro',
+    description: 'Advanced program to master in-demand technologies.',
+    href: '/contact',
+    icon: 'trending-up',
+    status: 'coming-soon',
+    cta: 'coming-soon',
+  },
+  {
+    id: 'worksim',
+    name: 'Ugenix WorkSim',
+    description: 'Simulate real work. Build real projects. Get job ready.',
+    href: '/courses/worksim',
+    icon: 'laptop',
+    status: 'active',
+    cta: 'explore',
+  },
+  {
+    id: 'labs',
+    name: 'Ugenix Labs',
+    description: 'Experiment, build and innovate with guided lab projects.',
+    href: '/contact',
+    icon: 'flask',
+    status: 'coming-soon',
+    cta: 'coming-soon',
+  },
+  {
+    id: 'placement',
+    name: 'Ugenix Placement',
+    description: 'Resume, interview prep and placement support to land your dream job.',
+    href: '/contact',
+    icon: 'target',
+    status: 'coming-soon',
+    cta: 'coming-soon',
+  },
+]
 
 export const UPCOMING_PROGRAMS: UpcomingProgram[] = [
   {

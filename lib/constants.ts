@@ -4,9 +4,8 @@ export const PROMPT_ENGINEERING_ENDED = true;
 /** Set to true when Ugenix WorkSim registrations have ended. */
 export const WORKSIM_REGISTRATION_ENDED = false;
 
-/** External WorkSim / internship registration page. */
-export const WORKSIM_REGISTRATION_URL = 'https://internship-registration-s6.vercel.app/';
-
+/** External academy registration page. */
+export const ACADEMY_REGISTRATION_URL = 'https://register.academy.ugenix.in';
 /** Set to true when V.I.S.T.A. idea pitching registrations have ended. */
 export const VISTA_REGISTRATION_ENDED = true;
 

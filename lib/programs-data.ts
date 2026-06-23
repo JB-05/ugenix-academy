@@ -55,8 +55,8 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
   },
   {
     id: 'worksim',
-    name: 'Ugenix WorkSim',
-    description: 'Simulate real work. Build real projects. Get job ready.',
+    name: 'Mission Possible',
+    description: '15-day full stack & AI internship — bootcamp, team sprint, and real deployment.',
     href: '/courses/worksim',
     icon: 'laptop',
     status: 'active',
@@ -85,10 +85,11 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
 export const UPCOMING_PROGRAMS: UpcomingProgram[] = [
   {
     id: 'worksim',
-    name: 'Ugenix WorkSim',
+    name: 'Mission Possible',
     description:
-      'Train through real-world project simulation — work in teams, ship industry-style deliverables, and build job-ready experience before you graduate.',
+      '15-day full stack development & AI internship — offline foundation bootcamp, guided team sprint, gamified challenges, and mentor-led reviews.',
     status: 'Active',
+    meta: '15 days · Offline bootcamp + guided sprint',
     href: '/courses/worksim',
     registrationOpen: !WORKSIM_REGISTRATION_ENDED,
   },

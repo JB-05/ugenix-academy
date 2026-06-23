@@ -5,6 +5,15 @@ const nextConfig = {
   poweredByHeader: false,
   optimizeFonts: true,
   swcMinify: true,
+  async redirects() {
+    return [
+      {
+        source: '/register',
+        destination: 'https://register.academy.ugenix.in',
+        permanent: false,
+      },
+    ]
+  },
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],

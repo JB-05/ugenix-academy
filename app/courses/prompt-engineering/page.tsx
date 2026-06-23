@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { PROMPT_ENGINEERING_ENDED } from '@/lib/constants'
+import { PROMPT_ENGINEERING_ENDED, ACADEMY_REGISTRATION_URL } from '@/lib/constants'
 
 function CheckItem({ children }: { children: React.ReactNode }) {
   return (
@@ -192,9 +192,14 @@ export default function PromptEngineeringCourse() {
               Registration ended
             </button>
           ) : (
-            <Link href="/register" className="btn-primary-orange px-8 py-4 text-base uppercase tracking-wider md:px-12 md:py-5 md:text-lg">
+            <a
+              href={ACADEMY_REGISTRATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary-orange px-8 py-4 text-base uppercase tracking-wider md:px-12 md:py-5 md:text-lg"
+            >
               Register for This Course
-            </Link>
+            </a>
           )}
         </section>
       </section>

@@ -4,14 +4,6 @@ export interface CareerPerk {
   description: string
 }
 
-export interface OpenRole {
-  id: string
-  title: string
-  type: string
-  location: string
-  description: string
-}
-
 export const CAREER_PERKS: CareerPerk[] = [
   {
     id: 'impact',
@@ -36,32 +28,5 @@ export const CAREER_PERKS: CareerPerk[] = [
     title: 'Grow with us',
     description:
       'As Ugenix expands programs and partnerships, early team members help define how we scale.',
-  },
-]
-
-export const OPEN_ROLES: OpenRole[] = [
-  {
-    id: 'industry-mentor',
-    title: 'Industry Mentor',
-    type: 'Part-time',
-    location: 'Remote',
-    description:
-      'Review student deliverables, run feedback sessions, and share how real teams ship software and design work.',
-  },
-  {
-    id: 'program-instructor',
-    title: 'Program Instructor',
-    type: 'Contract',
-    location: 'Hybrid',
-    description:
-      'Lead cohort sessions, facilitate project workflows, and guide students through structured learning paths.',
-  },
-  {
-    id: 'content-contributor',
-    title: 'Content Contributor',
-    type: 'Freelance',
-    location: 'Remote',
-    description:
-      'Create practical learning materials, project briefs, and documentation aligned with industry standards.',
   },
 ]

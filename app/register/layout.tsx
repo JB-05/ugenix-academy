@@ -3,10 +3,10 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Register',
   description:
-    'Register for Ugenix Academy courses. Enroll in the Prompt Engineering course or other tech training programs.',
+    'Register for Ugenix Academy programs and internships at register.academy.ugenix.in.',
   openGraph: {
     title: 'Register | Ugenix Academy',
-    description: 'Enroll in Ugenix Academy courses including Prompt Engineering.',
+    description: 'Register for Ugenix Academy programs and internships.',
     url: '/register',
   },
 }

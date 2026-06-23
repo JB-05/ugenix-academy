@@ -159,8 +159,9 @@ function PortfolioDevicesVisual() {
           <Image
             src="/assets/features-portfolio-phone-tablet.png"
             alt=""
-            width={720}
-            height={520}
+            width={1280}
+            height={926}
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 540px, 620px"
             className="relative z-10 w-full max-w-[480px] object-contain object-bottom drop-shadow-[0_20px_48px_rgba(0,0,0,0.55)] sm:max-w-[540px] lg:max-w-[620px]"
           />
         </div>

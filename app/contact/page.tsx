@@ -109,16 +109,42 @@ function IllustrationPanel({ mode }: { mode: ContactMode }) {
             <Image
               src={src}
               alt={alt}
-              width={640}
-              height={480}
+              width={960}
+              height={720}
+              sizes="(max-width: 768px) 100vw, 480px"
               className="h-auto w-full object-cover"
-              priority
             />
           </div>
           <p className="mt-5 text-center text-sm font-medium text-zinc-400">{title}</p>
         </motion.div>
       </AnimatePresence>
     </div>
+  )
+}
+
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
+
+function FormStatusMessage({
+  status,
+  error,
+  successMessage,
+}: {
+  status: SubmitStatus
+  error: string
+  successMessage: string
+}) {
+  if (status === 'idle' || status === 'submitting') return null
+
+  return (
+    <p
+      role={status === 'error' ? 'alert' : 'status'}
+      className={cn(
+        'text-sm',
+        status === 'success' ? 'text-green-400' : 'text-red-400'
+      )}
+    >
+      {status === 'success' ? successMessage : error}
+    </p>
   )
 }
 
@@ -142,6 +168,11 @@ export default function ContactPage() {
     description: '',
   })
 
+  const [courseStatus, setCourseStatus] = useState<SubmitStatus>('idle')
+  const [courseError, setCourseError] = useState('')
+  const [partnershipStatus, setPartnershipStatus] = useState<SubmitStatus>('idle')
+  const [partnershipError, setPartnershipError] = useState('')
+
   const handleCourseChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -160,14 +191,62 @@ export default function ContactPage() {
     })
   }
 
-  const handleCourseSubmit = (e: React.FormEvent) => {
+  const handleCourseSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Course query submitted:', courseFormData)
+    setCourseStatus('submitting')
+    setCourseError('')
+
+    try {
+      const response = await fetch('/api/contact-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'courses', ...courseFormData }),
+      })
+
+      const result = await response.json()
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit inquiry')
+      }
+
+      setCourseStatus('success')
+      setCourseFormData({ name: '', email: '', phone: '', message: '' })
+    } catch (error) {
+      setCourseStatus('error')
+      setCourseError(error instanceof Error ? error.message : 'Failed to submit inquiry')
+    }
   }
 
-  const handlePartnershipSubmit = (e: React.FormEvent) => {
+  const handlePartnershipSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Partnership query submitted:', partnershipFormData)
+    setPartnershipStatus('submitting')
+    setPartnershipError('')
+
+    try {
+      const response = await fetch('/api/contact-submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ formType: 'partnerships', ...partnershipFormData }),
+      })
+
+      const result = await response.json()
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit inquiry')
+      }
+
+      setPartnershipStatus('success')
+      setPartnershipFormData({
+        name: '',
+        workEmail: '',
+        organization: '',
+        role: '',
+        partnershipType: '',
+        website: '',
+        description: '',
+      })
+    } catch (error) {
+      setPartnershipStatus('error')
+      setPartnershipError(error instanceof Error ? error.message : 'Failed to submit inquiry')
+    }
   }
 
   return (
@@ -308,9 +387,20 @@ export default function ContactPage() {
                         />
                       </div>
 
-                      <button type="submit" className="btn-primary-orange w-full sm:w-auto sm:min-w-[180px]">
-                        Submit Query
-                      </button>
+                      <div className="space-y-3">
+                        <button
+                          type="submit"
+                          disabled={courseStatus === 'submitting'}
+                          className="btn-primary-orange w-full sm:w-auto sm:min-w-[180px] disabled:cursor-not-allowed disabled:opacity-70"
+                        >
+                          {courseStatus === 'submitting' ? 'Submitting...' : 'Submit Query'}
+                        </button>
+                        <FormStatusMessage
+                          status={courseStatus}
+                          error={courseError}
+                          successMessage="Thanks — your course inquiry was submitted. We'll get back to you soon."
+                        />
+                      </div>
                     </form>
                   </div>
                 </motion.div>
@@ -450,9 +540,22 @@ export default function ContactPage() {
                         />
                       </div>
 
-                      <button type="submit" className="btn-primary-orange w-full sm:w-auto sm:min-w-[220px]">
-                        Submit Partnership Inquiry
-                      </button>
+                      <div className="space-y-3">
+                        <button
+                          type="submit"
+                          disabled={partnershipStatus === 'submitting'}
+                          className="btn-primary-orange w-full sm:w-auto sm:min-w-[220px] disabled:cursor-not-allowed disabled:opacity-70"
+                        >
+                          {partnershipStatus === 'submitting'
+                            ? 'Submitting...'
+                            : 'Submit Partnership Inquiry'}
+                        </button>
+                        <FormStatusMessage
+                          status={partnershipStatus}
+                          error={partnershipError}
+                          successMessage="Thanks — your partnership inquiry was submitted. We'll be in touch soon."
+                        />
+                      </div>
                     </form>
                   </div>
 

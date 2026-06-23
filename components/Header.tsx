@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -168,15 +169,21 @@ export default function Header() {
           )}
         >
           <Link href="/" className="flex shrink-0 items-center" onClick={closeMenu}>
-            <img
+            <Image
               src="/illustrations/UAlogo_short_DM.svg"
               alt="Ugenix Academy"
+              width={40}
+              height={29}
               className="h-[19px] w-auto sm:hidden"
+              priority
             />
-            <img
+            <Image
               src="/illustrations/CF_logo_long_horizontal_DM.svg"
               alt="Ugenix Academy"
+              width={180}
+              height={32}
               className="hidden h-[22px] w-auto max-w-[8.4rem] sm:block md:h-[26px] md:max-w-none lg:h-[29px] xl:h-8"
+              priority
             />
           </Link>
 

@@ -1,13 +1,20 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Ugenix WorkSim',
+  title: 'Mission Possible',
   description:
-    'Ugenix WorkSim trains students through real-world project simulation — industry-style deliverables, mentor reviews, and job-ready portfolio work.',
-  keywords: ['WorkSim', 'project simulation', 'internship training', 'team projects', 'Ugenix Academy'],
+    'Mission Possible is a 15-day full stack development & AI internship — offline bootcamp, guided team sprint, gamified challenges, and mentor-led reviews.',
+  keywords: [
+    'Mission Possible',
+    'full stack internship',
+    'AI internship',
+    'Ugenix Academy',
+    'CSE internship',
+  ],
   openGraph: {
-    title: 'Ugenix WorkSim | Ugenix Academy',
-    description: 'Real-world project simulation for students. Build job-ready experience before you graduate.',
+    title: 'Mission Possible | Ugenix Academy',
+    description:
+      '15-day full stack development & AI internship with offline bootcamp and guided project sprint.',
     url: '/courses/worksim',
   },
 }

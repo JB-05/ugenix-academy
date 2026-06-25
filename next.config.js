@@ -12,6 +12,11 @@ const nextConfig = {
         destination: 'https://register.academy.ugenix.in',
         permanent: false,
       },
+      {
+        source: '/courses/worksim',
+        destination: '/programs/missionpossible',
+        permanent: true,
+      },
     ]
   },
   // Image optimization

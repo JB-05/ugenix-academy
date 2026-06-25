@@ -4,13 +4,34 @@ export const MISSION_POSSIBLE_TAGLINE =
   '15-Day Full Stack Development & AI Internship Program'
 
 export const MISSION_POSSIBLE_SUMMARY =
-  'An industry-style internship for final-year CSE students — offline foundation bootcamp, guided team sprint, gamified challenges, and mentor-led reviews from day one to deployment.'
+  'A structured, hybrid industry-oriented internship for beginner-level engineering students — specifically final-year Computer Science students. The first five days are delivered offline (bootcamp + hackathon); the capstone sprint runs online with mentor supervision throughout.'
 
 export const MISSION_POSSIBLE_GOAL =
-  'The goal of the program is not just to teach technologies, but to provide students with an industry-style development experience — helping them build real-world projects, collaborate in teams, and leverage AI tools effectively.'
+  'The objective is to provide students with practical exposure to industry workflows including software planning, design, development, testing, deployment, collaboration, and AI-assisted engineering — blending in-person foundation training with remote, sprint-based product delivery.'
+
+export const PROGRAM_DURATION = '15 Days'
+
+export const PROGRAM_MODE = 'Hybrid'
+
+export const PROGRAM_MODE_DETAIL = 'Days 1–5 offline · Days 6–15 online'
+
+export const PROGRAM_PHASES = [
+  { name: 'Phase I — Foundation Bootcamp', duration: '4 Days', mode: 'Offline' as const },
+  { name: 'Phase II — Hackathon Challenge', duration: '1 Day', mode: 'Offline' as const },
+  { name: 'Phase III — Guided Capstone Project Sprint', duration: '10 Days', mode: 'Online' as const },
+] as const
+
+export const CORE_OUTCOMES = [
+  'Exposure to modern software engineering workflows',
+  'Hands-on experience in frontend and backend development',
+  'Practical knowledge of AI-assisted development',
+  'Experience participating in a hackathon environment',
+  'Contribution to a real-world product development cycle',
+  'Industry-style collaboration and project delivery experience',
+]
 
 export const PHASE_ONE = {
-  title: 'Phase I: Foundation Bootcamp',
+  title: 'Phase I — Foundation Bootcamp',
   subtitle: 'Offline Sessions',
   duration: '4 Days',
   mode: 'Offline',
@@ -21,17 +42,15 @@ export const PHASE_ONE = {
       title: 'Orientation, AI & Prompt Engineering, UI/UX Fundamentals',
       sessions: [
         {
-          time: '09:30 AM – 10:30 AM',
           title: 'Inauguration & Engineering Mindset',
           topics: [
             'Welcome and Program Overview',
             'Industry Expectations',
-            'How Software Engineers Solve Problems',
+            'How Modern Software Engineers Solve Problems',
             'Opportunities in the AI Era',
           ],
         },
         {
-          time: '10:45 AM – 01:00 PM',
           title: 'AI & Prompt Engineering',
           topics: [
             'Introduction to AI Tools',
@@ -44,7 +63,6 @@ export const PHASE_ONE = {
           ],
         },
         {
-          time: '02:00 PM – 04:30 PM',
           title: 'UI/UX Design Fundamentals',
           topics: [
             'Design Thinking',
@@ -64,8 +82,7 @@ export const PHASE_ONE = {
       title: 'Front-End Development',
       sessions: [
         {
-          time: '09:30 AM – 01:00 PM',
-          title: 'Front-End Fundamentals',
+          title: 'Front-End Development',
           topics: [
             'HTML',
             'CSS',
@@ -73,96 +90,231 @@ export const PHASE_ONE = {
             'Responsive Design',
             'JavaScript Basics',
             'DOM Manipulation',
+            'React Fundamentals',
           ],
-        },
-        {
-          time: '02:00 PM – 04:30 PM',
-          title: 'Practical Session',
-          topics: [
-            'Building Responsive Interfaces',
-            'Introduction to React',
-            'Components and State',
-          ],
-          activity: 'Build a personal portfolio or landing page.',
+          activity: 'Build a responsive interface.',
         },
       ],
     },
     {
       day: 3,
-      title: 'Backend Development, Git & Deployment',
+      title: 'Backend Development & APIs',
       sessions: [
         {
-          time: '09:30 AM – 01:00 PM',
-          title: 'Backend Fundamentals',
+          title: 'Backend Development & APIs',
           topics: [
             'Client–Server Architecture',
-            'APIs',
-            'Databases',
             'REST APIs',
+            'Databases',
+            'Authentication Basics',
             'Node.js and Express Introduction',
+            'API Testing using Postman',
           ],
-        },
-        {
-          time: '02:00 PM – 04:30 PM',
-          title: 'Developer Workflow',
-          topics: [
-            'Git and GitHub',
-            'Branching and Collaboration',
-            'Repository Management',
-            'Pull Requests',
-            'Postman API Testing',
-            'Deployment using Vercel and Netlify',
-          ],
-          activity: 'Push and deploy a project.',
+          activity: 'Build and test APIs.',
         },
       ],
     },
     {
       day: 4,
-      title: 'AI Tools & Career Ecosystem',
+      title: 'Developer Ecosystem & AI Development',
       sessions: [
         {
-          time: '09:30 AM – 01:00 PM',
-          title: 'AI-Powered Development Ecosystem',
+          title: 'Developer Ecosystem & AI Development',
           topics: [
-            'Introduction to ChatGPT, Claude, Gemini, Cursor, Windsurf, Lovable, Bolt, and v0',
-            'AI-Assisted Development',
-            'Rapid Prototyping',
-            'Building Applications Faster',
-            'Debugging and Optimization',
-          ],
-        },
-        {
-          time: '02:00 PM – 04:30 PM',
-          title: 'Career and Developer Ecosystem',
-          topics: [
-            'GitHub Portfolio Building',
-            'LeetCode and Problem Solving',
-            'LinkedIn Optimization',
-            'Resume Building',
-            'Hackathons',
-            'Open Source Contributions',
-            'Freelancing Opportunities',
+            'Git and GitHub',
+            'Collaboration Workflow',
+            'Deployment using Vercel and Netlify',
+            'AI IDEs & Development Tools',
+            'Rapid Prototyping using AI',
             'Career Roadmaps',
+            'Portfolio Building',
+            'Hackathons & Open Source',
           ],
+          activity: 'Deploy a mini project.',
         },
       ],
     },
   ],
 }
 
-export const PHASE_TWO = {
-  title: 'Phase II: Guided Project Sprint',
-  duration: '7 Days',
-  description: 'Students work in teams with mentor support.',
+export const PHASE_HACKATHON = {
+  title: 'Phase II — Hackathon Challenge',
+  subtitle: 'Hackathon Event',
+  duration: '1 Day (Day 5)',
+  mode: 'Offline',
+  description:
+    'A fast-paced product-building challenge simulating a real hackathon environment.',
+  day: 5,
+  dayTitle: 'Hackathon Event',
+  sessions: [
+    {
+      title: 'Morning Session — Problem Discovery & Planning',
+      topics: [
+        'Theme / Problem Statement Release',
+        'Team Formation (3–5 Members)',
+        'Brainstorming',
+        'Solution Design',
+        'Architecture Planning',
+        'Task Distribution',
+      ],
+    },
+    {
+      title: 'Build Session',
+      topics: [
+        'Frontend',
+        'Backend',
+        'APIs',
+        'AI Tools',
+        'Rapid Prototyping Platforms',
+        'Mentor guidance throughout',
+      ],
+    },
+    {
+      title: 'Evening Session — Demo & Judging',
+      topics: [
+        'Problem Statement',
+        'Solution',
+        'Live Demo',
+      ],
+    },
+  ],
+  closingNote: 'Hackathon winners will be announced at the end of the day.',
+}
+
+export const PHASE_THREE = {
+  title: 'Phase III — Guided Capstone Project Sprint',
+  subtitle: 'Online capstone sprint',
+  duration: '10 Days (Day 6–15)',
+  mode: 'Online',
+  description:
+    'Students work on a live company project or internal product under development, contributing to real engineering workflows under mentor supervision — sprint-based execution, collaborative engineering, and deployment workflows.',
   days: [
-    { day: 5, focus: 'Team Formation, Problem Statement Selection, Requirement Analysis, UI Planning' },
-    { day: 6, focus: 'Front-End Development' },
-    { day: 7, focus: 'Backend Development' },
-    { day: 8, focus: 'Database and APIs' },
-    { day: 9, focus: 'Integration' },
-    { day: 10, focus: 'Testing and Deployment' },
-    { day: 11, focus: 'Documentation and Presentation Preparation' },
+    {
+      day: 6,
+      sdlcTag: 'Analyze',
+      title: 'Product Discovery',
+      activities: [
+        'Project walkthrough',
+        'Product requirement discussion',
+        'Existing architecture overview',
+        'Codebase introduction',
+        'Team role allocation',
+        'Sprint objective definition',
+      ],
+    },
+    {
+      day: 7,
+      sdlcTag: 'Plan',
+      title: 'Sprint Planning',
+      activities: [
+        'Requirement analysis',
+        'Feature decomposition',
+        'User story creation',
+        'Task estimation',
+        'Sprint board setup',
+        'Milestone planning',
+      ],
+    },
+    {
+      day: 8,
+      sdlcTag: 'Plan',
+      title: 'System Design',
+      activities: [
+        'Wireframe analysis',
+        'Component architecture planning',
+        'Design system review',
+        'Routing structure planning',
+        'State flow mapping',
+        'API contract discussion',
+      ],
+    },
+    {
+      day: 9,
+      sdlcTag: 'Build',
+      title: 'Frontend Sprint',
+      activities: [
+        'UI component development',
+        'Page implementation',
+        'Responsive design integration',
+        'State management setup',
+        'Form handling',
+        'Client-side validations',
+      ],
+    },
+    {
+      day: 10,
+      sdlcTag: 'Build',
+      title: 'Backend Development',
+      activities: [
+        'API development',
+        'Route configuration',
+        'Middleware integration',
+        'Authentication workflows',
+        'Request validation',
+        'Service-layer implementation',
+      ],
+    },
+    {
+      day: 11,
+      sdlcTag: 'Build',
+      title: 'Database Integration',
+      activities: [
+        'Schema review',
+        'Database modeling',
+        'CRUD implementation',
+        'Query optimization',
+        'Data validation',
+      ],
+    },
+    {
+      day: 12,
+      sdlcTag: 'Build',
+      title: 'Feature Integration',
+      activities: [
+        'API integration',
+        'Frontend-backend communication',
+        'Feature merging',
+        'Business logic integration',
+        'Error handling',
+      ],
+    },
+    {
+      day: 13,
+      sdlcTag: 'Test',
+      title: 'Testing & Review',
+      activities: [
+        'Functional testing',
+        'Debugging sessions',
+        'Code review',
+        'Bug fixing',
+        'Refactoring',
+        'Performance improvements',
+      ],
+    },
+    {
+      day: 14,
+      sdlcTag: 'Deploy',
+      title: 'Deployment Setup',
+      activities: [
+        'Deployment configuration',
+        'Environment variable setup',
+        'Build optimization',
+        'Hosting setup',
+        'Technical documentation',
+        'Demo preparation',
+      ],
+    },
+    {
+      day: 15,
+      sdlcTag: 'Review',
+      title: 'Final Demo',
+      activities: [
+        'Final project demonstration',
+        'Code walkthrough',
+        'Engineering review',
+        'Mentor feedback',
+      ],
+    },
   ],
 }
 
@@ -179,9 +331,9 @@ export const GAMIFICATION = {
     'Helping Others',
   ],
   recognition: [
-    'Best Team',
-    'Best UI Design',
-    'Most Innovative Project',
+    'Best Hackathon Team',
+    'Best Contributor',
+    'Best Team Player',
     'Best Problem Solver',
     'Outstanding Performer',
   ],

@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -11,16 +12,23 @@ export function InnerPageHero({
   title,
   highlight,
   description,
+  compact = false,
 }: {
   label: string
   title: string
   highlight?: string
   description: string
+  compact?: boolean
 }) {
   const titleParts = highlight ? title.split(highlight) : [title]
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-10 sm:pt-32 sm:pb-14 lg:pb-16">
+    <section
+      className={cn(
+        'relative overflow-hidden pt-28 sm:pt-32',
+        compact ? 'pb-6 sm:pb-8' : 'pb-10 sm:pb-14 lg:pb-16'
+      )}
+    >
       <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

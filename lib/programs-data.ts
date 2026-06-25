@@ -36,6 +36,15 @@ export interface UpcomingProgram {
 
 export const CATALOG_PROGRAMS: CatalogProgram[] = [
   {
+    id: 'worksim',
+    name: 'Mission Possible',
+    description: '15-day hybrid full stack & AI internship — offline bootcamp and hackathon, then online capstone sprint.',
+    href: '/programs/missionpossible',
+    icon: 'laptop',
+    status: 'active',
+    cta: 'explore',
+  },
+  {
     id: 'core',
     name: 'Ugenix Core',
     description: 'Foundation program for beginners to build strong basics.',
@@ -53,15 +62,7 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
     status: 'coming-soon',
     cta: 'coming-soon',
   },
-  {
-    id: 'worksim',
-    name: 'Mission Possible',
-    description: '15-day full stack & AI internship — bootcamp, team sprint, and real deployment.',
-    href: '/courses/worksim',
-    icon: 'laptop',
-    status: 'active',
-    cta: 'explore',
-  },
+
   {
     id: 'labs',
     name: 'Ugenix Labs',
@@ -87,10 +88,10 @@ export const UPCOMING_PROGRAMS: UpcomingProgram[] = [
     id: 'worksim',
     name: 'Mission Possible',
     description:
-      '15-day full stack development & AI internship — offline foundation bootcamp, guided team sprint, gamified challenges, and mentor-led reviews.',
+      '15-day hybrid full stack development & AI internship — offline bootcamp and hackathon, then online capstone sprint with mentor-led reviews.',
     status: 'Active',
-    meta: '15 days · Offline bootcamp + guided sprint',
-    href: '/courses/worksim',
+    meta: '15 days · Hybrid · 5 days offline + 10 days online',
+    href: '/programs/missionpossible',
     registrationOpen: !WORKSIM_REGISTRATION_ENDED,
   },
 ]

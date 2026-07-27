@@ -15,12 +15,12 @@ type NavLink =
   | { href: string; label: string; hasDropdown?: boolean }
   | { label: string; hasDropdown: true; dropdownItems: DropdownItem[] }
 
-const ACTIVE_PROGRAM_ITEMS: DropdownItem[] = CATALOG_PROGRAMS.filter(
-  (program) => program.status === 'active'
-).map((program) => ({
-  href: program.href,
-  label: program.name,
-}))
+  const ACTIVE_PROGRAM_ITEMS: DropdownItem[] = CATALOG_PROGRAMS
+  .filter((program) => program.status === 'Active')
+  .map((program) => ({
+    href: program.href,
+    label: program.name,
+  }))
 
 const NAV_LINKS: NavLink[] = [
   {

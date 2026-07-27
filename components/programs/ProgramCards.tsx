@@ -75,7 +75,8 @@ export function ProgramCatalogCard({
   className?: string
 }) {
   const Icon = ICON_MAP[program.icon]
-  const isActive = program.status === 'active'
+  const isActive = program.status === 'Active'
+  const isClosed = program.status === 'Closed'
 
   return (
     <motion.div
@@ -105,19 +106,17 @@ export function ProgramCatalogCard({
           />
         )}
         <CardAmbientLayer warm={isActive} />
-
-        <div className="relative z-10 mb-4 flex justify-center">
-          {isActive ? (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-green-500/40 bg-green-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-green-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" aria-hidden />
-              Active
-            </span>
+        {isClosed ? (
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/40 bg-red-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-red-400">
+            <span className="h-1.5 w-1.5 rounded-full bg-red-400" aria-hidden />
+            Closed
+          </span>
           ) : (
             <span className="inline-flex items-center rounded-full border border-white/[0.08] bg-[#111111] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
               Coming Soon
             </span>
-          )}
-        </div>
+          )
+        }
 
         <motion.div variants={isActive ? contentFloatVariants : undefined} className="relative z-10 flex flex-1 flex-col">
           <Icon

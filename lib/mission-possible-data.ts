@@ -9,6 +9,8 @@ export const MISSION_POSSIBLE_SUMMARY =
 export const MISSION_POSSIBLE_GOAL =
   'The objective is to provide students with practical exposure to industry workflows including software planning, design, development, testing, deployment, collaboration, and AI-assisted engineering — blending in-person foundation training with remote, sprint-based product delivery.'
 
+export const PROGRAM_START_DATE = '27-07-2026'
+
 export const PROGRAM_DURATION = '15 Days'
 
 export const PROGRAM_MODE = 'Hybrid'

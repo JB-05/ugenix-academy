@@ -2,8 +2,8 @@ import { WORKSIM_REGISTRATION_ENDED } from './constants'
 
 export type ProgramIconId = 'box' | 'trending-up' | 'laptop' | 'flask' | 'target'
 
-export type CatalogProgramStatus = 'active' | 'coming-soon'
-export type CatalogProgramCta = 'explore' | 'coming-soon'
+export type CatalogProgramStatus = 'Active' | 'Coming Soon' | 'Closed'
+export type CatalogProgramCta = 'explore' | 'coming-soon' 
 
 export interface CatalogProgram {
   id: string
@@ -19,7 +19,7 @@ export interface PastProgram {
   id: string
   name: string
   description: string
-  status: string
+  status: 'Completed' | 'Registrations closed'
   meta?: string
   href: string
 }
@@ -28,7 +28,7 @@ export interface UpcomingProgram {
   id: string
   name: string
   description: string
-  status: 'Active' | 'Coming Soon'
+  status: 'Active' | 'Coming Soon' 
   meta?: string
   href: string
   registrationOpen?: boolean
@@ -41,7 +41,7 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
     description: '15-day hybrid full stack & AI internship — offline bootcamp and hackathon, then online capstone sprint.',
     href: '/programs/missionpossible',
     icon: 'laptop',
-    status: 'active',
+    status: 'Closed',
     cta: 'explore',
   },
   {
@@ -50,7 +50,7 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
     description: 'Foundation program for beginners to build strong basics.',
     href: '/contact',
     icon: 'box',
-    status: 'coming-soon',
+    status: 'Coming Soon',
     cta: 'coming-soon',
   },
   {
@@ -59,7 +59,7 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
     description: 'Advanced program to master in-demand technologies.',
     href: '/contact',
     icon: 'trending-up',
-    status: 'coming-soon',
+    status: 'Coming Soon',
     cta: 'coming-soon',
   },
 
@@ -69,7 +69,7 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
     description: 'Experiment, build and innovate with guided lab projects.',
     href: '/contact',
     icon: 'flask',
-    status: 'coming-soon',
+    status: 'Coming Soon',
     cta: 'coming-soon',
   },
   {
@@ -78,22 +78,13 @@ export const CATALOG_PROGRAMS: CatalogProgram[] = [
     description: 'Resume, interview prep and placement support to land your dream job.',
     href: '/contact',
     icon: 'target',
-    status: 'coming-soon',
+    status: 'Coming Soon',
     cta: 'coming-soon',
   },
 ]
 
 export const UPCOMING_PROGRAMS: UpcomingProgram[] = [
-  {
-    id: 'worksim',
-    name: 'Mission Possible',
-    description:
-      '15-day hybrid full stack development & AI internship — offline bootcamp and hackathon, then online capstone sprint with mentor-led reviews.',
-    status: 'Active',
-    meta: '15 days · Hybrid · 5 days offline + 10 days online',
-    href: '/programs/missionpossible',
-    registrationOpen: !WORKSIM_REGISTRATION_ENDED,
-  },
+  
 ]
 
 export const PAST_PROGRAMS: PastProgram[] = [
@@ -114,5 +105,14 @@ export const PAST_PROGRAMS: PastProgram[] = [
     status: 'Registrations closed',
     meta: 'Team-based, on-campus program',
     href: '/vista',
+  },
+  {
+    id: 'worksim',
+    name: 'Mission Possible',
+    description:
+      '15-day hybrid full stack development & AI internship — offline bootcamp and hackathon, then online capstone sprint with mentor-led reviews.',
+    status: 'Registrations closed',
+    meta: 'Starts 27-07-2026 · 15 days · Hybrid · 5 days offline + 10 days online',
+    href: '/programs/missionpossible',
   },
 ]

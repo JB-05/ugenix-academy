@@ -15,11 +15,12 @@ import {
   PROGRAM_DURATION,
   PROGRAM_MODE,
   PROGRAM_MODE_DETAIL,
+  PROGRAM_START_DATE,
 } from '@/lib/mission-possible-data'
-import { UPCOMING_PROGRAMS } from '@/lib/programs-data'
+import { PAST_PROGRAMS } from '@/lib/programs-data'
 import { cn } from '@/lib/utils'
 
-const PROGRAM = UPCOMING_PROGRAMS.find((p) => p.id === 'worksim')!
+const PROGRAM = PAST_PROGRAMS.find((p) => p.id === 'worksim')!
 const EASE = [0.22, 1, 0.36, 1] as const
 const CONTAINER = 'relative mx-auto max-w-[1440px] px-[clamp(20px,4vw,64px)]'
 const SURFACE = cn(
@@ -54,9 +55,16 @@ export default function MissionPossiblePage() {
       <section className="pb-2 sm:pb-4">
         <div className={CONTAINER}>
           <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center rounded-full border border-green-500/40 bg-green-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-green-400">
-              Active
-            </span>
+            {PROGRAM.status === 'Registrations closed' ? (
+              <span className="inline-flex items-center rounded-full border border-zinc-500/40 bg-zinc-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-400">
+                Registrations closed
+              </span>
+            ) : (
+              <span className="inline-flex items-center rounded-full border border-green-500/40 bg-green-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-green-400">
+                Active
+              </span>
+            )}
+            <InfoPill icon={Calendar} label={`Starts ${PROGRAM_START_DATE}`} />
             <InfoPill icon={Calendar} label={PROGRAM_DURATION + ' · 3 phases'} />
             <InfoPill icon={MapPin} label={PROGRAM_MODE} />
             <InfoPill icon={Users} label={PHASE_ONE.audience} />
@@ -100,7 +108,7 @@ export default function MissionPossiblePage() {
                 {PROGRAM.meta}
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                {PROGRAM.registrationOpen ? (
+                {PROGRAM.status === 'Registrations closed' ? (
                   <Link
                     href={ACADEMY_REGISTRATION_URL}
                     target="_blank"
